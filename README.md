@@ -17,7 +17,7 @@
 - An app that aims to list places to eat close to UP (menus, prices and veggie options) ordering them by relative distance to help students know all their options. This app would also include a shortcut to Google Maps to show the way there.
 
 ## Main Features
- - Feature 1 - Short description
+ - Hello 1 - Short description
  - Feature 2 - Short description
 ...
 
