@@ -81,41 +81,42 @@ As a Visitor, I want to register into the system, so that I can authenticate mys
 
 As a Visitor, I want to prove my identity within the system and ask for new credentials, so that I can log in to my account again.
 
-As a Visitor, I want to be able to search restaurants, so that I can access their information.
-
-As a Visitor, I want to be able to filter my search, so that I can find restaurants easier.
-
-As a Visitor, I want to select a random restaurant, so that I can get a faster recomendation.
 
 
 ### Academic user
 As an academic user I want to save a favorite restaurant, so that later I can have a faster access to it.
 
-As an academic user I want to view my favorite list, so that I can have a faster access to the restaurants I'm most interested in.
+As an academic user I want to view my favorite list, so that I can have easier access to the restaurants I'm most interested in.
 
-As an academic user I want to view my search history, so that I can visit previous restaurants.
+As an academic user I want to view my search history, so that I can visit restaurants I've searched  for before.
 
 
-### Restaurant User
-As a Restaurant User, I want to login into the system, so that I can access private features and information.
+### Restaurant Owner
+As a Restaurant Owner, I want to login into the system, so that I can access private features and information.
 
-As a Restaurant User, I want to register into the system, so that I can authenticate myself.
+As a Restaurant Owner, I want to register into the system, so that I can authenticate myself.
 
-As a Restaurant User, I want to prove my identity within the system and ask for new credentials, so that I can log in to my account again.
+As a Restaurant Owner, I want to prove my identity within the system and ask for new credentials, so that I can log in to my account again.
 
-As a Restaurant User, I want to be able to delete my account, so that my information is removed from the system and this account no longer has access to it.
+As a Restaurant Owner, I want to be able to delete my account, so that my information is removed from the system and this account no longer has access to it.
 
-As a Restaurant User, I want to add menus, so that I can keep the information updated.
-
-As a Restaurant User, I want to be able to search restaurants, so that I can access their information.
-
-As a Restaurant User, I want to be able to filter my search, so that I can find restaurants easier.
-
-As a Restaurant User, I want to select a random restaurant, so that I can get a faster recomendation.
+As a Restaurant Owner, I want to add menus, so that I can keep the information updated.
 
 
 ### Admin
 ...
 
 ### User
-...
+As a User, I want to be able to search restaurants, so that I can access their information.
+
+As a User, I want to be able to filter my search, so that I can find restaurants easier.
+
+As a User, I want to select a random restaurant, so that I can get a faster recomendation.
+
+As a User, I want to access the home page, so that I can see a brief presentation of the website.
+
+As a User, I want to access the about page, so that I can see a complete description of the website and its creators.
+
+As a User, I want to access contacts, so that I can come in touch with the platform creators.
+
+As a User, I want to access the FAQ, so that I can get quick answers to common questions.
