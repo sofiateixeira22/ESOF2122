@@ -1,0 +1,860 @@
+[
+    {
+        "codigo": 2,
+        "descricao": "Grill",
+        "horario": "12h00 \u00E0s 14h00",
+        "ementas": [
+            {
+                "estado": "Aberto",
+                "data": "22-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Frango estufado com ervilhas e cenourinhas",
+                        "tipo": 1,
+                        "tipo_descr": "Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Filetes de pescada com salada russa",
+                        "tipo": 3,
+                        "tipo_descr": "Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Massa salteada vegetariana",
+                        "tipo": 4,
+                        "tipo_descr": "Vegetariano"
+                    }
+                ]
+            },
+            {
+                "estado": "Aberto",
+                "data": "23-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Lasanha de carne",
+                        "tipo": 1,
+                        "tipo_descr": "Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Carapau grelhado com molho verde e batata cozida",
+                        "tipo": 3,
+                        "tipo_descr": "Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Paella com seitan",
+                        "tipo": 4,
+                        "tipo_descr": "Vegetariano"
+                    }
+                ]
+            },
+            {
+                "estado": "Aberto",
+                "data": "24-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Ovos verdes com salada russa",
+                        "tipo": 1,
+                        "tipo_descr": "Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Feijoada de marisco",
+                        "tipo": 3,
+                        "tipo_descr": "Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Macarr\u00E3o com feij\u00E3o vermelho, lentilhas e cenoura",
+                        "tipo": 4,
+                        "tipo_descr": "Vegetariano"
+                    }
+                ]
+            },
+            {
+                "estado": "Aberto",
+                "data": "25-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Francesinha especial com batata frita",
+                        "tipo": 1,
+                        "tipo_descr": "Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Corvina grelhada com molho de ervas e batata cozida",
+                        "tipo": 3,
+                        "tipo_descr": "Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Chop suey vegetariano",
+                        "tipo": 4,
+                        "tipo_descr": "Vegetariano"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "codigo": 4,
+        "descricao": "Cafetaria - Restaurante FEUP",
+        "horario": "08h30 \u00E0s 17h30",
+        "ementas": [
+            {
+                "estado": "Aberto",
+                "data": "22-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Rolo de vitela recheado com fiambre e queijo",
+                        "tipo": 1,
+                        "tipo_descr": "Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Abr\u00F3tea grelhada com legumes salteados",
+                        "tipo": 2,
+                        "tipo_descr": "Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Massa vegetariana gratinada",
+                        "tipo": 3,
+                        "tipo_descr": "Vegetariano"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Vitela cozida com esparguete",
+                        "tipo": 4,
+                        "tipo_descr": "Dieta"
+                    }
+                ]
+            },
+            {
+                "estado": "Aberto",
+                "data": "23-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Frango grelhado com molho picante ",
+                        "tipo": 1,
+                        "tipo_descr": "Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Tintureira estufada com ervas arom\u00E1ticas ",
+                        "tipo": 2,
+                        "tipo_descr": "Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Soja \u00E0 Camponesa",
+                        "tipo": 3,
+                        "tipo_descr": "Vegetariano"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Frango grelhado com arroz e legumes",
+                        "tipo": 4,
+                        "tipo_descr": "Dieta"
+                    }
+                ]
+            },
+            {
+                "estado": "Aberto",
+                "data": "24-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Costeletas de porco \u00E0 Milanesa ",
+                        "tipo": 1,
+                        "tipo_descr": "Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Pescada gratinada com pur\u00E9 de batata ",
+                        "tipo": 2,
+                        "tipo_descr": "Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Pizza vegetariana guarnecida",
+                        "tipo": 3,
+                        "tipo_descr": "Vegetariano"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Pescada assada ao natural",
+                        "tipo": 4,
+                        "tipo_descr": "Dieta"
+                    }
+                ]
+            },
+            {
+                "estado": "Aberto",
+                "data": "25-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Arroz de pato \u00E0 Antiga",
+                        "tipo": 1,
+                        "tipo_descr": "Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Bolinhos de bacalhau com salada de feij\u00E3o frade",
+                        "tipo": 2,
+                        "tipo_descr": "Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Tofu \u00E0 Lagareiro",
+                        "tipo": 3,
+                        "tipo_descr": "Vegetariano"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "F\u00EDgado de vitela grelhado com batata cozida",
+                        "tipo": 4,
+                        "tipo_descr": "Dieta"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "codigo": 5,
+        "descricao": "Restaurante do INEGI",
+        "horario": "",
+        "ementas": [
+            {
+                "estado": "Aberto",
+                "data": "22-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Maminha \u00E0 Brasileira",
+                        "tipo": 1,
+                        "tipo_descr": "Prato de Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Riss\u00F3is de Camar\u00E3o",
+                        "tipo": 2,
+                        "tipo_descr": "Prato de Peixe"
+                    }
+                ]
+            },
+            {
+                "estado": "Aberto",
+                "data": "23-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Entrecosto Grelhado",
+                        "tipo": 1,
+                        "tipo_descr": "Prato de Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Medalh\u00F5es de Pescada com Molho de Camar\u00E3o",
+                        "tipo": 2,
+                        "tipo_descr": "Prato de Peixe"
+                    }
+                ]
+            },
+            {
+                "estado": "Aberto",
+                "data": "24-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Nacos de Vitela com Alho",
+                        "tipo": 1,
+                        "tipo_descr": "Prato de Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Alabote \u00E0 Bordalesa",
+                        "tipo": 2,
+                        "tipo_descr": "Prato de Peixe"
+                    }
+                ]
+            },
+            {
+                "estado": "Aberto",
+                "data": "25-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Bolonhesa",
+                        "tipo": 1,
+                        "tipo_descr": "Prato de Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Polvinhos Panados",
+                        "tipo": 2,
+                        "tipo_descr": "Prato de Peixe"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "codigo": 6,
+        "descricao": "Cantina - Almo\u00E7o",
+        "horario": "11h30 \u00E0s 14h00",
+        "ementas": [
+            {
+                "estado": "Aberto",
+                "data": "22-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Sopa de couve saboia",
+                        "tipo": 1,
+                        "tipo_descr": "Sopa"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "P\u00E1 de porco guisada com feij\u00E3o catarino e arroz",
+                        "tipo": 2,
+                        "tipo_descr": "Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Potas \u00E0 bordalesa com pur\u00E9 de batata",
+                        "tipo": 3,
+                        "tipo_descr": "Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Bife de vaca grelhado com massa tricolor",
+                        "tipo": 4,
+                        "tipo_descr": "Dieta"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Legumes \u00E0 grega (soja, cenoura, couve-flor e milho) c/ massa",
+                        "tipo": 5,
+                        "tipo_descr": "Vegetariano"
+                    }
+                ]
+            },
+            {
+                "estado": "Aberto",
+                "data": "23-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Creme de ab\u00F3bora",
+                        "tipo": 1,
+                        "tipo_descr": "Sopa"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Empad\u00E3o de carne com salada de cenoura",
+                        "tipo": 2,
+                        "tipo_descr": "Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Arinca assada com or\u00E9g\u00E3os e arroz alegre ",
+                        "tipo": 3,
+                        "tipo_descr": "Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Arinca ao vapor com batata e couve-lombarda cozida",
+                        "tipo": 4,
+                        "tipo_descr": "Dieta"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Seitan estufado com br\u00F3colos e arroz",
+                        "tipo": 5,
+                        "tipo_descr": "Vegetariano"
+                    }
+                ]
+            },
+            {
+                "estado": "Aberto",
+                "data": "24-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Sopa de cenoura",
+                        "tipo": 1,
+                        "tipo_descr": "Sopa"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Coxas de frango corada com batatas salteadas em azeite",
+                        "tipo": 2,
+                        "tipo_descr": "Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Salada de talharim com atum, cenoura e anan\u00E1s",
+                        "tipo": 3,
+                        "tipo_descr": "Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "F\u00EAveras de porco grelhadas com arroz de ervilhas",
+                        "tipo": 4,
+                        "tipo_descr": "Dieta"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Migas de broa com feij\u00E3o frade e batata assada",
+                        "tipo": 5,
+                        "tipo_descr": "Vegetariano"
+                    }
+                ]
+            },
+            {
+                "estado": "Aberto",
+                "data": "25-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Sopa de gr\u00E3o-de-bico e legumes",
+                        "tipo": 1,
+                        "tipo_descr": "Sopa"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Escalopes de porco com molho de natas e cogumelos e arroz",
+                        "tipo": 2,
+                        "tipo_descr": "Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Peixe-espada assado com arroz branco",
+                        "tipo": 3,
+                        "tipo_descr": "Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Cavala cozida com batata cozida",
+                        "tipo": 4,
+                        "tipo_descr": "Dieta"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Pataniscas de gr\u00E3o, br\u00F3colos e cenoura com arroz",
+                        "tipo": 5,
+                        "tipo_descr": "Vegetariano"
+                    }
+                ]
+            },
+            {
+                "estado": "Aberto",
+                "data": "26-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Sopa de couve-flor",
+                        "tipo": 1,
+                        "tipo_descr": "Sopa"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Bife da vazia grelhado com massa talharim",
+                        "tipo": 2,
+                        "tipo_descr": "Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Solha assada com maionese e pur\u00E9 de batata",
+                        "tipo": 3,
+                        "tipo_descr": "Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Coxinhas de frango cozidas com macarr\u00E3o",
+                        "tipo": 4,
+                        "tipo_descr": "Dieta"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Caldeirada de tofu (batata, tofu e pimento)",
+                        "tipo": 5,
+                        "tipo_descr": "Vegetariano"
+                    }
+                ]
+            },
+            {
+                "estado": "Aberto",
+                "data": "27-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Sopa de lentilhas",
+                        "tipo": 1,
+                        "tipo_descr": "Sopa"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Espetada de aves no forno com batata frita e alface",
+                        "tipo": 2,
+                        "tipo_descr": "Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Raia assada com molho verde e batata cozida",
+                        "tipo": 3,
+                        "tipo_descr": "Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Filete de abr\u00F3tea grelhado com batata e hortali\u00E7a cozida",
+                        "tipo": 4,
+                        "tipo_descr": "Dieta"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Jardineira de soja (batata, ervilhas e cenoura)",
+                        "tipo": 5,
+                        "tipo_descr": "Vegetariano"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "codigo": 7,
+        "descricao": "Cantina - Jantar",
+        "horario": "18h30 \u00E0s 20h30",
+        "ementas": [
+            {
+                "estado": "Aberto",
+                "data": "22-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Sopa de nabi\u00E7as",
+                        "tipo": 1,
+                        "tipo_descr": "Sopa"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Carne de vaca no forno com batata assada",
+                        "tipo": 2,
+                        "tipo_descr": "Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Bacalhau fresco gratinado c/ crosta de broa ervas arom\u00E1ticas",
+                        "tipo": 3,
+                        "tipo_descr": "Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Solha ao vapor com batata cozida",
+                        "tipo": 4,
+                        "tipo_descr": "Dieta"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Tofu grelhado com ervas arom\u00E1ticas e arroz de cenoura",
+                        "tipo": 5,
+                        "tipo_descr": "Vegetariano"
+                    }
+                ]
+            },
+            {
+                "estado": "Aberto",
+                "data": "23-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Sopa camponesa (repolho, cenoura, feij\u00E3o catarino)",
+                        "tipo": 1,
+                        "tipo_descr": "Sopa"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Bife de frango na chapa com esparguete colorida",
+                        "tipo": 2,
+                        "tipo_descr": "Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Salada de feij\u00E3o-frade com atum, ovo raspado e molho verde",
+                        "tipo": 3,
+                        "tipo_descr": "Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Frango grelhado com arroz",
+                        "tipo": 4,
+                        "tipo_descr": "Dieta"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Legumada (feij\u00E3o catarino, cogumelos, tomate) c massa fusili",
+                        "tipo": 5,
+                        "tipo_descr": "Vegetariano"
+                    }
+                ]
+            },
+            {
+                "estado": "Aberto",
+                "data": "24-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Sopa de maced\u00F3nia",
+                        "tipo": 1,
+                        "tipo_descr": "Sopa"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Entrecosto assado com arroz de beterraba",
+                        "tipo": 2,
+                        "tipo_descr": "Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Filete de paloco grelhado com batata cozida e molho verde",
+                        "tipo": 3,
+                        "tipo_descr": "Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Carapau cozido com batata cozida e molho de salsa",
+                        "tipo": 4,
+                        "tipo_descr": "Dieta"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Empad\u00E3o de arroz com lentilhas e legumes",
+                        "tipo": 5,
+                        "tipo_descr": "Vegetariano"
+                    }
+                ]
+            },
+            {
+                "estado": "Aberto",
+                "data": "25-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Sopa de couve-galega com feij\u00E3o vermelho",
+                        "tipo": 1,
+                        "tipo_descr": "Sopa"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Alm\u00F4ndegas de vaca estufadas em molho de tomate macarronete",
+                        "tipo": 2,
+                        "tipo_descr": "Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Calamares no forno com arroz de beterraba",
+                        "tipo": 3,
+                        "tipo_descr": "Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Peru estufado ao natural com massa cotovelos",
+                        "tipo": 4,
+                        "tipo_descr": "Dieta"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Bolonhesa de soja",
+                        "tipo": 5,
+                        "tipo_descr": "Vegetariano"
+                    }
+                ]
+            },
+            {
+                "estado": "Aberto",
+                "data": "26-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Sopa de nabos e alho-franc\u00EAs",
+                        "tipo": 1,
+                        "tipo_descr": "Sopa"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Peru assado com molho de cenoura e pur\u00E9 de batata",
+                        "tipo": 2,
+                        "tipo_descr": "Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Lombinhos de pescada estufados com molho de cenoura e arroz",
+                        "tipo": 3,
+                        "tipo_descr": "Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Lombinhos de pescada grelhados com arroz e feij\u00E3o-verde",
+                        "tipo": 4,
+                        "tipo_descr": "Dieta"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Lasanha de legumes (cenoura, couve branca e ervilha)",
+                        "tipo": 5,
+                        "tipo_descr": "Vegetariano"
+                    }
+                ]
+            },
+            {
+                "estado": "Aberto",
+                "data": "27-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Sopa de ervilhas",
+                        "tipo": 1,
+                        "tipo_descr": "Sopa"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Chanfana de borrego com batata cozida e legumes salteados",
+                        "tipo": 2,
+                        "tipo_descr": "Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Carapau grelhado com arroz de coentros",
+                        "tipo": 3,
+                        "tipo_descr": "Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Lombinhos de porco grelhados com arroz",
+                        "tipo": 4,
+                        "tipo_descr": "Dieta"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Feij\u00E3o branco estufado com legumes e arroz de salsa",
+                        "tipo": 5,
+                        "tipo_descr": "Vegetariano"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "codigo": 8,
+        "descricao": "Ementa Bar INESC TEC",
+        "horario": "",
+        "ementas": [
+            {
+                "estado": "Aberto",
+                "data": "22-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Lulas Recheadas",
+                        "tipo": 1,
+                        "tipo_descr": "Prato de Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Hamb\u00FArguer",
+                        "tipo": 2,
+                        "tipo_descr": "Prato de Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Hamb\u00FArguer Vegetariano",
+                        "tipo": 3,
+                        "tipo_descr": "Prato Vegetariano"
+                    }
+                ]
+            },
+            {
+                "estado": "Aberto",
+                "data": "23-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Peixe Espada",
+                        "tipo": 1,
+                        "tipo_descr": "Prato de Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Lombo Assado",
+                        "tipo": 2,
+                        "tipo_descr": "Prato de Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Cogumelos com Tomate",
+                        "tipo": 3,
+                        "tipo_descr": "Prato Vegetariano"
+                    }
+                ]
+            },
+            {
+                "estado": "Aberto",
+                "data": "24-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Folhado de Bacalhau",
+                        "tipo": 1,
+                        "tipo_descr": "Prato de Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Empad\u00E3o de Vitela",
+                        "tipo": 2,
+                        "tipo_descr": "Prato de Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Beringela Recheada ",
+                        "tipo": 3,
+                        "tipo_descr": "Prato Vegetariano"
+                    }
+                ]
+            },
+            {
+                "estado": "Aberto",
+                "data": "25-03-2022",
+                "pratos": [
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Calamares",
+                        "tipo": 1,
+                        "tipo_descr": "Prato de Peixe"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Caril de Frango",
+                        "tipo": 2,
+                        "tipo_descr": "Prato de Carne"
+                    },
+                    {
+                        "estado": "Aberto",
+                        "descricao": "Caril de Legumes ",
+                        "tipo": 3,
+                        "tipo_descr": "Prato Vegetariano"
+                    }
+                ]
+            }
+        ]
+    }
+]

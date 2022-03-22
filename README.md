@@ -14,7 +14,7 @@
 
 ## Vision Stament
 
-- UniEats is a find-my-meal app that aims to list places to eat close to UP, and their menus, ordering them by relative distance to help the academic community know all their options. This app would also include a shortcut to Google Maps to show the way there.
+- **UniEats** is a find-my-meal app that aims to list places to eat close to UP, and their menus, ordering them by relative distance to help the academic community know all their options. This app would also include a shortcut to Google Maps to show the way there.
 Unlike sigarra, our product would provide an easy way to find menus of different places, much more complete and in a faster way. 
 
 ## Main Features
@@ -47,76 +47,126 @@ Academic Login - Saves previous searches (history) and a list of favorite places
 
 - Restaurant/Canteen Page - Information about capacity, distance to current location, average price, integration with Google Maps to help with pi   cking, reviews of previous customers 
 
-## User Stories - list (depois passar para o github)
+ ![CaseDiagram](/UseCaseDiagram.png)
 
-- Restaurant Login (all)
-- Academic Login (all)
-- Restaurant Register (all)
-- Logout (all users)
-- Recover Password (all users)
-- Add Menu (Restaurant Login only)
-- Delete Account (restaurant only)
+|||
+| --- | --- |
+| *Name* | Search Restaurants |
+| *Actor* |  Customer | 
+| *Description* | The customer searches for restaurants using a search word or by categories. |
+| *Preconditions* | - The customer has a phone and can type??? <br> - There are restaurants registered in the app |
+| *Postconditions* | -  |
+| *Normal flow* | 1. The customer accesses the uniEats app<br> 2. The system shows the search bar and category options.<br> 3. The customer types the search/query word<br> 4. If wanted, the costumer may choose categories<br> 5. The system shows the search results matching the search word and categories<br> 6. The system redirects the customer to Electronic Payment.<br> 7. The system delivers the electronic tickets to the customer with a unique identifier and QR code. |
+| *Alternative flows and exceptions* | 1. [Search failure]  In a case where no restaurants are found, i.e. no restaurants exist with said name, the user receives an error message.|
 
-- Search Restaurant (visitor)
-- Search Restaurant with filters (visitor)
-- View search history (academic user)
-- Favourite restaurant (academic user)
-- View favorite list (academic user)
-
-- Random Restaurant ()
-- Review Restaurant (academic user)
-
-
-- See Home (all)
-- See About (all)
-- Consult FAQ (all)
-- Consult Contacts (all)
+|||
+| --- | --- |
+| *Name* | View Restaurant Info and Menu |
+| *Actor* | User | 
+| *Description* | The user opens a restaurant info page andsee the menu, their Reviews/rating and the way to them |
+| *Preconditions* | - The User has a phone and the app <br> - There are restaurants registered in the app  <br> - The restaurant location |
+| *Postconditions* | - the user has access to the path to the restaurant  <br> - The user get restaurant menu <br> - The user get Reviews/rating of the restaurant |
+| *Normal flow* | 1. The user accesses the uniEats app search bar <br> 2. The system shows restauurants <br> 3. The user types access the restauurant <br> 4. The system shows the info of the Restaurant (rate, normal prices ...) <br> 5. If wanted, the user may choose to see menu <br> 6. If wanted, the user may choose to see Reviews <br> 7.  If wanted, the user may access the path to restaurant (google Maps) |
+| *Alternative flows and exceptions* | 1. [page  does not exist] In a case where does not exist restaurant page , the user receives an error message. <br> 2. [page fault] information that has been corrupted or missing is replaced by a general message|
 
 
+## Acceptence Tests
 
-### Visitor:
-As a Visitor, I want to login into the system, so that I can access private features and information.
+### **Feature**: Login
 
-As a Visitor, I want to register into the system, so that I can authenticate myself.
+**Scenario**: Visitor wants to login
+Given a valid username *xpto* and a valid password *abc*
+When Visitor is on the login page and clicks the button *Login*
+Then the Visitor becomes a User and will be redirected to the Homepage.
 
-As a Visitor, I want to prove my identity within the system and ask for new credentials, so that I can log in to my account again.
+### **Feature**: Register
 
+**Scenario**: Visitor wants to register
+Given an unused username *xpto* and a strong password *abc*
+When Visitor is on the register page and clicks the button *Register*
+Then the Visitor becomes a User and will be redirected to the Homepage.
 
+### **Feature**: Recover password
 
-### Academic user
-As an academic user I want to save a favorite restaurant, so that later I can have a faster access to it.
+**Scenario**: Visitor forgot password
+Given a valid username *xpto* and a valid email *123@456.com*
+When Visitor wants to recover password and clicks the button *Forgot Password*
+Then Visitor will be redirected to a Recover Password page and will be able to input a new password *abc*.
 
-As an academic user I want to view my favorite list, so that I can have easier access to the restaurants I'm most interested in.
+### **Feature**: Information pages
 
-As an academic user I want to view my search history, so that I can visit restaurants I've searched  for before.
+**Scenario**: User wants to see Homepage
+Given the User is on any page of the app
+When User clicks on the Homepage button *Homepage*
+Then it will be redirected to the Homepage.
 
+**Scenario**: User wants to see FAQ page
+Given the User is on any page of the app
+When User cliks on the FAQ button *FAQ*
+Then it will be redirected to the FAQ page.
 
-### Restaurant Owner
-As a Restaurant Owner, I want to login into the system, so that I can access private features and information.
+**Scenario**: User wants to see About page
+Given the User is on any page of the app
+When User cliks on the About button *About*
+Then it will be redirected to the About page.
 
-As a Restaurant Owner, I want to register into the system, so that I can authenticate myself.
+**Scenario**: User wants to see Contacts page
+Given the User is on any page of the app
+When User cliks on the Contacts button *Contacts*
+Then it will be redirected to the Contacts page.
 
-As a Restaurant Owner, I want to prove my identity within the system and ask for new credentials, so that I can log in to my account again.
+### **Feature**: User Profile
 
-As a Restaurant Owner, I want to be able to delete my account, so that my information is removed from the system and this account no longer has access to it.
+**Scenario**: Academic User wants to see own profile
+Given a logged in session and the Academic User is on any page of the app
+When Academic User clicks on the Profile button *My Profile*
+Then it will be redirected to their Profile page.
 
-As a Restaurant Owner, I want to add menus, so that I can keep the information updated.
+**Scenario**: Academic User search history
+Given a logged in session and the Academic User is on their Profile page
+When Academic User clicks on the button *View History*
+Then it will be redirected to their Search History page.
 
+**Scenario**: Academic User favorite restaurant
+Given a logged in session and the Academic User is on a Restaurant page
+When Academic User clicks on the button *Like*
+Then the restaurant will be added to Academic User's favorites list.
 
-### Admin
-...
+**Scenario**: Academic User favorite list
+Given a logged in session and the Academic User is on their Profile page
+When Academic User clicks on the button *Favorites*
+Then it will be redirected to their Favorites List page.
 
-### User
-As a User, I want to be able to search restaurants, so that I can access their information.
+### **Feature**: Add Menu
 
-As a User, I want to be able to filter my search, so that I can find restaurants easier.
+**Scenario**: Restaurant Owner adds menu
+Given a logged in session
+When Restaurant Owner wants to add a menu
+Then Menu is added to Restaurant
 
-As a User, I want to select a random restaurant, so that I can get a faster recomendation.
+### **Feature**: Block account
 
-As a User, I want to access the home page, so that I can see a brief presentation of the website.
+**Scenario**: Admin blocks an account
+Given a valid username *xpto* and user is not blocked
+When Admin wants to block an Authenticated User
+Then Authenticated User account is blocked
 
-As a User, I want to access the about page, so that I can see a complete description of the website and its creators.
+### **Feature**: Unblock account
 
-As a User, I want to access contacts, so that I can come in touch with the platform creators.
+**Scenario**: Admin blocks an account
+Given a valid username *xpto* and user is blocked
+When Admin wants to unblock an Authenticated User
+Then Authenticated User account is unblocked
 
-As a User, I want to access the FAQ, so that I can get quick answers to common questions.
+### **Feature**: Delete account
+
+**Scenario**: Restaurant Owner deletes own account
+Given a logged in session
+When Restaurant Owner wants to delete their own account
+Then Restaurant O is deleted
+
+**Scenario**: Admin deletes an account
+Given a valid username *xpto*
+When Admin wants to delete an Authenticated User
+Then Authenticated User account is deleted
+
