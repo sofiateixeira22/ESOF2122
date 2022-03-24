@@ -40,12 +40,6 @@ Unlike sigarra, our product would provide an easy way to find menus of different
 
 ## Use Case Diagrams
 
-Academic Login - Saves previous searches (history) and a list of favorite places.
-
-- Search Bar - Allows to search for a specific restaurant/canteen and get information about the place.
-- Search Filters - Filters the search for restaurants/canteens to search type of food (fast-food, tradicional, vegan...), maximum distance to the local, price range, etc. 
-
-- Restaurant/Canteen Page - Information about capacity, distance to current location, average price, integration with Google Maps to help with pi   cking, reviews of previous customers 
 
  ![CaseDiagram](/UseCaseDiagram.png)
 
