@@ -48,8 +48,8 @@ Unlike sigarra, our product would provide an easy way to find menus of different
 | *Name* | Search Restaurants |
 | *Actor* |  Customer | 
 | *Description* | The customer searches for restaurants using a search word or by categories. |
-| *Preconditions* | - The customer has a phone and can type??? <br> - There are restaurants registered in the app |
-| *Postconditions* | -  |
+| *Preconditions* | - The customer has a phone and the app <br> - There are restaurants registered in the app |
+| *Postconditions* | - The user is able to view restaurant that match the search <br> - The user can pick a restaurant to view its information and menu |
 | *Normal flow* | 1. The customer accesses the uniEats app<br> 2. The system shows the search bar and category options.<br> 3. The customer types the search/query word<br> 4. If wanted, the costumer may choose categories<br> 5. The system shows the search results matching the search word and categories<br> 6. The system redirects the customer to Electronic Payment.<br> 7. The system delivers the electronic tickets to the customer with a unique identifier and QR code. |
 | *Alternative flows and exceptions* | 1. [Search failure]  In a case where no restaurants are found, i.e. no restaurants exist with said name, the user receives an error message.|
 
