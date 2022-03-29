@@ -1,5 +1,23 @@
 # 3LEIC02T4
 
+## UniEats Development Report
+
+Welcome to the documentation pages of **UnitEats**!
+
+You can find here detailed information about our product, from a high-level vision to low-level implementation decisions, a kind of Software Development Report, organized by the discipline of Software Engineering:
+- Business modeling
+  - Product Vision
+  - Elevator Pitch
+- Requirements
+  - Use Case Model
+  - User Stories
+  - Domain Model
+- Architecture and Design
+  - Logical Architecture
+  - Physical Architecture
+  - Vertical Prototype
+  
+
 ## Members
 
 | Name | UP Number |
@@ -10,36 +28,14 @@
 | Pedro Manuel Bernardo Azevedo	| 201905966 |
 | Ana Sofia de Castro Teixeira	| 201906031 |
 
-# UniEats
-
-## Vision Stament
-
-- **UniEats** is a find-my-meal app that aims to list places to eat close to UP, and their menus, ordering them by relative distance to help the academic community know all their options. This app would also include a shortcut to Google Maps to show the way there.
-Unlike sigarra, our product would provide an easy way to find menus of different places, much more complete and in a faster way. 
-
-## Main Features
-
-- Restaurant Login - We provide account creation and login for restaurants without online menus, in order for them to add their options to our app.
-- Google Maps Link - Add information of the shortest path to the place selected
-- Add Menus - To keep the information of the menus updated.
-- Academic Login - Saves previous searches (history) and a list of favorite places.
-- Search Bar - Allows to search for a specific restaurant/canteen and get information about the place.
-- Search Filters - Filters the search for restaurants/canteens to search type of food (fast-food, traditional, vegan...), maximum distance to the local, price range, etc. 
-- Sorting search results - Order the results of a specific search by price, distance, etc.
-- Restaurant/Canteen Page - Information about capacity, distance to current location, average price, integration with Google Maps to help with picking, reviews of previous customers 
-- Add Review - Authenticated users can add reviews to restaurants and canteens they already tried, in order to provide even more information to other users in time of decision.
-- "Random Selection" Button - Choose maximum distance/price and get a recomendation
-
-## Required API's
-
-- Google Maps API
-- Access to menus, prices and schedules of the various canteens/restaurantes available at SASUP Alimentação (https://sigarra.up.pt/sasup/pt/web_base.gera_pagina?P_pagina=265689).
-- Access to menus, prices, schedules, capacity of various restaurants (not related to UP - ex. Campus S.João Restaurants, Circunvalação Restaurants).
-- Restaurant account (username, password) and backend support for adding menus, reviews, etc.
-- Backend support for user meal history and favorites
-
 ## Use Case Diagrams
 
+Academic Login - Saves previous searches (history) and a list of favorite places.
+
+- Search Bar - Allows to search for a specific restaurant/canteen and get information about the place.
+- Search Filters - Filters the search for restaurants/canteens to search type of food (fast-food, tradicional, vegan...), maximum distance to the local, price range, etc. 
+
+- Restaurant/Canteen Page - Information about capacity, distance to current location, average price, integration with Google Maps to help with pi   cking, reviews of previous customers 
 
  ![CaseDiagram](/UseCaseDiagram.png)
 
@@ -48,8 +44,8 @@ Unlike sigarra, our product would provide an easy way to find menus of different
 | *Name* | Search Restaurants |
 | *Actor* |  Customer | 
 | *Description* | The customer searches for restaurants using a search word or by categories. |
-| *Preconditions* | - The customer has a phone and the app <br> - There are restaurants registered in the app |
-| *Postconditions* | - The user is able to view restaurant that match the search <br> - The user can pick a restaurant to view its information and menu |
+| *Preconditions* | - The customer has a phone and can type??? <br> - There are restaurants registered in the app |
+| *Postconditions* | -  |
 | *Normal flow* | 1. The customer accesses the uniEats app<br> 2. The system shows the search bar and category options.<br> 3. The customer types the search/query word<br> 4. If wanted, the costumer may choose categories<br> 5. The system shows the search results matching the search word and categories<br> 6. The system redirects the customer to Electronic Payment.<br> 7. The system delivers the electronic tickets to the customer with a unique identifier and QR code. |
 | *Alternative flows and exceptions* | 1. [Search failure]  In a case where no restaurants are found, i.e. no restaurants exist with said name, the user receives an error message.|
 
