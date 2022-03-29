@@ -6,11 +6,11 @@ Welcome to the documentation pages of **UnitEats**!
 
 You can find here detailed information about our product, from a high-level vision to low-level implementation decisions, a kind of Software Development Report, organized by the discipline of Software Engineering:
 - Business modeling
-  - [Product Vision](docs\ProductVision.md)
+  - [Product Vision](docs/ProductVision.md)
   - [Elevator Pitch]
-- [Requirements](docs\requirements.md)
-  - [Use Case Model](docs\requirements.md#Use-case-model)
-  - [Domain Model](docs\requirements.md#Domain-model)
+- [Requirements](docs/requirements.md)
+  - [Use Case Model](docs/requirements.md#Use-case-model)
+  - [Domain Model](docs/requirements.md#Domain-model)
 - [Architecture and Design]
   - [Logical Architecture]
   - [Physical Architecture] 
