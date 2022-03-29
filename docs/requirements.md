@@ -32,6 +32,9 @@ Academic Login - Saves previous searches (history) and a list of favorite places
 | *Normal flow* | 1. The user accesses the uniEats app search bar <br> 2. The system shows restauurants <br> 3. The user types access the restauurant <br> 4. The system shows the info of the Restaurant (rate, normal prices ...) <br> 5. If wanted, the user may choose to see menu <br> 6. If wanted, the user may choose to see Reviews <br> 7.  If wanted, the user may access the path to restaurant (google Maps) |
 | *Alternative flows and exceptions* | 1. [page  does not exist] In a case where does not exist restaurant page , the user receives an error message. <br> 2. [page fault] information that has been corrupted or missing is replaced by a general message|
 
+### User Stories (TO REMOVE)
+
+
 ### Domain model
 
 The Conceptual Domain Model contains the identification and description of the entities of the domain and the relationships between them in an UML class diagram.
