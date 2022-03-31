@@ -2,7 +2,7 @@
 
 ## UniEats Development Report
 
-Welcome to the documentation pages of **UnitEats**!
+Welcome to the documentation pages of **UniEats**!
 
 You can find here detailed information about our product, from a high-level vision to low-level implementation decisions, a kind of Software Development Report, organized by the discipline of Software Engineering:
 - Business modeling
