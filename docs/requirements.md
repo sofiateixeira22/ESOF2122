@@ -12,6 +12,9 @@ Academic Login - Saves previous searches (history) and a list of favorite places
 
  ![CaseDiagram](/images/UseCaseDiagram.png)
 
+
+ 
+
 |||
 | --- | --- |
 | *Name* | Search Restaurants |
