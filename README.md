@@ -11,10 +11,10 @@ You can find here detailed information about our product, from a high-level visi
 - [Requirements](docs/requirements.md)
   - [Use Case Model](docs/requirements.md#Use-case-model)
   - [Domain Model](docs/requirements.md#Domain-model)
-- [Architecture and Design](docs/ArquitectureAndDesign.md)
-  - [Logical Architecture](docs/ArquitectureAndDesign.md#Logical-architecture)
-  - [Physical Architecture](docs/ArquitectureAndDesign.md#Physical-architecture)
-  - [Vertical Prototype](docs/ArquitectureAndDesign.md#Vertical-Prototype)
+- [Architecture and Design](docs/ArchitectureAndDesign.md)
+  - [Logical Architecture](docs/ArchitectureAndDesign.md#Logical-architecture)
+  - [Physical Architecture](docs/ArchitectureAndDesign.md#Physical-architecture)
+  - [Vertical Prototype](docs/ArchitectureAndDesign.md#Vertical-Prototype)
 - [Implementation]
 - [Test]
 - [Configuration and Change Management]
