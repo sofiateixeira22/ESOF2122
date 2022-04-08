@@ -32,24 +32,24 @@ As a way to explore flutter technologies, we implemented initial versions of var
 
 - Button in Navigation Drawer of **uni** to access **uniEats app**:
 
-![UniEats access Button](images/vertical_prototype/unieats_access_button.png)
+![UniEats access Button](/images\vertical_prototype\unieats_access_button.png)
 
 - "HomePage" with buttons to access the 'favourites' and the 'history' pages and Restaurant Card Placeholders:
 
-![UniEats Homepage](images/vertical_prototype/unieats_home_page.png)
+![UniEats Homepage](/images/vertical_prototype/unieats_home_page.png)
 
 - UniEats Navigation Drawer with "Favourites", "History", "About" and "Return to **Uni**":
 
-![UniEats Navigation Drawer](images/vertical_prototype/unieats_navdrawer.png)
+![UniEats Navigation Drawer](/images/vertical_prototype/unieats_nav_drawer.png)
 
 - Favourites page:
 
-![UniEats Favourite Page](images/vertical_prototype/unietas_favourties_page.png)
+![UniEats Favourites Page](/images/vertical_prototype/unietas_favourites_page.png)
 
 - History page:
 
-![UniEats History Page](images/vertical_prototype/unieats_history_page.png)
+![UniEats History Page](/images/vertical_prototype/unieats_history_page.png)
 
 - About page, with our app credits: 
 
-![UniEats About Page](images/vertical_prototype/unieats_about_page.png)
+![UniEats About Page](/images/vertical_prototype/unieats_about_page.png)
