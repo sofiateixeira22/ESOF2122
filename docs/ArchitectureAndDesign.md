@@ -21,8 +21,35 @@ The following diagram explains this package structure.
 - The **SIGARRA Website** will be running in the SIGARRA Server and will be accessed by the **Backend API**
 - The **Google Maps API** will be running in some Google Server and will be used directly be the uniEats app
 
-
-
 ![DeploymentView](/images/DeploymentDiagram.png)
 
 ### Vertical prototype
+
+As a first iteration (number #0) on our **uniEats app** we began our project with the most recent version of the **uni app**, allowing an easier integration with this app in the future. 
+
+As a way to explore flutter technologies, we implemented initial versions of various screens for our app. 
+#### Features Implemented:
+
+- Button in Navigation Drawer of **uni** to access **uniEats app**:
+
+![UniEats access Button](images/vertical_prototype/unieats_access_button.png)
+
+- "HomePage" with buttons to access the 'favourites' and the 'history' pages and Restaurant Card Placeholders:
+
+![UniEats Homepage](images/vertical_prototype/unieats_home_page.png)
+
+- UniEats Navigation Drawer with "Favourites", "History", "About" and "Return to **Uni**":
+
+![UniEats Navigation Drawer](images/vertical_prototype/unieats_navdrawer.png)
+
+- Favourites page:
+
+![UniEats Favourite Page](images/vertical_prototype/unietas_favourties_page.png)
+
+- History page:
+
+![UniEats History Page](images/vertical_prototype/unieats_history_page.png)
+
+- About page, with our app credits: 
+
+![UniEats About Page](images/vertical_prototype/unieats_about_page.png)

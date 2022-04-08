@@ -8,7 +8,7 @@ import 'dart:io';
 import 'package:uni/controller/load_info.dart';
 import 'package:uni/model/app_state.dart';
 import 'package:uni/model/profile_page_model.dart';
-import 'package:uni/view/Widgets/navigation_drawer.dart';
+import 'package:uni/view/Widgets/unieats_navigation_drawer.dart';
 import 'package:uni/utils/constants.dart' as Constants;
 
 /// Manages the  section inside the user's personal area.
@@ -65,7 +65,7 @@ abstract class UniEatsGeneralPageViewState extends State<StatefulWidget> {
   Widget getScaffold(BuildContext context, Widget body) {
     return Scaffold(
       appBar: buildAppBar(context),
-      drawer: NavigationDrawer(parentContext: context),
+      drawer: UniEatsNavigationDrawer(parentContext: context),
       body: this.refreshState(context, body),
     );
   }
@@ -98,8 +98,8 @@ abstract class UniEatsGeneralPageViewState extends State<StatefulWidget> {
           child: TextButton(
             onPressed: () {
               final currentRouteName = ModalRoute.of(context).settings.name;
-              if (currentRouteName != Constants.navPersonalArea) {
-                Navigator.pushNamed(context, '/${Constants.navPersonalArea}');
+              if (currentRouteName != Constants.navUniEats) {
+                Navigator.pushNamed(context, '/${Constants.navUniEats}');
               }
             },
             child: SvgPicture.asset(

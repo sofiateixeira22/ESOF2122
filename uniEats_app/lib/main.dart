@@ -18,13 +18,17 @@ import 'package:uni/view/Pages/exams_page_view.dart';
 import 'package:uni/view/Pages/home_page_view.dart';
 import 'package:uni/view/Pages/logout_route.dart';
 import 'package:uni/view/Pages/splash_page_view.dart';
-import 'package:uni/view/Pages/uniEats_home_page_view.dart';
 import 'package:uni/view/Widgets/page_transition.dart';
 import 'package:uni/view/navigation_service.dart';
 import 'package:uni/view/theme.dart';
 
 import 'controller/on_start_up.dart';
 import 'model/schedule_page_model.dart';
+
+import 'package:uni/view/Pages/uniEats_home_page_view.dart';
+import 'package:uni/view/Pages/favourites_page_view.dart';
+import 'package:uni/view/Pages/history_page_view.dart';
+import 'package:uni/view/Pages/unieats_about_page_view.dart';
 
 /// Stores the state of the app
 final Store<AppState> state = Store<AppState>(appReducers,
@@ -103,11 +107,20 @@ class MyAppState extends State<MyApp> {
                     page: BugReportPageView(),
                     settings: settings,
                     maintainState: false);
-              case '/' + Constants.navUniEats:
-                return PageTransition.makePageTransition(
-                  page: UniEatsHomePageView(), settings:settings);
               case '/' + Constants.navLogOut:
                 return LogoutRoute.buildLogoutRoute();
+              case '/' + Constants.navUniEats:
+                return PageTransition.makePageTransition(
+                    page: UniEatsHomePageView(), settings:settings);
+              case '/' + Constants.navFavourites:
+                return PageTransition.makePageTransition(
+                    page: FavouritesPageView(), settings:settings);
+              case '/' + Constants.navHistory:
+                return PageTransition.makePageTransition(
+                    page: HistoryPageView(), settings:settings);
+              case '/' + Constants.navUniEatsAbout:
+                return PageTransition.makePageTransition(
+                    page: UniEatsAboutPageView(), settings:settings);
             }
           }),
     );
