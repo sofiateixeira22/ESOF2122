@@ -44,7 +44,7 @@ As a way to explore flutter technologies, we implemented initial versions of var
 
 - Favourites page:
 
-![UniEats Favourites Page](/images/vertical_prototype/unietas_favourites_page.png)
+![UniEats Favourites Page](/images/vertical_prototype/unieats_favourites_page.png)
 
 - History page:
 
