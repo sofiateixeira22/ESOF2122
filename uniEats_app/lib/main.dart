@@ -25,7 +25,7 @@ import 'package:uni/view/theme.dart';
 import 'controller/on_start_up.dart';
 import 'model/schedule_page_model.dart';
 
-import 'package:uni/view/Pages/uniEats_home_page_view.dart';
+import 'package:uni/view/Pages/unieats_home_page_view.dart';
 import 'package:uni/view/Pages/favourites_page_view.dart';
 import 'package:uni/view/Pages/history_page_view.dart';
 import 'package:uni/view/Pages/unieats_about_page_view.dart';
