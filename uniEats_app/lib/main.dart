@@ -8,6 +8,7 @@ import 'package:sentry/sentry.dart';
 import 'package:redux/redux.dart';
 import 'package:uni/controller/middleware.dart';
 import 'package:uni/model/app_state.dart';
+import 'package:uni/model/restaurant_page_model.dart';
 import 'package:uni/redux/actions.dart';
 import 'package:uni/redux/reducers.dart';
 import 'package:uni/utils/constants.dart' as Constants;
@@ -111,7 +112,7 @@ class MyAppState extends State<MyApp> {
                 return LogoutRoute.buildLogoutRoute();
               case '/' + Constants.navUniEats:
                 return PageTransition.makePageTransition(
-                    page: UniEatsHomePageView(), settings:settings);
+                    page: RestaurantPage(), settings:settings);
               case '/' + Constants.navFavourites:
                 return PageTransition.makePageTransition(
                     page: FavouritesPageView(), settings:settings);
