@@ -63,7 +63,7 @@ packages:
       name: build
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.3.0"
+    version: "2.1.0"
   built_collection:
     dependency: transitive
     description:
@@ -189,7 +189,7 @@ packages:
       name: dart_style
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "2.2.1"
+    version: "2.1.1"
   email_validator:
     dependency: "direct main"
     description:
@@ -428,7 +428,7 @@ packages:
       name: mockito
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.1.0"
+    version: "5.0.15"
   node_preamble:
     dependency: transitive
     description:
@@ -734,7 +734,7 @@ packages:
       name: source_gen
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.2"
+    version: "1.0.3"
   source_map_stack_trace:
     dependency: transitive
     description:
