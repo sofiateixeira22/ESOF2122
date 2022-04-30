@@ -1,9 +1,12 @@
 
+import 'package:logger/logger.dart';
 import 'package:uni/controller/restaurant_fetcher/restaurant_fetcher_html.dart';
 import 'package:uni/model/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:uni/model/entities/meal.dart';
 import 'package:uni/model/entities/restaurant.dart';
+import 'package:uni/model/utils/day_of_week.dart';
 import 'package:uni/view/Widgets/request_dependent_widget_builder.dart';
 import 'date_rectangle.dart';
 import 'generic_card.dart';
@@ -25,27 +28,28 @@ class UniEatsRestaurantCard extends GenericCard {
       null;
 
   @override
-  State<StatefulWidget> createState() {
-    return GenericCardState();
-  }
-
-  @override
   Widget buildCardContent(BuildContext context) {
+    Map<DayOfWeek, List<Meal>> meals = restaurant.meals;
+    if(meals != null){
+      meals.forEach((day,daymeals) => {
+          daymeals.forEach((daymeal) =>
+            Logger().e('${restaurant.name} -> ${day}: ${daymeal.name}')
+          )
 
-    final List<Widget> restaurants = <Widget>[];
-
-    for (int i = 0; i < 10; i++) {
-      restaurants.add(Container(
-          padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-          height: 220,
-          width: double.maxFinite,
-          child: Card(
-            elevation: 5,
-            child: (Center(
-              child: Text('Restaurant Placeholder'),
-            )),
-          )));
+        }
+      ); 
     }
+
+    return Container(
+      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+      height: 220,
+      width: double.maxFinite,
+      child: Card(
+        elevation: 5,
+        child: (Center(
+          child: Text('Restaurant Placeholder'),
+        )),
+      ));
   }
 
 //   Widget generateRestaurant(canteens, context) {

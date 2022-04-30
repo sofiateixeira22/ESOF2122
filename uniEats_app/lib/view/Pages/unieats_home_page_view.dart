@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:logger/logger.dart';
 import 'package:uni/controller/restaurant_fetcher/restaurant_fetcher_html.dart';
+import 'package:uni/model/app_state.dart';
 import 'package:uni/model/entities/restaurant.dart';
 import 'package:uni/view/Pages/unieats_gen_page_view.dart';
 import 'package:uni/view/Widgets/unieats_restaurant_card.dart';
 import 'package:uni/utils/constants.dart' as Constants;
+
+import 'package:flutter_redux/flutter_redux.dart';
 
 class UniEatsHomePageView extends StatefulWidget {
   UniEatsHomePageView(
@@ -29,19 +32,24 @@ class UniEatsHomePageViewState extends UniEatsGeneralPageViewState {
 
   @override
   Widget getBody(BuildContext context) {
-    return ListView(
-      children: <Widget>[
-        Container(
-            child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: homepageData(context),
-        )),
-      ],
+    return StoreConnector<AppState, List<Restaurant>>(
+      converter: (store) => (store.state.content['restaurants']),
+      builder: (context, restaurants) {
+        return ListView(
+          children: <Widget>[
+            Container(
+                child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: homepageData(context, restaurants),
+            )),
+          ],
+        );
+      },
     );
   }
 
   ///Returns a list of the restaurants to appear in the unieats homepage
-  List<Widget> homepageData(BuildContext context) {
+  List<Widget> homepageData(BuildContext context, List<Restaurant> restaurants) {
     final MediaQueryData queryData = MediaQuery.of(context);
 
     final List<Widget> data = <Widget>[];
@@ -104,21 +112,7 @@ class UniEatsHomePageViewState extends UniEatsGeneralPageViewState {
         data.add(UniEatsRestaurantCard(restaurants[i]));
       }
     }
-    //Está hardcoded para ter dummys
-    //ter uma função para ir buscar restaurantes da base de dados
-    // for (int i = 0; i < 10; i++) {
-    //   restaurants.add(Container(
-    //       padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-    //       height: 220,
-    //       width: double.maxFinite,
-    //       child: Card(
-    //         elevation: 5,
-    //         child: (Center(
-    //           child: Text('Restaurant Placeholder'),
-    //         )),
-    //       )));
-    // }
-
+    
     return data;
   }
 }
