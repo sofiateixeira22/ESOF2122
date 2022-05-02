@@ -24,36 +24,42 @@ class MealSlot extends StatelessWidget {
 
   Widget createMealSlotRow(context) {
     return  Container(
-        margin: EdgeInsets.only(top: 1.0, bottom: 1.0),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: createMealSlotPrimInfo(context),
-        ));
+        margin: EdgeInsets.only(top: 1.0, bottom: 1.0, left:1.0, right:1.0),
+        child: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) {
+            return  Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: createMealSlotPrimInfo(context, constraints),
+              );
+          }
+        ),
+    );
   }
 
 
 
-  List<Widget> createMealSlotPrimInfo(context) {
+  List<Widget> createMealSlotPrimInfo(context, constraints) {
     Color color = Theme.of(context).textTheme.headline4.color;
     if(type.contains("Vegetarian")){
         color = Color.fromARGB(255, 41, 148, 46);
     }
-    TextStyle textStyle = TextStyle(
-      fontWeight: FontWeight.bold,
-      color: color,
-    );
+    TextStyle textStyle =Theme.of(context).textTheme.headline4;
+    textStyle.apply(color: color);
+
     final typeTextField = createTextField(
         this.type,
-        textStyle,
+        textStyle.apply(fontSizeDelta: -3, color: color),
         Alignment.centerLeft,
-        100.0);
+        constraints.maxWidth/3 -5,
+        EdgeInsets.only(right: 5));
     final nameTextField = createTextField(
-        "  " + this.name,
-        Theme.of(context).textTheme.headline4.apply(fontSizeDelta: -2),
-        Alignment.centerRight,
-        200.0);
+        this.name,
+        textStyle.apply(fontSizeDelta: -3),
+        Alignment.centerLeft,
+        2*constraints.maxWidth/3 -5,
+        EdgeInsets.only(left: 5));
 
     return [
       Column(
@@ -63,16 +69,14 @@ class MealSlot extends StatelessWidget {
               typeTextField,
               nameTextField,
             ],
-
           ),
-
         ],
       ),
     ];
   }
 
 
-  Widget createTextField(text, style, alignment, width) {
+  Widget createTextField(text, style, alignment, width, margin) {
     return Container(
       child: 
      Text(
@@ -84,6 +88,7 @@ class MealSlot extends StatelessWidget {
     ),
     width: width,
     alignment: alignment,
+    margin: margin,
     );
   }
 
