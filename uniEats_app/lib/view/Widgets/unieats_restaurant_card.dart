@@ -1,4 +1,6 @@
 
+import 'dart:ffi';
+
 import 'package:logger/logger.dart';
 import 'package:tuple/tuple.dart';
 import 'package:uni/controller/restaurant_fetcher/restaurant_fetcher_html.dart';
@@ -17,9 +19,13 @@ import 'package:intl/intl.dart';
 import 'package:uni/utils/constants.dart' as Constants;
 
 class UniEatsRestaurantCard extends GenericCard {
+
   Restaurant restaurant;
-  UniEatsRestaurantCard(Restaurant restaurant, {
-    Key key,}) : restaurant = restaurant, super(key: key);
+  String day;
+
+  UniEatsRestaurantCard(Restaurant restaurant, String day, {
+    Key key,}) : restaurant = restaurant, day = day, super(key: key);
+
 
   UniEatsRestaurantCard.fromEditingInformation(
     Key key, bool editingMode, Function onDelete) 
@@ -35,48 +41,26 @@ class UniEatsRestaurantCard extends GenericCard {
           '/' + Constants.navRestaurant, 
           arguments: this.restaurant,
           );
-  // @override
-  // Widget buildCardContent(BuildContext context) {
-  //   Map<DayOfWeek, List<Meal>> meals = restaurant.meals;
-  //   if(meals != null){
-  //     meals.forEach((day,daymeals) => {
-  //         daymeals.forEach((daymeal) =>
-  //           Logger().e('${restaurant.name} -> ${day}: ${daymeal.name}')
-  //         )
-  //       }
-  //     ); 
-  //   }
 
-  //   return Container(
-  //     padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-  //     height: 220,
-  //     width: double.maxFinite,
-  //     child: Card(
-  //       elevation: 5,
-  //       child: (Center(
-  //         child: Text('Restaurant Placeholder'),
-  //       )),
-  //     ));
-  // }
 
   @override
   Widget buildCardContent(BuildContext context) {
+    final Tuple2<Restaurant,String> tuple = Tuple2( restaurant, day);
     return RequestDependentWidgetBuilder(
         context: context,
         contentGenerator: generateMeals,
-        content: restaurant,
+        content: tuple,
         contentChecker:
-            restaurant != null,
+            restaurant.hasMeals(day),
         onNullContent: Center(
             child: Text('Não existem restaurantes para apresentar',
                 style: Theme.of(context).textTheme.headline4,
                 textAlign: TextAlign.center)));
   }
 
-
-
-  Widget generateMeals(restaurant, context) {
-    var day = DateFormat('EEEE').format(DateTime.now());
+  Widget generateMeals(tuple, context) {
+    Restaurant restaurant = tuple.item1;
+    String day = tuple.item2;
     DayOfWeek dayOfWeek;
     switch(day){
       case 'Monday':
@@ -116,7 +100,9 @@ class UniEatsRestaurantCard extends GenericCard {
     final List<Widget> rows =  <Widget>[];
 
     final now = DateTime.now();
-
+    if(meals == null) {
+      return rows;
+    }
     for (int i = 0; i < meals.length; i++) {
 
         rows.add(createRowFromMeal(context, meals[i]));

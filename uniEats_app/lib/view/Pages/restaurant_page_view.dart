@@ -1,4 +1,6 @@
+import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
+import 'package:tuple/tuple.dart';
 import 'package:uni/model/app_state.dart';
 import 'package:uni/model/entities/lecture.dart';
 import 'package:flutter/material.dart';
@@ -20,12 +22,14 @@ class RestaurantPageView extends StatelessWidget {
   RestaurantPageView(
       {Key key,
       @required this.tabController,
-      @required this.meals,
+      @required this.restaurant,
       @required this.restaurantStatus,
       @required this.daysOfTheWeek,
       this.scrollViewController});
 
-  final List<Meal> meals;
+      
+
+  final Restaurant restaurant;
   final List<String> daysOfTheWeek;
   final RequestStatus restaurantStatus;
   final TabController tabController;
@@ -51,7 +55,11 @@ class RestaurantPageView extends StatelessWidget {
         ],
       ),
       Expanded(
-          child: UniEatsRestaurantCard(restaurant))
+        child: TabBarView(
+        controller: tabController,
+        children: createMeals(context),
+        )
+      )
     ]);
   }
 
@@ -68,56 +76,56 @@ class RestaurantPageView extends StatelessWidget {
     return tabs;
   }
 
-  // List<Widget> createSchedule(context) {
-  //   final List<Widget> tabBarViewContent = <Widget>[];
-  //   for (int i = 0; i < daysOfTheWeek.length; i++) {
-  //     tabBarViewContent.add(createScheduleByDay(context, i));
-  //   }
-  //   return tabBarViewContent;
-  // }
+  List<Widget> createMeals(context) {
+    final List<Widget> tabBarViewContent = <Widget>[];
+    for (int i = 0; i < daysOfTheWeek.length; i++) {
+      tabBarViewContent.add(UniEatsRestaurantCard(restaurant, daysOfTheWeek[i]));
+    }
+    return tabBarViewContent;
+  }
 
-  // /// Returns a list of widgets for the rows with a singular class info.
-  // List<Widget> createScheduleRows(lectures, BuildContext context) {
-  //   final List<Widget> scheduleContent = <Widget>[];
-  //   for (int i = 0; i < lectures.length; i++) {
-  //     final Lecture lecture = lectures[i];
-  //     scheduleContent.add(ScheduleSlot(
-  //       subject: lecture.subject,
-  //       typeClass: lecture.typeClass,
-  //       rooms: lecture.room,
-  //       begin: lecture.startTime,
-  //       end: lecture.endTime,
-  //       teacher: lecture.teacher,
-  //       classNumber: lecture.classNumber,
-  //     ));
-  //   }
-  //   return scheduleContent;
-  // }
+  /// Returns a list of widgets for the rows with a singular class info.
+  List<Widget> createMealsRows(lectures, BuildContext context) {
+    final List<Widget> scheduleContent = <Widget>[];
+    for (int i = 0; i < lectures.length; i++) {
+      final Lecture lecture = lectures[i];
+      scheduleContent.add(ScheduleSlot(
+        subject: lecture.subject,
+        typeClass: lecture.typeClass,
+        rooms: lecture.room,
+        begin: lecture.startTime,
+        end: lecture.endTime,
+        teacher: lecture.teacher,
+        classNumber: lecture.classNumber,
+      ));
+    }
+    return scheduleContent;
+  }
 
-  // Widget Function(dynamic daycontent, BuildContext context) dayColumnBuilder(
-  //     int day) {
-  //   Widget createDayColumn(dayContent, BuildContext context) {
-  //     return Container(
-  //         key: Key('schedule-page-day-column-$day'),
-  //         child: Column(
-  //           mainAxisSize: MainAxisSize.min,
-  //           children: createScheduleRows(dayContent, context),
-  //         ));
-  //   }
+  Widget Function(dynamic daycontent, BuildContext context) dayColumnBuilder(
+      int day) {
+    Widget createDayColumn(dayContent, BuildContext context) {
+      return Container(
+          key: Key('schedule-page-day-column-$day'),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: createMealsRows(dayContent, context),
+          ));
+    }
 
-  //   return createDayColumn;
-  // }
+    return createDayColumn;
+  }
 
-  // Widget createScheduleByDay(BuildContext context, int day) {
-  //   return RequestDependentWidgetBuilder(
-  //     context: context,
-  //     status: scheduleStatus,
-  //     contentGenerator: dayColumnBuilder(day),
-  //     content: aggLectures[day],
-  //     contentChecker: aggLectures[day].isNotEmpty,
-  //     onNullContent:
-  //         Center(child: Text('Não possui aulas à ' + daysOfTheWeek[day] + '.')),
-  //     index: day,
-  //   );
-  // }
+  Widget createMealsByDay(BuildContext context, int day) {
+    return RequestDependentWidgetBuilder(
+      context: context,
+      status: restaurantStatus,
+      contentGenerator: dayColumnBuilder(day),
+      content: restaurant.getMealsOfDayInt(day),
+      contentChecker: restaurant.getMealsOfDayInt(day).isNotEmpty,
+      onNullContent:
+          Center(child: Text('Não existem refeições neste dia ' + daysOfTheWeek[day] + '.')),
+      index: day,
+    );
+  }
 }

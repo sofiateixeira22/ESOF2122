@@ -135,7 +135,7 @@ class UniEatsHomePageViewState extends UniEatsGeneralPageViewState {
     ]));
     if(restaurants != null){ 
       for(int i = 0; i < restaurants.length; i++){
-        data.add(UniEatsRestaurantCard(restaurants[i]));
+        data.add(UniEatsRestaurantCard(restaurants[i], DateFormat('EEEE').format(DateTime.now())));
       }
     }
     

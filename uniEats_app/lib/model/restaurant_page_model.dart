@@ -24,11 +24,13 @@ class _RestaurantPageState extends SecondaryPageViewState
   ScrollController scrollViewController;
 
   final List<String> daysOfTheWeek = [
-    'Segunda-feira',
-    'Terça-feira',
-    'Quarta-feira',
-    'Quinta-feira',
-    'Sexta-feira'
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
   ];
 
 
@@ -54,7 +56,7 @@ class _RestaurantPageState extends SecondaryPageViewState
       tabController: tabController,
       scrollViewController: scrollViewController,
       daysOfTheWeek: daysOfTheWeek,
-      meals: restaurant.getMealsOfDayInt(weekDay),
+      restaurant: restaurant,
     );
   }
 }
