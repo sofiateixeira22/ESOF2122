@@ -47,12 +47,12 @@ class MealSlot extends StatelessWidget {
     final typeTextField = createTextField(
         this.type,
         textStyle,
-        TextAlign.center,
+        Alignment.centerLeft,
         100.0);
     final nameTextField = createTextField(
         "  " + this.name,
         Theme.of(context).textTheme.headline4.apply(fontSizeDelta: -2),
-        TextAlign.center,
+        Alignment.centerRight,
         200.0);
 
     return [
@@ -83,6 +83,7 @@ class MealSlot extends StatelessWidget {
     
     ),
     width: width,
+    alignment: alignment,
     );
   }
 
