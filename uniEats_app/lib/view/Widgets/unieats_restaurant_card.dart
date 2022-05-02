@@ -8,6 +8,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:uni/model/entities/meal.dart';
 import 'package:uni/model/entities/restaurant.dart';
 import 'package:uni/model/utils/day_of_week.dart';
+import 'package:uni/view/Widgets/meal_slot.dart';
 import 'package:uni/view/Widgets/request_dependent_widget_builder.dart';
 import 'date_rectangle.dart';
 import 'generic_card.dart';
@@ -121,6 +122,12 @@ class UniEatsRestaurantCard extends GenericCard {
   }
 
   Widget createRowFromMeal(context, meal) {
+    return Container(
+    margin: EdgeInsets.only(bottom: 10),
+    child: MealSlot(
+        type: meal.type,
+        name: meal.name,
+    ));
     Color color = Theme.of(context).textTheme.headline4.color;
     switch(meal.type){
       case "Vegetariano":
@@ -139,10 +146,40 @@ class UniEatsRestaurantCard extends GenericCard {
       fontWeight: FontWeight.bold,
       color: color,
     );
-    return Text(
-      meal.type + ": " +  meal.name, 
-      overflow: TextOverflow.ellipsis,
-      style: textStyle,
+
+    List<Column> columns =[
+      Column(
+      children: <Widget>[
+        Container(
+          margin: EdgeInsets.only(right: 3.0),
+          child: Text(
+              meal.type, 
+              overflow: TextOverflow.ellipsis,
+              style: textStyle,
+          )
+        )
+      ],
+    ),
+    Column(
+      children: <Widget>[
+        Container(
+          margin: EdgeInsets.only(left: 3.0),
+          width: 250,
+          child: Text(
+            meal.name, 
+            overflow: TextOverflow.ellipsis,
+            style: textStyle,
+          )
+        )
+      ],
+    )
+    ];
+    
+    Row row = Row(
+      children: columns,
+    );
+    return Flexible(
+child: row,
     );
   }
 
@@ -184,3 +221,4 @@ class UniEatsRestaurantCard extends GenericCard {
 //     ]);
 //   }
 }
+
