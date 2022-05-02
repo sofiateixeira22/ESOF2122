@@ -87,10 +87,10 @@ class UniEatsNavigationDrawerState extends State<UniEatsNavigationDrawer> {
     String toWrite = d;
 
     if(d == Constants.navPersonalArea){
-      toWrite = 'Return to Uni';
+      toWrite = 'Voltar à uni';
     }
     else if (d == Constants.navUniEatsAbout){
-      toWrite = 'About Us';
+      toWrite = 'Sobre Nós';
     }
 
     return Container(
