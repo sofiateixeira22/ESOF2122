@@ -3,11 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:logger/logger.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:sentry/sentry.dart';
 import 'package:redux/redux.dart';
 import 'package:uni/controller/middleware.dart';
 import 'package:uni/model/app_state.dart';
+import 'package:uni/model/restaurant_page_model.dart';
 import 'package:uni/redux/actions.dart';
 import 'package:uni/redux/reducers.dart';
 import 'package:uni/utils/constants.dart' as Constants;
@@ -17,8 +19,10 @@ import 'package:uni/view/Pages/bus_stop_next_arrivals_page.dart';
 import 'package:uni/view/Pages/exams_page_view.dart';
 import 'package:uni/view/Pages/home_page_view.dart';
 import 'package:uni/view/Pages/logout_route.dart';
+import 'package:uni/view/Pages/restaurant_page_view.dart';
 import 'package:uni/view/Pages/splash_page_view.dart';
 import 'package:uni/view/Widgets/page_transition.dart';
+import 'package:uni/view/Widgets/restaurant_card.dart';
 import 'package:uni/view/navigation_service.dart';
 import 'package:uni/view/theme.dart';
 
@@ -121,6 +125,9 @@ class MyAppState extends State<MyApp> {
               case '/' + Constants.navUniEatsAbout:
                 return PageTransition.makePageTransition(
                     page: UniEatsAboutPageView(), settings:settings);
+              case '/' + Constants.navRestaurant:
+                return PageTransition.makePageTransition(
+                    page: RestaurantPage(), settings:settings);
             }
           }),
     );

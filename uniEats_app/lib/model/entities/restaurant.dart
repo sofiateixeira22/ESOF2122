@@ -23,6 +23,10 @@ class Restaurant{
     return meals[dayOfWeek];
   }
 
+    List<Meal> getMealsOfDayInt(int dayOfWeek){
+    return meals[DayOfWeek.values[dayOfWeek]];
+  }
+
   Map<String, dynamic> toMap() {
     return {
       'id' : id,

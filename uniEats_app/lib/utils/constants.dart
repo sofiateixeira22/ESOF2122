@@ -15,6 +15,7 @@ const faculties = ['faup', 'fbaup', 'fcup', 'fcnaup', 'fadeup',
 //UniEats Constants
 
 const navUniEats = 'UniEats';
+const navRestaurant = 'Restaurante';
 const navFavourites = 'Favoritos';
 const navHistory = 'Histórico';
 const navUniEatsAbout = 'UniEats - Sobre Nós';

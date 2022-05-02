@@ -8,11 +8,13 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:uni/model/entities/meal.dart';
 import 'package:uni/model/entities/restaurant.dart';
 import 'package:uni/model/utils/day_of_week.dart';
+import 'package:uni/view/Pages/restaurant_page_view.dart';
 import 'package:uni/view/Widgets/meal_slot.dart';
 import 'package:uni/view/Widgets/request_dependent_widget_builder.dart';
 import 'date_rectangle.dart';
 import 'generic_card.dart';
 import 'package:intl/intl.dart';
+import 'package:uni/utils/constants.dart' as Constants;
 
 class UniEatsRestaurantCard extends GenericCard {
   Restaurant restaurant;
@@ -26,10 +28,13 @@ class UniEatsRestaurantCard extends GenericCard {
   @override
   String getTitle() => this.restaurant.name;
 
+
   @override
   onClick(BuildContext context) =>
-      null;
-
+      Navigator.pushNamed(context, 
+          '/' + Constants.navRestaurant, 
+          arguments: this.restaurant,
+          );
   // @override
   // Widget buildCardContent(BuildContext context) {
   //   Map<DayOfWeek, List<Meal>> meals = restaurant.meals;
