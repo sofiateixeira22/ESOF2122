@@ -8,6 +8,7 @@ import 'package:uni/view/Pages/unieats_gen_page_view.dart';
 import 'package:uni/view/Widgets/unieats_restaurant_card.dart';
 import 'package:uni/utils/constants.dart' as Constants;
 
+import 'package:intl/intl.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 class UniEatsHomePageView extends StatefulWidget {
@@ -98,6 +99,35 @@ class UniEatsHomePageViewState extends UniEatsGeneralPageViewState {
                         ModalRoute.of(context).settings.name;
                     if (currentRouteName != Constants.navHistory) {
                       Navigator.pushNamed(context, '/${Constants.navHistory}');
+                    }
+                  },
+                  child: SvgPicture.asset(
+                    'assets/images/history_styled.svg',
+                    height: queryData.size.height / 10,
+                  ),
+                ))),
+      )
+    ]));
+
+    data.add(Row(children: [
+      Container(
+        padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+        height: 80,
+        width: queryData.size.width,
+        child: ButtonTheme(
+            minWidth: 0,
+            padding: EdgeInsets.only(left: 0),
+            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+            shape: RoundedRectangleBorder(),
+            child: Card(
+                elevation: 5,
+                child: TextButton(
+                  onPressed: () {
+                    final currentRouteName =
+                        ModalRoute.of(context).settings.name;
+                    if (currentRouteName != Constants.navFavourites) {
+                      Navigator.pushNamed(
+                          context, '/${Constants.navFavourites}');
                     }
                   },
                   child: SvgPicture.asset(

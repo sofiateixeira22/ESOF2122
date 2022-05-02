@@ -1,0 +1,11 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1204 344" width="1204" height="344">
+	<title>favourites_styled-svg</title>
+	<style>
+		tspan { white-space:pre } 
+		.t0 { font-size: 120px;fill: #000000;font-weight: 400;font-family: "DejaVuSans", "DejaVu Sans" } 
+	</style>
+	<text id="Ementa de Hoje" style="transform: matrix(1,0,0,1,117,112)" >
+		<tspan x="0" y="91.2" class="t0">Ementa de Hoje
+</tspan>
+	</text>
+</svg>
