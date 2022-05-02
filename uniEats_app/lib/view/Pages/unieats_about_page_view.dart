@@ -52,8 +52,8 @@ class UniEatsAboutPageViewState extends UniEatsGeneralPageViewState {
       Container(
         child: Center(
           child: Text(
-              'App developed by 3rd year LEIC@FEUP students'
-              ' for the Course of Software Engineering (ES)',
+              'App desenvolvida por estudantes do 3ºAno da LEIC@FEUP'
+              ' para a U.C. de Engenharia de Software (ES)',
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyText1),
         ),
@@ -64,86 +64,57 @@ class UniEatsAboutPageViewState extends UniEatsGeneralPageViewState {
     aboutText.add(
       Container(
         padding: EdgeInsets.fromLTRB(10, 40, 10, 0),
-          child: Center(
-              child: Text('Team 3LEIC02T4: ',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-              ),
-            ),
+        child: Center(
+          child: Text(
+            'Equipa 3LEIC02T4: ',
+            textAlign: TextAlign.center,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
         ),
+      ),
     );
 
-    aboutText.add(
-        Container(
-          padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
-          child: Text(
-              'Ana Matilde Guedes Perez da Silva Barra',
-              textAlign: TextAlign.justify,
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .bodyText1),
-        )
-    );
+    aboutText.add(Container(
+      padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
+      child: Text('Ana Matilde Guedes Perez da Silva Barra',
+          textAlign: TextAlign.justify,
+          style: Theme.of(context).textTheme.bodyText1),
+    ));
 
-    aboutText.add(
-        Container(
-          padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-          child: Text(
-              'Ana Rita Antunes Ramada',
-              textAlign: TextAlign.justify,
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .bodyText1),
-        )
-    );
+    aboutText.add(Container(
+      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+      child: Text('Ana Rita Antunes Ramada',
+          textAlign: TextAlign.justify,
+          style: Theme.of(context).textTheme.bodyText1),
+    ));
 
-    aboutText.add(
-        Container(
-          padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-          child: Text(
-              'Maria Sofia Diogo Figueiredo',
-              textAlign: TextAlign.justify,
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .bodyText1),
-        )
-    );
+    aboutText.add(Container(
+      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+      child: Text('Maria Sofia Diogo Figueiredo',
+          textAlign: TextAlign.justify,
+          style: Theme.of(context).textTheme.bodyText1),
+    ));
 
-    aboutText.add(
-        Container(
-          padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-          child: Text(
-              'Pedro Manuel Bernardo Azevedo',
-              textAlign: TextAlign.justify,
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .bodyText1),
-        )
-    );
+    aboutText.add(Container(
+      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+      child: Text('Pedro Manuel Bernardo Azevedo',
+          textAlign: TextAlign.justify,
+          style: Theme.of(context).textTheme.bodyText1),
+    ));
 
-    aboutText.add(
-        Container(
-          padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-          child: Text(
-              'Ana Sofia de Castro Teixeira',
-              textAlign: TextAlign.justify,
-              style: Theme
-                  .of(context)
-                  .textTheme
-                  .bodyText1),
-        )
-    );
+    aboutText.add(Container(
+      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+      child: Text('Ana Sofia de Castro Teixeira',
+          textAlign: TextAlign.justify,
+          style: Theme.of(context).textTheme.bodyText1),
+    ));
 
     //Dates
     aboutText.add(
       Container(
         child: Container(
           padding: EdgeInsets.fromLTRB(10, queryData.size.height / 6, 10, 0),
-          child: Text('2nd Semester of 2021/2022 - March/June 2022',
+          child: Text('2º Semestre de 2021/2022 - Março/Junho 2022',
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.bodyText2),
         ),

@@ -83,5 +83,8 @@ build/
 # Web related
 lib/generated_plugin_registrant.dart
 
+# fvm (Flutter Version Manager) Related
+.fvm/
+
 # Exceptions to above rules.
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
