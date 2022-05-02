@@ -37,19 +37,9 @@ class MealSlot extends StatelessWidget {
 
   List<Widget> createMealSlotPrimInfo(context) {
     Color color = Theme.of(context).textTheme.headline4.color;
-    switch(type){
-      case "Vegetariano":
+    if(type.contains("Vegetarian")){
         color = Color.fromARGB(255, 41, 148, 46);
-        break;
-      // case "Peixe":
-      //   color = Colors.cyan;
-      //   break;
-      // case "Carne":
-      //   color = Colors.red;
-      //   break;
-      default: break;
     }
-
     TextStyle textStyle = TextStyle(
       fontWeight: FontWeight.bold,
       color: color,
