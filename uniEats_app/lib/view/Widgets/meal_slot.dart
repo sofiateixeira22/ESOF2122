@@ -39,7 +39,7 @@ class MealSlot extends StatelessWidget {
     Color color = Theme.of(context).textTheme.headline4.color;
     switch(type){
       case "Vegetariano":
-        color = Colors.green;
+        color = Color.fromARGB(255, 41, 148, 46);
         break;
       // case "Peixe":
       //   color = Colors.cyan;
