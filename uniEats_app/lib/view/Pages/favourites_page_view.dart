@@ -15,7 +15,7 @@ class FavouritesPageViewState extends UniEatsNoDrawerPageView {
         Container(
           padding: EdgeInsets.fromLTRB(20, 20, 20, 5),
           child: Text(
-            'Favourites',
+            'Favoritos',
             style: Theme.of(context)
                 .textTheme
                 .headline6
@@ -45,7 +45,7 @@ class FavouritesPageViewState extends UniEatsNoDrawerPageView {
           child: Card(
             elevation: 5,
             child: (Center(
-              child: Text('Restaurant Placeholder'),
+              child: Text('Um Restaurante'),
             )),
           )));
     }

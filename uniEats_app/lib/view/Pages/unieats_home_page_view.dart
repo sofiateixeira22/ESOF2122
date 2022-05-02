@@ -50,10 +50,12 @@ class UniEatsHomePageViewState extends UniEatsGeneralPageViewState {
                           context, '/${Constants.navFavourites}');
                     }
                   },
-                  child: SvgPicture.asset(
-                    'assets/images/favourites_styled.svg',
-                    height: queryData.size.height / 10,
+                  child: Text(
+                  'Favoritos',
+                style: TextStyle(
+                  color: Color(0xff791d24),
                   ),
+                )
                 ))),
       ),
       Container(
@@ -75,11 +77,12 @@ class UniEatsHomePageViewState extends UniEatsGeneralPageViewState {
                       Navigator.pushNamed(context, '/${Constants.navHistory}');
                     }
                   },
-                  child: SvgPicture.asset(
-                    'assets/images/history_styled.svg',
-                    height: queryData.size.height / 10,
+                  child: Text(
+                  'Histórico',
+                style: TextStyle(
+                  color: Color(0xff791d24),
                   ),
-                ))),
+                )))),
       )
     ]));
 

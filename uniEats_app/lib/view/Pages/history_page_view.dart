@@ -15,7 +15,7 @@ class HistoryPageViewState extends UniEatsNoDrawerPageView {
         Container(
           padding: EdgeInsets.fromLTRB(20, 20, 20, 5),
           child: Text(
-            'History',
+            'Histórico',
             style: Theme.of(context)
                 .textTheme
                 .headline6
