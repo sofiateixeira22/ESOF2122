@@ -27,8 +27,6 @@ class RestaurantPageView extends StatelessWidget {
       @required this.daysOfTheWeek,
       this.scrollViewController});
 
-      
-
   final Restaurant restaurant;
   final List<String> daysOfTheWeek;
   final RequestStatus restaurantStatus;
@@ -39,7 +37,8 @@ class RestaurantPageView extends StatelessWidget {
   Widget build(BuildContext context) {
     final MediaQueryData queryData = MediaQuery.of(context);
 
-    final Restaurant restaurant = ModalRoute.of(context).settings.arguments as Restaurant;
+    final Restaurant restaurant =
+        ModalRoute.of(context).settings.arguments as Restaurant;
 
     return Column(children: <Widget>[
       ListView(
@@ -55,11 +54,10 @@ class RestaurantPageView extends StatelessWidget {
         ],
       ),
       Expanded(
-        child: TabBarView(
+          child: TabBarView(
         controller: tabController,
         children: createMeals(context),
-        )
-      )
+      ))
     ]);
   }
 
@@ -79,7 +77,8 @@ class RestaurantPageView extends StatelessWidget {
   List<Widget> createMeals(context) {
     final List<Widget> tabBarViewContent = <Widget>[];
     for (int i = 0; i < daysOfTheWeek.length; i++) {
-      tabBarViewContent.add(UniEatsRestaurantCard(restaurant, daysOfTheWeek[i]));
+      tabBarViewContent
+          .add(UniEatsRestaurantCard(restaurant, daysOfTheWeek[i], false));
     }
     return tabBarViewContent;
   }
@@ -123,8 +122,9 @@ class RestaurantPageView extends StatelessWidget {
       contentGenerator: dayColumnBuilder(day),
       content: restaurant.getMealsOfDayInt(day),
       contentChecker: restaurant.getMealsOfDayInt(day).isNotEmpty,
-      onNullContent:
-          Center(child: Text('Não existem refeições neste dia ' + daysOfTheWeek[day] + '.')),
+      onNullContent: Center(
+          child: Text(
+              'Não existem refeições neste dia ' + daysOfTheWeek[day] + '.')),
       index: day,
     );
   }

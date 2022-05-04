@@ -12,23 +12,23 @@ import 'package:intl/intl.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 class UniEatsHomePageView extends StatefulWidget {
-  UniEatsHomePageView(
-      {Key key,
-      @required this.restaurants,
-      });
+  UniEatsHomePageView({
+    Key key,
+    @required this.restaurants,
+  });
   final List<Restaurant> restaurants;
-  
+
   @override
-  State<StatefulWidget> createState() => UniEatsHomePageViewState(restaurants: restaurants);
+  State<StatefulWidget> createState() =>
+      UniEatsHomePageViewState(restaurants: restaurants);
 }
 
 /// Manages the 'about' section of the app.
 class UniEatsHomePageViewState extends UniEatsGeneralPageViewState {
-
-  UniEatsHomePageViewState(
-      {Key key,
-      @required this.restaurants,
-      });
+  UniEatsHomePageViewState({
+    Key key,
+    @required this.restaurants,
+  });
   final List<Restaurant> restaurants;
 
   @override
@@ -50,7 +50,8 @@ class UniEatsHomePageViewState extends UniEatsGeneralPageViewState {
   }
 
   ///Returns a list of the restaurants to appear in the unieats homepage
-  List<Widget> homepageData(BuildContext context, List<Restaurant> restaurants) {
+  List<Widget> homepageData(
+      BuildContext context, List<Restaurant> restaurants) {
     final MediaQueryData queryData = MediaQuery.of(context);
 
     final List<Widget> data = <Widget>[];
@@ -68,21 +69,20 @@ class UniEatsHomePageViewState extends UniEatsGeneralPageViewState {
             child: Card(
                 elevation: 5,
                 child: TextButton(
-                  onPressed: () {
-                    final currentRouteName =
-                        ModalRoute.of(context).settings.name;
-                    if (currentRouteName != Constants.navFavourites) {
-                      Navigator.pushNamed(
-                          context, '/${Constants.navFavourites}');
-                    }
-                  },
-                  child: Text(
-                  'Favoritos',
-                style: TextStyle(
-                  color: Color(0xff791d24),
-                  ),
-                )
-                ))),
+                    onPressed: () {
+                      final currentRouteName =
+                          ModalRoute.of(context).settings.name;
+                      if (currentRouteName != Constants.navFavourites) {
+                        Navigator.pushNamed(
+                            context, '/${Constants.navFavourites}');
+                      }
+                    },
+                    child: Text(
+                      'Favoritos',
+                      style: TextStyle(
+                        color: Color(0xff791d24),
+                      ),
+                    )))),
       ),
       Container(
         padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
@@ -96,19 +96,20 @@ class UniEatsHomePageViewState extends UniEatsGeneralPageViewState {
             child: Card(
                 elevation: 5,
                 child: TextButton(
-                  onPressed: () {
-                    final currentRouteName =
-                        ModalRoute.of(context).settings.name;
-                    if (currentRouteName != Constants.navHistory) {
-                      Navigator.pushNamed(context, '/${Constants.navHistory}');
-                    }
-                  },
-                  child: Text(
-                  'Histórico',
-                style: TextStyle(
-                  color: Color(0xff791d24),
-                  ),
-                )))),
+                    onPressed: () {
+                      final currentRouteName =
+                          ModalRoute.of(context).settings.name;
+                      if (currentRouteName != Constants.navHistory) {
+                        Navigator.pushNamed(
+                            context, '/${Constants.navHistory}');
+                      }
+                    },
+                    child: Text(
+                      'Histórico',
+                      style: TextStyle(
+                        color: Color(0xff791d24),
+                      ),
+                    )))),
       )
     ]));
 
@@ -125,20 +126,23 @@ class UniEatsHomePageViewState extends UniEatsGeneralPageViewState {
             child: Card(
                 elevation: 5,
                 child: TextButton(
-                  child: Text(
-                  'Ementa de hoje (' + DateFormat('dd/MM/yyyy').format(DateTime.now()) + ")",
-                style: TextStyle(
-                  color: Color(0xff791d24),
+                    child: Text(
+                  'Ementa de hoje (' +
+                      DateFormat('dd/MM/yyyy').format(DateTime.now()) +
+                      ")",
+                  style: TextStyle(
+                    color: Color(0xff791d24),
                   ),
                 )))),
       )
     ]));
-    if(restaurants != null){ 
-      for(int i = 0; i < restaurants.length; i++){
-        data.add(UniEatsRestaurantCard(restaurants[i], DateFormat('EEEE').format(DateTime.now())));
+    if (restaurants != null) {
+      for (int i = 0; i < restaurants.length; i++) {
+        data.add(UniEatsRestaurantCard(
+            restaurants[i], DateFormat('EEEE').format(DateTime.now()), true));
       }
     }
-    
+
     return data;
   }
 }

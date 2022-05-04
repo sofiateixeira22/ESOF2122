@@ -17,22 +17,19 @@ import 'generic_card.dart';
 import 'package:intl/intl.dart';
 import 'package:uni/utils/constants.dart' as Constants;
 
-class UniEatsRestaurantCard extends GenericCard {
+class UniEatsMiniRestaurantCard extends GenericCard {
   Restaurant restaurant;
   String day;
-  bool isHomepage;
 
-  UniEatsRestaurantCard(
+  UniEatsMiniRestaurantCard(
     Restaurant restaurant,
-    String day,
-    bool isHomepage, {
+    String day, {
     Key key,
   })  : restaurant = restaurant,
         day = day,
-        isHomepage = isHomepage,
         super(key: key);
 
-  UniEatsRestaurantCard.fromEditingInformation(
+  UniEatsMiniRestaurantCard.fromEditingInformation(
       Key key, bool editingMode, Function onDelete)
       : super.fromEditingInformation(key, editingMode, onDelete);
 
@@ -90,26 +87,26 @@ class UniEatsRestaurantCard extends GenericCard {
         break;
     }
     List<Meal> meals = restaurant.getMealsOfDay(dayOfWeek);
-    return Container(
-        child: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: getMealRows(context, meals),
-    ));
+    return ListView(
+      children: <Widget>[
+        Row(
+            children: [ IconButton(
+          icon: Icon(Icons.star_border_sharp),
+          onPressed: () {
+            
+          },
+        )],),
+        Container(
+            child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: getMealRows(context, meals),
+        ))
+      ],
+    );
   }
 
   List<Widget> getMealRows(context, List<Meal> meals) {
     final List<Widget> rows = <Widget>[];
-
-    //add favorite button, times and location(?)
-    if (isHomepage) {
-      rows.add(Row(children: [
-        IconButton(
-          padding: EdgeInsets.only(left: 300.0),
-          icon: Icon(Icons.star_border_sharp),
-          onPressed: () {},
-        )
-      ]));
-    }
 
     final now = DateTime.now();
     if (meals == null) {
