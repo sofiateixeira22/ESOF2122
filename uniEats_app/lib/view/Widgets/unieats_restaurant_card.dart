@@ -102,9 +102,21 @@ class UniEatsRestaurantCard extends GenericCard {
 
     //add favorite button, times and location(?)
     if (isHomepage) {
-      rows.add(Row(children: [
+      rows.add(Row(
+        children: [
+        Row(
+          children: [
+            Icon(Icons.pin_drop_outlined),
+            Text('50m'), //for location to current place
+          ],
+        ),
+        Spacer(),
+        Row(children: [
+          Icon(Icons.timer_outlined),
+          Text('t_open') //for timeopen
+        ],),
+        Spacer(),
         IconButton(
-          padding: EdgeInsets.only(left: 300.0),
           icon: Icon(Icons.star_border_sharp),
           onPressed: () {},
         )
