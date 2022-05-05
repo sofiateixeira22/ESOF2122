@@ -1,4 +1,7 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'dart:ffi';
+//import 'dart:html';
 
 import 'package:logger/logger.dart';
 import 'package:tuple/tuple.dart';
@@ -99,7 +102,7 @@ class UniEatsRestaurantCard extends GenericCard {
 
   List<Widget> getMealRows(context, List<Meal> meals) {
     final List<Widget> rows = <Widget>[];
-
+    bool click = false;
     //add favorite button, times and location(?)
     if (isHomepage) {
       rows.add(Row(
@@ -116,10 +119,8 @@ class UniEatsRestaurantCard extends GenericCard {
           Text('t_open') //for timeopen
         ],),
         Spacer(),
-        IconButton(
-          icon: Icon(Icons.star_border_sharp),
-          onPressed: () {},
-        )
+        FavoriteWidget(),
+
       ]));
     }
 
@@ -142,4 +143,41 @@ class UniEatsRestaurantCard extends GenericCard {
           name: meal.name,
         ));
   }
+}
+
+
+class FavoriteWidget extends StatefulWidget {
+
+  @override
+  _FavoriteWidgetState createState() => _FavoriteWidgetState();
+}
+
+class _FavoriteWidgetState extends State<FavoriteWidget> {
+  bool _isFavorited = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          padding: const EdgeInsets.all(0),
+          child: IconButton(
+            padding: const EdgeInsets.all(0),
+            alignment: Alignment.centerRight,
+            icon: (_isFavorited
+                ? const Icon(Icons.star)
+                : const Icon(Icons.star_border)),
+            color: Color.fromARGB(255, 0x75, 0x17, 0x1e),
+            onPressed: (){
+            setState(()
+            {
+              _isFavorited = !_isFavorited;
+            });
+          }),
+          ),
+      ],
+    );
+  }
+  // ···
 }
