@@ -33,6 +33,7 @@ import 'package:uni/view/Pages/unieats_home_page_view.dart';
 import 'package:uni/view/Pages/favourites_page_view.dart';
 import 'package:uni/view/Pages/history_page_view.dart';
 import 'package:uni/view/Pages/unieats_about_page_view.dart';
+import 'package:uni/view/Pages/unieats_faq_page_view.dart';
 
 /// Stores the state of the app
 final Store<AppState> state = Store<AppState>(appReducers,
@@ -128,6 +129,9 @@ class MyAppState extends State<MyApp> {
               case '/' + Constants.navRestaurant:
                 return PageTransition.makePageTransition(
                     page: RestaurantPage(), settings:settings);
+              case '/' + Constants.navUniEatsFaq:
+                return PageTransition.makePageTransition(
+                    page: UniEatsFaqPageView(), settings: settings);
             }
           }),
     );
