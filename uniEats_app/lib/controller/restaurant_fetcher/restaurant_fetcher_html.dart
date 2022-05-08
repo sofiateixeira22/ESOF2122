@@ -24,4 +24,15 @@ class RestaurantFetcherHtml extends RestaurantFetcher {
 
     return restaurants;
   }
+  // @override
+  // Future<List<Restaurant>> getRestaurants(Store<AppState> store) async {
+  //   List<Restaurant> restaurants = <Restaurant>[];
+  //   restaurants.add(Restaurant(0, 'Bar de Minas', 'bardeminas'));
+  //   restaurants.add(Restaurant(1, 'Cantina', 'cantina'));
+  //   restaurants.add(Restaurant(2, 'Grill', 'grill'));
+
+
+  //   return restaurants;
+  // }
+
 }

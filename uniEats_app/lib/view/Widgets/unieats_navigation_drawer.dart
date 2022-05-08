@@ -28,6 +28,7 @@ class UniEatsNavigationDrawerState extends State<UniEatsNavigationDrawer> {
       Constants.navFavourites: _onSelectPage,
       Constants.navHistory: _onSelectPage,
       Constants.navUniEatsAbout: _onSelectPage,
+      Constants.navUniEatsFaq: _onSelectPage,
       Constants.navPersonalArea: _onSelectPage,
     };
   }

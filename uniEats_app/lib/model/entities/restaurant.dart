@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'package:logger/logger.dart';
 import 'package:uni/model/utils/day_of_week.dart';
 import 'package:collection/collection.dart';
 import 'meal.dart';
@@ -23,11 +24,41 @@ class Restaurant{
     return meals[dayOfWeek];
   }
 
+    List<Meal> getMealsOfDayInt(int dayOfWeek){
+    return meals[DayOfWeek.values[dayOfWeek]];
+  }
+
   Map<String, dynamic> toMap() {
     return {
       'id' : id,
       'name': name,
       'ref': reference
     };
+  }
+
+  hasMeals(String day) {
+    DayOfWeek dayOfWeek;
+    switch (day){
+      case 'Monday':
+        dayOfWeek = DayOfWeek.monday; break;
+      case 'Tuesday':
+        dayOfWeek = DayOfWeek.tuesday; break;
+      case 'Wednesday':
+        dayOfWeek = DayOfWeek.wednesday; break;
+      case 'Thursday':
+        dayOfWeek = DayOfWeek.thursday; break;
+      case 'Friday':
+        dayOfWeek = DayOfWeek.friday; break;
+      case 'Saturday':
+        dayOfWeek = DayOfWeek.saturday; break;
+      case 'Sunday':
+        dayOfWeek = DayOfWeek.sunday; break;
+    }
+    meals.forEach((key, value) {
+      if(key == dayOfWeek){
+        return true;
+      }
+    });
+    return true;
   }
 }
