@@ -6,7 +6,6 @@ import 'package:uni/model/entities/lecture.dart';
 import 'package:flutter/material.dart';
 import 'package:uni/model/entities/meal.dart';
 import 'package:uni/model/entities/restaurant.dart';
-import 'package:uni/view/Pages/restaurant_menu_page.dart';
 import 'package:uni/view/Widgets/page_title.dart';
 import 'package:uni/view/Widgets/request_dependent_widget_builder.dart';
 import 'package:uni/view/Widgets/schedule_slot.dart';
@@ -19,27 +18,20 @@ class Arguments {
 }
 
 /// Manages the 'schedule' sections of the app
-class RestaurantPageView extends StatelessWidget {
-  RestaurantPageView(
+class RestaurantMenuPageView extends StatelessWidget {
+  RestaurantMenuPageView(
       {Key key,
       @required this.tabController,
-      @required this.menuTabController,
       @required this.restaurant,
       @required this.restaurantStatus,
       @required this.daysOfTheWeek,
-      @required this.tabNames,
-      this.scrollViewController,
-      this.menuScrollViewController});
+      this.scrollViewController});
 
   final Restaurant restaurant;
   final List<String> daysOfTheWeek;
   final RequestStatus restaurantStatus;
   final TabController tabController;
   final ScrollController scrollViewController;
-
-  final List<String> tabNames;
-  final TabController menuTabController;
-  final ScrollController menuScrollViewController;
 
   @override
   Widget build(BuildContext context) {
@@ -72,11 +64,11 @@ class RestaurantPageView extends StatelessWidget {
   /// Returns a list of widgets empty with tabs for each day of the week.
   List<Widget> createTabs(queryData, BuildContext context) {
     final List<Widget> tabs = <Widget>[];
-    for (var i = 0; i < tabNames.length; i++) {
+    for (var i = 0; i < daysOfTheWeek.length; i++) {
       tabs.add(Container(
         color: Theme.of(context).backgroundColor,
         width: queryData.size.width * 1 / 3,
-        child: Tab(key: Key('restaurant-page-tab-$i'), text: tabNames[i]),
+        child: Tab(key: Key('restaurant-page-tab-$i'), text: daysOfTheWeek[i]),
       ));
     }
     return tabs;
@@ -84,15 +76,9 @@ class RestaurantPageView extends StatelessWidget {
 
   List<Widget> createMeals(context) {
     final List<Widget> tabBarViewContent = <Widget>[];
-    for (int i = 0; i < tabNames.length; i++) {
+    for (int i = 0; i < daysOfTheWeek.length; i++) {
       tabBarViewContent
-          .add(RestaurantMenuPageView(
-                tabController: menuTabController,
-                scrollViewController: menuScrollViewController,
-                daysOfTheWeek: daysOfTheWeek,
-                restaurant: restaurant,
-                )
-              );
+          .add(UniEatsRestaurantCard(restaurant, daysOfTheWeek[i], false));
     }
     return tabBarViewContent;
   }
