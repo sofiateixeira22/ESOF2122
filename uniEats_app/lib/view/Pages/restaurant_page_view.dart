@@ -6,7 +6,9 @@ import 'package:uni/model/entities/lecture.dart';
 import 'package:flutter/material.dart';
 import 'package:uni/model/entities/meal.dart';
 import 'package:uni/model/entities/restaurant.dart';
+import 'package:uni/view/Pages/restaurant_info_page.dart';
 import 'package:uni/view/Pages/restaurant_menu_page.dart';
+import 'package:uni/view/Pages/restaurant_reviews_page.dart';
 import 'package:uni/view/Widgets/page_title.dart';
 import 'package:uni/view/Widgets/request_dependent_widget_builder.dart';
 import 'package:uni/view/Widgets/schedule_slot.dart';
@@ -64,7 +66,18 @@ class RestaurantPageView extends StatelessWidget {
       Expanded(
           child: TabBarView(
         controller: tabController,
-        children: createMeals(context),
+        children: [RestaurantInfoPageView(
+                restaurant: restaurant,
+                ),
+                RestaurantMenuPageView(
+                tabController: menuTabController,
+                scrollViewController: menuScrollViewController,
+                daysOfTheWeek: daysOfTheWeek,
+                restaurant: restaurant,
+                ),
+                RestaurantReviewsPageView(
+                restaurant: restaurant,
+                )]
       ))
     ]);
   }
@@ -82,19 +95,5 @@ class RestaurantPageView extends StatelessWidget {
     return tabs;
   }
 
-  List<Widget> createMeals(context) {
-    final List<Widget> tabBarViewContent = <Widget>[];
-    for (int i = 0; i < tabNames.length; i++) {
-      tabBarViewContent
-          .add(RestaurantMenuPageView(
-                tabController: menuTabController,
-                scrollViewController: menuScrollViewController,
-                daysOfTheWeek: daysOfTheWeek,
-                restaurant: restaurant,
-                )
-              );
-    }
-    return tabBarViewContent;
-  }
 
 }
