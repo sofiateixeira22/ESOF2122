@@ -45,7 +45,6 @@ class RestaurantMenuPageView extends StatelessWidget {
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
         children: <Widget>[
-          PageTitle(name: restaurant.name),
           TabBar(
             controller: tabController,
             isScrollable: true,
@@ -65,9 +64,12 @@ class RestaurantMenuPageView extends StatelessWidget {
   List<Widget> createTabs(queryData, BuildContext context) {
     final List<Widget> tabs = <Widget>[];
     for (var i = 0; i < daysOfTheWeek.length; i++) {
+      if(!restaurant.hasMeals(daysOfTheWeek[i])){
+        continue;
+      }
       tabs.add(Container(
         color: Theme.of(context).backgroundColor,
-        width: queryData.size.width * 1 / 3,
+        width: queryData.size.width * 1 / 5,
         child: Tab(key: Key('restaurant-page-tab-$i'), text: daysOfTheWeek[i]),
       ));
     }
@@ -77,6 +79,9 @@ class RestaurantMenuPageView extends StatelessWidget {
   List<Widget> createMeals(context) {
     final List<Widget> tabBarViewContent = <Widget>[];
     for (int i = 0; i < daysOfTheWeek.length; i++) {
+      if(!restaurant.hasMeals(daysOfTheWeek[i])){
+        continue;
+      }
       tabBarViewContent
           .add(UniEatsRestaurantCard(restaurant, daysOfTheWeek[i], false));
     }

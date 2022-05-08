@@ -5,6 +5,7 @@ import 'package:uni/model/entities/lecture.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:uni/model/entities/restaurant.dart';
+import 'package:uni/model/utils/day_of_week.dart';
 import 'package:uni/view/Pages/restaurant_page_view.dart';
 import 'package:uni/view/Pages/schedule_page_view.dart';
 import 'package:uni/view/Pages/secondary_page_view.dart';
@@ -49,8 +50,10 @@ class _RestaurantPageState extends UniEatsNoDrawerPageView
   @override
   void initState() {
     super.initState();
+    
     tabController = TabController(vsync: this, length: tabNames.length);
-    menuTabController = TabController(vsync: this, length: daysOfTheWeek.length);
+
+    menuTabController = TabController(vsync: this, length: 0);
     final offset = (weekDay > 5) ? 0 : (weekDay - 1) % daysOfTheWeek.length;
     tabController.animateTo((tabController.index + offset));
     menuTabController.animateTo((menuTabController.index));
@@ -66,6 +69,15 @@ class _RestaurantPageState extends UniEatsNoDrawerPageView
   @override
   Widget getBody(BuildContext context) {
     restaurant = ModalRoute.of(context).settings.arguments as Restaurant;
+    int count = 0;
+
+    for(int i = 0; i< daysOfTheWeek.length; i++){
+      if(restaurant.hasMeals(daysOfTheWeek[i])){
+        count++;
+      }
+    }
+    Logger().e("Count: " + count.toString());
+    menuTabController = TabController(vsync: this, length: count);
     return RestaurantPageView(
       tabController: tabController,
       scrollViewController: scrollViewController,

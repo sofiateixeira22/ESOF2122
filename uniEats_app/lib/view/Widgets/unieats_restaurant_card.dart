@@ -56,7 +56,7 @@ class UniEatsRestaurantCard extends GenericCard {
         context: context,
         contentGenerator: generateMeals,
         content: tuple,
-        contentChecker: restaurant.hasMeals(day),
+        contentChecker: true,
         onNullContent: Center(
             child: Text('Não existem restaurantes para apresentar',
                 style: Theme.of(context).textTheme.headline4,
