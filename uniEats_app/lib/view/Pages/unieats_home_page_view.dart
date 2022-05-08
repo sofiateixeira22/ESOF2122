@@ -69,12 +69,20 @@ class UniEatsHomePageViewState extends UniEatsGeneralPageViewState {
               ),
             ));
     if (restaurants != null) {
+        String day = DateFormat('EEEE').format(DateTime.now());
       for (int i = 0; i < restaurants.length; i++) {
-        data.add(UniEatsRestaurantCard(
-            restaurants[i], DateFormat('EEEE').format(DateTime.now()), true));
+        if(restaurants[i].hasMeals(day)){
+          data.add(UniEatsRestaurantCard(
+              restaurants[i], day, true));
+        }
+      }
+      for (int i = 0; i < restaurants.length; i++) {
+        if(!restaurants[i].hasMeals(day)){
+          data.add(UniEatsRestaurantCard(
+              restaurants[i], day, true));
+        }
       }
     }
-
     return data;
   }
 }
