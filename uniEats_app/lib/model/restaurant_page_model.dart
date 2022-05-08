@@ -8,6 +8,8 @@ import 'package:uni/model/entities/restaurant.dart';
 import 'package:uni/view/Pages/restaurant_page_view.dart';
 import 'package:uni/view/Pages/schedule_page_view.dart';
 import 'package:uni/view/Pages/secondary_page_view.dart';
+import 'package:uni/view/Pages/unieats_gen_page_view.dart';
+import 'package:uni/view/Pages/unieats_nodrawer_page_view.dart';
 
 class   RestaurantPage extends StatefulWidget {
   const   RestaurantPage({Key key}) : super(key: key);
@@ -16,7 +18,7 @@ class   RestaurantPage extends StatefulWidget {
   _RestaurantPageState createState() => _RestaurantPageState();
 }
 
-class _RestaurantPageState extends SecondaryPageViewState
+class _RestaurantPageState extends UniEatsNoDrawerPageView
     with SingleTickerProviderStateMixin {
   final int weekDay = DateTime.now().weekday;
   Restaurant restaurant;

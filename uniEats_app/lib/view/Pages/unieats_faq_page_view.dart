@@ -63,6 +63,7 @@ class UniEatsFaqPageViewState extends UniEatsGeneralPageViewState {
     );
 
     //Q1
+    //TODO: Change color of background to outline
     FaqText.add(
       Container(
         padding: EdgeInsets.fromLTRB(5, 40, 5, 0),

@@ -56,86 +56,18 @@ class UniEatsHomePageViewState extends UniEatsGeneralPageViewState {
 
     final List<Widget> data = <Widget>[];
 
-    data.add(Row(children: [
-      Container(
-        padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-        height: 80,
-        width: queryData.size.width / 2,
-        child: ButtonTheme(
-            minWidth: 0,
-            padding: EdgeInsets.only(left: 0),
-            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            shape: RoundedRectangleBorder(),
-            child: Card(
-                elevation: 5,
-                child: TextButton(
-                    onPressed: () {
-                      final currentRouteName =
-                          ModalRoute.of(context).settings.name;
-                      if (currentRouteName != Constants.navFavourites) {
-                        Navigator.pushNamed(
-                            context, '/${Constants.navFavourites}');
-                      }
-                    },
-                    child: Text(
-                      'Favoritos',
-                      style: TextStyle(
-                        color: Color(0xff791d24),
-                      ),
-                    )))),
-      ),
-      Container(
-        padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-        height: 80,
-        width: queryData.size.width / 2,
-        child: ButtonTheme(
-            minWidth: 0,
-            padding: EdgeInsets.only(left: 0),
-            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            shape: RoundedRectangleBorder(),
-            child: Card(
-                elevation: 5,
-                child: TextButton(
-                    onPressed: () {
-                      final currentRouteName =
-                          ModalRoute.of(context).settings.name;
-                      if (currentRouteName != Constants.navHistory) {
-                        Navigator.pushNamed(
-                            context, '/${Constants.navHistory}');
-                      }
-                    },
-                    child: Text(
-                      'Histórico',
-                      style: TextStyle(
-                        color: Color(0xff791d24),
-                      ),
-                    )))),
-      )
-    ]));
-
-    data.add(Row(children: [
-      Container(
-        padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-        height: 80,
-        width: queryData.size.width,
-        child: ButtonTheme(
-            minWidth: 0,
-            padding: EdgeInsets.only(left: 0),
-            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-            shape: RoundedRectangleBorder(),
-            child: Card(
-                elevation: 5,
-                child: TextButton(
-                    child: Text(
-                  'Ementa de hoje (' +
+    data.add(Container(
+              padding: EdgeInsets.fromLTRB(20, 20, 20, 5),
+              child: Text(
+                'Ementa de hoje (' +
                       DateFormat('dd/MM/yyyy').format(DateTime.now()) +
                       ")",
-                  style: TextStyle(
-                    color: Color(0xff791d24),
-                  ),
-                )))),
-      )
-    ]));
+                style: Theme.of(context)
+                    .textTheme
+                    .headline6
+                    .apply(fontSizeFactor: 1.3),
+              ),
+            ));
     if (restaurants != null) {
       for (int i = 0; i < restaurants.length; i++) {
         data.add(UniEatsRestaurantCard(
