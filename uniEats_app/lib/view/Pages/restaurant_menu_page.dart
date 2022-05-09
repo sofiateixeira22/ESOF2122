@@ -83,7 +83,7 @@ class RestaurantMenuPageView extends StatelessWidget {
         continue;
       }
       tabBarViewContent
-          .add(UniEatsRestaurantCard(restaurant, daysOfTheWeek[i], false));
+          .add(UniEatsRestaurantCard(restaurant, daysOfTheWeek[i],'', false));
     }
     return tabBarViewContent;
   }

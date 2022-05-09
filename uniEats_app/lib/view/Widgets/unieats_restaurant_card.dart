@@ -24,15 +24,18 @@ class UniEatsRestaurantCard extends GenericCard {
   Restaurant restaurant;
   String day;
   bool isHomepage;
+  String title;
 
   UniEatsRestaurantCard(
     Restaurant restaurant,
     String day,
+    String title,
     bool isHomepage, {
     Key key,
   })  : restaurant = restaurant,
         day = day,
         isHomepage = isHomepage,
+        title = title,
         super(key: key);
 
   UniEatsRestaurantCard.fromEditingInformation(
@@ -40,7 +43,7 @@ class UniEatsRestaurantCard extends GenericCard {
       : super.fromEditingInformation(key, editingMode, onDelete);
 
   @override
-  String getTitle() => this.restaurant.name;
+  String getTitle() => this.title;
 
   @override
   onClick(BuildContext context) => Navigator.pushNamed(

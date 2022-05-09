@@ -73,13 +73,13 @@ class UniEatsHomePageViewState extends UniEatsGeneralPageViewState {
       for (int i = 0; i < restaurants.length; i++) {
         if(restaurants[i].hasMeals(day)){
           data.add(UniEatsRestaurantCard(
-              restaurants[i], day, true));
+              restaurants[i], day,restaurants[i].name, true));
         }
       }
       for (int i = 0; i < restaurants.length; i++) {
         if(!restaurants[i].hasMeals(day)){
           data.add(UniEatsRestaurantCard(
-              restaurants[i], day, true));
+              restaurants[i], day, restaurants[i].name,true));
         }
       }
     }
