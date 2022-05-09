@@ -7,7 +7,7 @@ import 'dart:io';
 
 import 'package:uni/controller/load_info.dart';
 import 'package:uni/model/app_state.dart';
-import 'package:uni/model/profile_page_model.dart';
+import 'package:uni/model/unieats_profile_page_model.dart';
 import 'package:uni/view/Widgets/unieats_navigation_drawer.dart';
 import 'package:uni/utils/constants.dart' as Constants;
 
@@ -122,7 +122,7 @@ abstract class UniEatsGeneralPageViewState extends State<StatefulWidget> {
           return TextButton(
             onPressed: () => {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (__) => ProfilePage()))
+                  context, MaterialPageRoute(builder: (__) => UniEatsProfilePage()))
             },
             child: Container(
                 width: 40.0,

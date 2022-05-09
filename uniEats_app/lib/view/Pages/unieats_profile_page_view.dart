@@ -1,28 +1,26 @@
 import 'dart:io';
 import 'package:uni/controller/load_info.dart';
 import 'package:uni/model/app_state.dart';
-import 'package:uni/model/entities/course.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:uni/view/Widgets/account_info_card.dart';
-import 'package:uni/view/Widgets/course_info_card.dart';
-import 'package:uni/view/Widgets/print_info_card.dart';
 import 'package:uni/view/Pages/unieats_nodrawer_page_view.dart';
+import 'package:uni/view/Widgets/unieats_favs_card.dart';
+import 'package:uni/view/Widgets/unieats_history_card.dart';
+import 'package:uni/view/Widgets/unieats_mini_restaurant_card.dart';
+import 'package:uni/view/Widgets/unieats_stats_card.dart';
+
+import '../../model/entities/restaurant.dart';
 
 class UniEatsProfilePageView extends StatefulWidget {
   final String name;
   final String email;
-  final Map<String, String> currentState;
-  final List<Course> courses;
   UniEatsProfilePageView(
       {Key key,
       @required this.name,
-      @required this.email,
-      @required this.currentState,
-      @required this.courses});
+      @required this.email});
   @override
   State<StatefulWidget> createState() => UniEatsProfilePageViewState(
-      name: name, email: email, currentState: currentState, courses: courses);
+      name: name, email: email);
 }
 
 /// Manages the 'Personal user page' section.
@@ -30,13 +28,9 @@ class UniEatsProfilePageViewState extends UniEatsNoDrawerPageView {
   UniEatsProfilePageViewState(
       {Key key,
       @required this.name,
-      @required this.email,
-      @required this.currentState,
-      @required this.courses});
+      @required this.email});
   final String name;
   final String email;
-  final Map<String, String> currentState;
-  final List<Course> courses;
 
   @override
   Widget getBody(BuildContext context) {
@@ -54,21 +48,18 @@ class UniEatsProfilePageViewState extends UniEatsNoDrawerPageView {
     list.add(Padding(padding: const EdgeInsets.all(5.0)));
     list.add(profileInfo(context));
     list.add(Padding(padding: const EdgeInsets.all(5.0)));
-    for (var i = 0; i < courses.length; i++) {
-      list.add(CourseInfoCard(
-          course: courses[i],
-          courseState:
-              currentState == null ? '?' : currentState[courses[i].name]));
-      list.add(Padding(padding: const EdgeInsets.all(5.0)));
-    }
-    list.add(PrintInfoCard());
+    list.add(UniEatsStatsCard());
     list.add(Padding(padding: const EdgeInsets.all(5.0)));
-    list.add(AccountInfoCard());
+    list.add(UniEatsFavoritesCard());
+    list.add(Padding(padding: const EdgeInsets.all(5.0)));
+    list.add(UniEatsHistoryCard());
     return list;
   }
 
   /// Returns a widget with the user's profile info (Picture, name and email).
   Widget profileInfo(BuildContext context) {
+    final String number = email.split('@')[0];
+
     return StoreConnector<AppState, Future<File>>(
       converter: (store) => loadProfilePic(store),
       builder: (context, profilePicFile) => FutureBuilder(
@@ -88,7 +79,7 @@ class UniEatsProfilePageViewState extends UniEatsNoDrawerPageView {
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.w400)),
             Padding(padding: const EdgeInsets.all(5.0)),
-            Text(email,
+            Text(number,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.w300)),
           ],

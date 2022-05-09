@@ -4,8 +4,6 @@ import 'package:uni/model/app_state.dart';
 import 'package:uni/view/Pages/unieats_profile_page_view.dart';
 import 'dart:io';
 
-import 'entities/course.dart';
-
 class UniEatsProfilePage extends StatefulWidget {
   @override
   _UniEatsProfilePageState createState() => _UniEatsProfilePageState();
@@ -18,7 +16,6 @@ class _UniEatsProfilePageState extends State<UniEatsProfilePage> {
   String name;
   String email;
   Map<String, String> currentState;
-  List<Course> courses;
   Future<File> profilePicFile;
 
   @override
@@ -27,7 +24,6 @@ class _UniEatsProfilePageState extends State<UniEatsProfilePage> {
     name = '';
     email = '';
     currentState = {};
-    courses = [];
     profilePicFile = null;
   }
 
@@ -35,7 +31,7 @@ class _UniEatsProfilePageState extends State<UniEatsProfilePage> {
   Widget build(BuildContext context) {
     updateInfo();
     return UniEatsProfilePageView(
-        name: name, email: email, currentState: currentState, courses: courses);
+        name: name, email: email);
   }
 
   void updateInfo() async {
@@ -48,10 +44,6 @@ class _UniEatsProfilePageState extends State<UniEatsProfilePage> {
             StoreProvider.of<AppState>(context).state.content['profile'].email;
         currentState =
             StoreProvider.of<AppState>(context).state.content['coursesStates'];
-        courses = StoreProvider.of<AppState>(context)
-            .state
-            .content['profile']
-            .courses;
       }
     });
   }
