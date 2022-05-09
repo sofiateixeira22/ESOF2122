@@ -24,15 +24,18 @@ class UniEatsRestaurantCard extends GenericCard {
   Restaurant restaurant;
   String day;
   bool isHomepage;
+  String title;
 
   UniEatsRestaurantCard(
     Restaurant restaurant,
     String day,
+    String title,
     bool isHomepage, {
     Key key,
   })  : restaurant = restaurant,
         day = day,
         isHomepage = isHomepage,
+        title = title,
         super(key: key);
 
   UniEatsRestaurantCard.fromEditingInformation(
@@ -40,7 +43,7 @@ class UniEatsRestaurantCard extends GenericCard {
       : super.fromEditingInformation(key, editingMode, onDelete);
 
   @override
-  String getTitle() => this.restaurant.name;
+  String getTitle() => this.title;
 
   @override
   onClick(BuildContext context) => Navigator.pushNamed(
@@ -56,7 +59,7 @@ class UniEatsRestaurantCard extends GenericCard {
         context: context,
         contentGenerator: generateMeals,
         content: tuple,
-        contentChecker: restaurant.hasMeals(day),
+        contentChecker: true,
         onNullContent: Center(
             child: Text('Não existem restaurantes para apresentar',
                 style: Theme.of(context).textTheme.headline4,
@@ -93,11 +96,16 @@ class UniEatsRestaurantCard extends GenericCard {
         break;
     }
     List<Meal> meals = restaurant.getMealsOfDay(dayOfWeek);
+    if(meals != null){
+      return Container(
+          child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: getMealRows(context, meals),
+      ));
+    }
     return Container(
-        child: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: getMealRows(context, meals),
-    ));
+      child: Text("Não existem refeições para apresentar neste dia.\n Pressione para ver refeiçóes de outros dias"));
+
   }
 
   List<Widget> getMealRows(context, List<Meal> meals) {

@@ -54,11 +54,12 @@ class Restaurant{
       case 'Sunday':
         dayOfWeek = DayOfWeek.sunday; break;
     }
+    bool temp = false;
     meals.forEach((key, value) {
       if(key == dayOfWeek){
-        return true;
+        temp = true;
       }
     });
-    return true;
+    return temp;
   }
 }
