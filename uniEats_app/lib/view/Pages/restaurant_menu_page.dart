@@ -60,6 +60,26 @@ class RestaurantMenuPageView extends StatelessWidget {
     ]);
   }
 
+  String dayToPT(String dayOfWeek){
+    switch (dayOfWeek){
+      case 'Monday':
+        return "Segunda";
+      case 'Tuesday':
+        return "Terça";
+      case 'Wednesday':
+        return "Quarta";
+      case 'Thursday':
+        return "Quinta";
+      case 'Friday':
+        return "Sexta";
+      case 'Saturday':
+        return "Sábado";
+      case 'Sunday':
+        return "Domingo";
+      default: return dayOfWeek;
+    }
+  }
+
   /// Returns a list of widgets empty with tabs for each day of the week.
   List<Widget> createTabs(queryData, BuildContext context) {
     final List<Widget> tabs = <Widget>[];
@@ -70,7 +90,7 @@ class RestaurantMenuPageView extends StatelessWidget {
       tabs.add(Container(
         color: Theme.of(context).backgroundColor,
         width: queryData.size.width * 1 / 5,
-        child: Tab(key: Key('restaurant-page-tab-$i'), text: daysOfTheWeek[i]),
+        child: Tab(key: Key('restaurant-page-tab-$i'), text: dayToPT(daysOfTheWeek[i])),
       ));
     }
     return tabs;
