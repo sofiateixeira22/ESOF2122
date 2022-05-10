@@ -18,7 +18,7 @@ You can find here detailed information about our product, from a high-level visi
 - [Implementation]
 - [Test]
 - [Configuration and Change Management]
-- [Project Management]
+- [Project Management](docs/ProjectManagement.md)
 
 So far, contributions are exclusively made by the initial team, but we hope to open them to the community, in all areas and topics: requirements, technologies, development, experimentation, testing, etc.
 
