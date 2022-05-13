@@ -3,7 +3,7 @@
 ## Iteration 1
 ### Release
 
---- link to release
+[Release of Iteration 1](https://github.com/LEIC-ES-2021-22/3LEIC02T4/releases/tag/Iteration1)
 
 ### Board Screenshots 
 
