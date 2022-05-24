@@ -36,7 +36,17 @@ class RestaurantReviewsPageView extends StatelessWidget {
     final Restaurant restaurant =
         ModalRoute.of(context).settings.arguments as Restaurant;
 
-    return AddReview();
+    return Column(
+          children: <Widget>[
+            Expanded(
+              child: ReviewShower(),
+            ),
+            Expanded(
+              child: AddReview(),
+            ),
+
+          ],
+        );
 
   }
 }
