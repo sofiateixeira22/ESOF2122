@@ -49,6 +49,7 @@ class RestaurantReviewsPageView extends StatelessWidget {
             ),
             Expanded(
               child: AddReview().build(context),
+              
             ),
 
           ],
@@ -92,12 +93,22 @@ class ReviewShowerState extends State<ReviewShower>{
                 }
                 final data = snapshot.requireData;
 
-                return ListView.builder(
-                    itemCount: data.size,
-                    itemBuilder: (context, index){
-                      return Text("The student ${data.docs[index]['studentID']} rated the restaurant ${data.docs[index]['restaurantID']} ${data.docs[index]['starRating']} stars.");
-                    }
-                );
+                return Expanded(
+                      child: ListView.builder(
+                        itemCount: data.size,
+                        itemBuilder: (context, index){
+                          return Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(children: [
+                               Text("${data.docs[index]['description']}", style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 1.5),),
+                              Text("${data.docs[index]['studentID']} - Rated ${data.docs[index]['starRating']} stars"),
+                             
+                            ],
+                            ),
+                          );
+                        }
+                      ),
+                    );
               }
           ),
         ),
@@ -106,6 +117,29 @@ class ReviewShowerState extends State<ReviewShower>{
   }
 
 }
+
+/*
+Column(
+                  children: <Widget>[
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: data.size,
+                        itemBuilder: (context, index){
+                          return Text("${data.docs[index]['studentID']} - Rated ${data.docs[index]['starRating']} stars");
+                        }
+                      ),
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: data.size,
+                        itemBuilder: (context, index){
+                          return Text("${data.docs[index]['description']}");
+                        }
+                      ),
+                    ),
+
+                  ]
+                );*/
 
 class AddReview extends StatelessWidget{
 
