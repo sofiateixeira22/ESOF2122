@@ -1,11 +1,12 @@
-import 'package:intl/intl.dart';
-import 'package:logger/logger.dart';
-import 'package:tuple/tuple.dart';
+
+import 'dart:convert';
+
 import 'package:uni/model/app_state.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:uni/model/entities/lecture.dart';
 import 'package:flutter/material.dart';
+import 'package:uni/model/app_state.dart';
 import 'package:quick_feedback/quick_feedback.dart';
 import 'package:uni/model/entities/meal.dart';
 import 'package:uni/model/entities/restaurant.dart';
@@ -13,6 +14,10 @@ import 'package:uni/view/Widgets/page_title.dart';
 import 'package:uni/view/Widgets/request_dependent_widget_builder.dart';
 import 'package:uni/view/Widgets/schedule_slot.dart';
 import 'package:uni/view/Widgets/unieats_restaurant_card.dart';
+
+import 'package:flutter_redux/flutter_redux.dart';
+
+
 
 class Arguments {
   final Restaurant restaurant;
@@ -28,21 +33,22 @@ class RestaurantReviewsPageView extends StatelessWidget {
       });
 
   final Restaurant restaurant;
-
+  
   @override
   Widget build(BuildContext context) {
     final MediaQueryData queryData = MediaQuery.of(context);
-
+    
     final Restaurant restaurant =
         ModalRoute.of(context).settings.arguments as Restaurant;
-
+   
+    var restaurantInfo = restaurant.toMap();
     return Column(
           children: <Widget>[
             Expanded(
               child: ReviewShower(),
             ),
             Expanded(
-              child: AddReview(),
+              child: AddReview().build(context),
             ),
 
           ],
@@ -102,10 +108,18 @@ class ReviewShowerState extends State<ReviewShower>{
 }
 
 class AddReview extends StatelessWidget{
-  void _showFeedback(context) {
+
+
+
+  //CollectionReference reviews = FirebaseFirestore.instance.collection("reviews");
+  
+  void _showFeedback(context, restaurantName) {
     showDialog(
       context: context,
       builder: (context) {
+
+        
+    
         return QuickFeedback(
           title: 'Leave a Review', // Title of dialog
           showTextBox: true, // default false
@@ -113,10 +127,18 @@ class AddReview extends StatelessWidget{
               'Share your review', // Feedback text field hint text default: Tell us more
           submitText: 'SUBMIT', // submit button text default: SUBMIT
           onSubmitCallback: (feedback) {
-            print('$feedback'); // map { rating: 2, feedback: 'some feedback' }
+            CollectionReference reviews = FirebaseFirestore.instance.collection("reviews");
+            var starRating = (feedback.values.first);
+            var userID = StoreProvider.of<AppState>(context).state.content['profile'].email.substring(0,11);
+            var description = (jsonDecode(jsonEncode(feedback))['feedback']);
+
+            reviews
+              .add({'starRating': starRating, 'description': description, 'restaurantID':restaurantName, 'studentID':  userID})
+              .then((value) => print("Review Added"))
+              .catchError((error)=> print("Failed to add review"));
             Navigator.of(context).pop();
           },
-          askLaterText: 'ASK LATER',
+          askLaterText: '', //TODO remove the button
           onAskLaterCallback: () {
             print('Do something on ask later click');
           },
@@ -126,6 +148,10 @@ class AddReview extends StatelessWidget{
   }
   @override
   Widget build(BuildContext context) {
+    //userID = 
+    final Restaurant restaurant =
+        ModalRoute.of(context).settings.arguments as Restaurant;
+    final restaurantName = restaurant.toMap()['name'];
     return MaterialApp(
       title: 'Example App',
       debugShowCheckedModeBanner: false,
@@ -134,7 +160,7 @@ class AddReview extends StatelessWidget{
           child: Container(
             child: Center(
               child: ElevatedButton(
-                onPressed: () => _showFeedback(context),
+                onPressed: () => _showFeedback(context, restaurantName),
                 style: ElevatedButton.styleFrom(
                   primary: Color.fromARGB(255, 0x75, 0x17, 0x1e),
                   textStyle: TextStyle(
