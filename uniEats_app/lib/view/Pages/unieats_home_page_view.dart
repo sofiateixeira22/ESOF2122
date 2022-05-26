@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:logger/logger.dart';
@@ -56,18 +58,34 @@ class UniEatsHomePageViewState extends UniEatsGeneralPageViewState {
 
     final List<Widget> data = <Widget>[];
 
-    data.add(Container(
-              padding: EdgeInsets.fromLTRB(20, 20, 20, 5),
-              child: Text(
-                'Ementa de hoje (' +
-                      DateFormat('dd/MM/yyyy').format(DateTime.now()) +
-                      ")",
-                style: Theme.of(context)
-                    .textTheme
-                    .headline6
-                    .apply(fontSizeFactor: 1.3),
-              ),
-            ));
+    final Random rnd = Random();
+
+    data.add( Row(
+        children: [
+          IconButton(
+            padding: EdgeInsets.fromLTRB(30, 20, 25, 5),
+            icon: const Icon(Icons.shuffle),
+            onPressed: () => Navigator.pushNamed(
+              context,
+              '/' + Constants.navRestaurant,
+              arguments: restaurants[rnd.nextInt(restaurants.length)],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.fromLTRB(5, 20, 20, 5),
+            child: Text(
+              'Ementa de hoje (' +
+                  DateFormat('dd/MM/yyyy').format(DateTime.now()) +
+                  ")",
+              style: Theme.of(context)
+                  .textTheme
+                  .headline6
+                  .apply(fontSizeFactor: 1.1),
+            ),
+          ),
+        ],
+      ),
+    );
     if (restaurants != null) {
         String day = DateFormat('EEEE').format(DateTime.now());
       for (int i = 0; i < restaurants.length; i++) {
