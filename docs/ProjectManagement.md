@@ -36,3 +36,38 @@
 #### Iteration Planning
 
 ![startOfIteration2](/images/iteration2start.png)
+
+
+### Release
+
+[Release of Iteration 2]
+
+### Board Screenshots 
+
+#### End of Iteration
+
+![endOfIteration2](/images/iteration2end.png)
+
+### Retrospective
+
+#### What we Did Well
+
+- Divided tasks well
+- Worked as a team
+  
+#### What we should Do Different
+
+- Work towards better time management
+
+#### Puzzles
+
+- Understanding how to implement the google maps api
+
+
+## Iteration 3
+
+### Board Screenshots 
+
+#### Iteration Planning
+
+![startOfIteration3](/images/iteration3start.png)
