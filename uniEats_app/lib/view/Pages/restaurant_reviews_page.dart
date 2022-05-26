@@ -45,29 +45,19 @@ class RestaurantReviewsPageView extends StatelessWidget {
    
     var restaurantInfo = restaurant.toMap();
 
-    return Container(
+    return SingleChildScrollView(
+                child: Container(
       padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
       child: Column(
         children: [
+          AddReview().build(context),
         SizedBox(
           height: queryData.size.height * (3/5),
           child: ReviewShower(),
         ),
-        AddReview().build(context),
+        
       ],)
-    );
-
-    // return Column(
-    //       children: <Widget>[
-    //         Expanded(
-    //           child: ReviewShower(),
-    //         ),
-    //         Expanded(
-    //           child: AddReview().build(context),          
-    //         ),
-
-    //       ],
-    //     );
+    ),);
 
   }
 }
@@ -114,7 +104,7 @@ class ReviewShowerState extends State<ReviewShower>{
                             elevation: 5,
                             child: UniEatsReviewCard(
                                "${data.docs[index]['studentID']}",
-                               "${data.docs[index]['starRating']}",
+                               double.parse("${data.docs[index]['starRating']}"),
                                "${data.docs[index]['description']}"
                                ).buildCardContent(context));
                         }
@@ -166,7 +156,7 @@ class AddReview extends StatelessWidget{
         ModalRoute.of(context).settings.arguments as Restaurant;
     final restaurantName = restaurant.toMap()['name'];
     return Container(
-      padding: EdgeInsets.only(top: 5),
+      padding: EdgeInsets.only(bottom: 5),
             child: Center(
               child: ElevatedButton(
                 onPressed: () => _showFeedback(context, restaurantName),

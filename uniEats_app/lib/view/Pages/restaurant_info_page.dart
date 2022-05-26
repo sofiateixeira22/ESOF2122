@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 import 'package:uni/model/entities/restaurant.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class Arguments {
   final Restaurant restaurant;
@@ -15,35 +18,76 @@ class RestaurantInfoPageView extends StatelessWidget {
   });
 
   final Restaurant restaurant;
-  final int priceRange = 1; //TODO: add to firebase
-  final double starRating = 3.5;
-  final int numPeople = 120;
+  final Stream<QuerySnapshot> restDB = FirebaseFirestore.instance
+                                        .collection('restaurants').snapshots();
+  
+  int priceRange;
+  double starRating;
+  int numPeople;
+  var scheduleList;
+  String linkImage;
 
   @override
   Widget build(BuildContext context) {
     final MediaQueryData queryData = MediaQuery.of(context);
 
-    final Restaurant restaurant =
-        ModalRoute.of(context).settings.arguments as Restaurant;
-
     double sizePrice = 20.0;
 
-    return Column(
+    return StreamBuilder(
+      stream: restDB,
+      builder: (
+        BuildContext context,
+        AsyncSnapshot<QuerySnapshot> snapshot
+                  ) {
+        if (snapshot.hasError){return Text('Something went wrong');}
+        if(snapshot.connectionState == ConnectionState.waiting){
+                  return Text('Loading');
+                }
+
+              final data = snapshot.requireData;
+
+              for (int i = 0; i < data.size; i++){
+                if(data.docs[i]['name'] == 'Cantina - Almoço' && restaurant.name == 'Cantina - Jantar'){
+                  priceRange = data.docs[i]['priceRange'];
+                  starRating = double.parse(data.docs[i]['starRating']);
+                  numPeople = data.docs[i]['capacity'];
+                  linkImage = data.docs[i]['linkImage'];
+                  continue;
+                }
+
+                if(data.docs[i]['name'] == 'Cantina - Jantar'){
+                  scheduleList = data.docs[i]['schedule'];
+                  break;
+                }
+
+                if(data.docs[i]['name'] == restaurant.name){
+                  priceRange = data.docs[i]['priceRange'];
+                  starRating = double.parse(data.docs[i]['starRating']);
+                  numPeople = data.docs[i]['capacity'];
+                  scheduleList = data.docs[i]['schedule'];
+                  linkImage = data.docs[i]['linkImage'];
+                  break;
+                }
+              }
+
+              return SingleChildScrollView(
+                child: 
+              Column(             
       children: [
-        Container(
+        linkImage != null 
+        ? Container(
           padding: EdgeInsets.fromLTRB(5, 10, 5, 0),
           height: 225,
           decoration: BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.fill,
-              image: NetworkImage(
-                  'https://sigarra.up.pt/sasup/pt/imagens/SC-alimentacao-grill-engenharia-renovado.jpg'), //TODO: Change to link from DB
+              image: NetworkImage(linkImage), 
             ),
           ),
-        ),
+        ) : Padding( padding: EdgeInsets.only(top: 20),),
         Container(
           padding: EdgeInsets.fromLTRB(1, 0, 1, 0),
-          height: 300,
+          height: queryData.size.height / 2,
           width: double.maxFinite,
           child: Card(
             elevation: 5,
@@ -101,12 +145,16 @@ class RestaurantInfoPageView extends StatelessWidget {
           ),
         ),
       ],
-    );
+    ),);
+      }
+  );
+
   }
 
   List<Widget> getCapacity(BuildContext context) {
     List<Widget> capacityList = [];
 
+    if(numPeople != null){
     capacityList.add(Text(
       numPeople.toString(),
       style: Theme.of(context).textTheme.bodyLarge.apply(),
@@ -117,6 +165,7 @@ class RestaurantInfoPageView extends StatelessWidget {
       color: Color.fromARGB(255, 0x75, 0x17, 0x1e),
       size: 20.0,
     ));
+    }
 
     return capacityList;
   }
@@ -231,8 +280,13 @@ class RestaurantInfoPageView extends StatelessWidget {
           color: Color.fromARGB(255, 141, 15, 23),
           fontWeight: FontWeight.bold),
     ));
-    schedule.add(Text('2a a 6a Feira: 12:00 - 14:00'));
-    schedule.add(Text('Sáb. e Dom. : Fechado'));
+
+    List<String> daysOfWeek = ['2a feira', '3a feira', '4a feira', 
+                  '5a feira', '6a feira', 'Sábado', 'Domingo'];
+
+    for(var idx = 0; idx < scheduleList.length; idx++){
+      schedule.add(Text(daysOfWeek[idx] + ': ' + scheduleList[idx]));
+    }
 
     return schedule;
   }

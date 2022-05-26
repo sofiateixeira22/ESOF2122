@@ -10,12 +10,12 @@ import 'package:uni/utils/constants.dart' as Constants;
 
 class UniEatsReviewCard extends Card {
   String studentID;
-  String starRating;
+  double starRating;
   String content;
 
   UniEatsReviewCard(
      String studentID,
-  String starRating,
+  double starRating,
   String content, {
     Key key,
   })  : studentID = studentID,
@@ -54,9 +54,7 @@ class UniEatsReviewCard extends Card {
       style: Theme.of(context).textTheme.bodyLarge.apply(),
     ));
 
-    double starValue = double.parse(starRating);
-
-    int num_stars = starValue.floor();
+    int num_stars = starRating.floor();
 
     for (int num = 0; num < num_stars; num++) {
       star_rating.add(Icon(
@@ -66,7 +64,7 @@ class UniEatsReviewCard extends Card {
       ));
     }
 
-    double half_star = starValue - num_stars;
+    double half_star = starRating - num_stars;
 
     if (half_star != 0.0) {
       star_rating.add(Icon(
@@ -76,7 +74,7 @@ class UniEatsReviewCard extends Card {
       ));
     }
 
-    int stars_left = 5 - starValue.ceil();
+    int stars_left = 5 - starRating.ceil();
     for (int i = 0; i < stars_left; i++) {
       star_rating.add(Icon(
         Icons.star_border,
