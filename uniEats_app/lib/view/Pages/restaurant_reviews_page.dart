@@ -1,6 +1,7 @@
 
 import 'dart:convert';
 
+import 'package:logger/logger.dart';
 import 'package:uni/model/app_state.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -16,6 +17,7 @@ import 'package:uni/view/Widgets/schedule_slot.dart';
 import 'package:uni/view/Widgets/unieats_restaurant_card.dart';
 
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:uni/view/Widgets/unieats_review_card.dart';
 
 
 
@@ -42,18 +44,30 @@ class RestaurantReviewsPageView extends StatelessWidget {
         ModalRoute.of(context).settings.arguments as Restaurant;
    
     var restaurantInfo = restaurant.toMap();
-    return Column(
-          children: <Widget>[
-            Expanded(
-              child: ReviewShower(),
-            ),
-            Expanded(
-              child: AddReview().build(context),
-              
-            ),
 
-          ],
-        );
+    return Container(
+      padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+      child: Column(
+        children: [
+        SizedBox(
+          height: queryData.size.height * (3/5),
+          child: ReviewShower(),
+        ),
+        AddReview().build(context),
+      ],)
+    );
+
+    // return Column(
+    //       children: <Widget>[
+    //         Expanded(
+    //           child: ReviewShower(),
+    //         ),
+    //         Expanded(
+    //           child: AddReview().build(context),          
+    //         ),
+
+    //       ],
+    //     );
 
   }
 }
@@ -80,7 +94,6 @@ class ReviewShowerState extends State<ReviewShower>{
         // in the middle of the parent.
         child: Container(
           key: _reviewKey,
-          padding: const EdgeInsets.symmetric(vertical:20, horizontal: 20),
           child: StreamBuilder<QuerySnapshot>(
               stream: reviews,
               builder: (
@@ -91,69 +104,35 @@ class ReviewShowerState extends State<ReviewShower>{
                 if(snapshot.connectionState == ConnectionState.waiting){
                   return Text("Loading");
                 }
+
                 final data = snapshot.requireData;
 
-                return Expanded(
-                      child: ListView.builder(
+                return ListView.builder(
                         itemCount: data.size,
                         itemBuilder: (context, index){
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Column(children: [
-                               Text("${data.docs[index]['description']}", style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 1.5),),
-                              Text("${data.docs[index]['studentID']} - Rated ${data.docs[index]['starRating']} stars"),
-                             
-                            ],
-                            ),
-                          );
+                          return Card( 
+                            elevation: 5,
+                            child: UniEatsReviewCard(
+                               "${data.docs[index]['studentID']}",
+                               "${data.docs[index]['starRating']}",
+                               "${data.docs[index]['description']}"
+                               ).buildCardContent(context));
                         }
-                      ),
-                    );
-              }
-          ),
-        ),
-        
-      );
+                      );
+  }), ), );
+
+      
   }
 
 }
-
-/*
-Column(
-                  children: <Widget>[
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: data.size,
-                        itemBuilder: (context, index){
-                          return Text("${data.docs[index]['studentID']} - Rated ${data.docs[index]['starRating']} stars");
-                        }
-                      ),
-                    ),
-                    Expanded(
-                      child: ListView.builder(
-                        itemCount: data.size,
-                        itemBuilder: (context, index){
-                          return Text("${data.docs[index]['description']}");
-                        }
-                      ),
-                    ),
-
-                  ]
-                );*/
-
 class AddReview extends StatelessWidget{
-
-
-
   //CollectionReference reviews = FirebaseFirestore.instance.collection("reviews");
   
   void _showFeedback(context, restaurantName) {
     showDialog(
       context: context,
       builder: (context) {
-
-        
-    
+  
         return QuickFeedback(
           title: 'Leave a Review', // Title of dialog
           showTextBox: true, // default false
@@ -186,12 +165,8 @@ class AddReview extends StatelessWidget{
     final Restaurant restaurant =
         ModalRoute.of(context).settings.arguments as Restaurant;
     final restaurantName = restaurant.toMap()['name'];
-    return MaterialApp(
-      title: 'Example App',
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: SingleChildScrollView(
-          child: Container(
+    return Container(
+      padding: EdgeInsets.only(top: 5),
             child: Center(
               child: ElevatedButton(
                 onPressed: () => _showFeedback(context, restaurantName),
@@ -203,11 +178,7 @@ class AddReview extends StatelessWidget{
                 child: Text('Add Review',style: new TextStyle(
                             fontSize: 15, color: Color.fromARGB(255, 0xfa, 0xfa, 0xfa)),),
               ),
-            ),
-          ),
-        ),
-      ),
-    );
+            ));
   }
 
 }
