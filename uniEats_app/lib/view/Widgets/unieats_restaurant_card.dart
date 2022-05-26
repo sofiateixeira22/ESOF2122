@@ -7,6 +7,8 @@ import 'package:logger/logger.dart';
 import 'package:tuple/tuple.dart';
 import 'package:uni/controller/restaurant_fetcher/restaurant_fetcher_html.dart';
 import 'package:uni/model/app_state.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:uni/model/entities/meal.dart';
@@ -163,6 +165,26 @@ class FavoriteWidget extends StatefulWidget {
 class _FavoriteWidgetState extends State<FavoriteWidget> {
   bool _isFavorited = false;
 
+
+  List<String> getFavorites(context){
+    final Stream<QuerySnapshot> favoritesStream = FirebaseFirestore.instance.collection("favorites").snapshots();
+    final studentName = 
+    StreamBuilder<QuerySnapshot>(
+      stream: favoritesStream,
+      builder:  (
+                  BuildContext context,
+                  AsyncSnapshot<QuerySnapshot> snapshot,
+                ){
+                  if (snapshot.hasError){return Text("Something went wrong");}
+                  if(snapshot.connectionState == ConnectionState.waiting){
+                    return Text("Loading");
+                  }
+                  final data = snapshot.requireData;
+                  
+                }
+      );
+  
+  }
   @override
   Widget build(BuildContext context) {
     return Row(

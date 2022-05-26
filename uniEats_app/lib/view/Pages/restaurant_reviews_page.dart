@@ -100,7 +100,7 @@ class ReviewShowerState extends State<ReviewShower>{
                           return Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Column(children: [
-                               Text("${data.docs[index]['description']}", style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 1.5),),
+                              Text("${data.docs[index]['description']}", style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 1.5),),
                               Text("${data.docs[index]['studentID']} - Rated ${data.docs[index]['starRating']} stars"),
                              
                             ],
