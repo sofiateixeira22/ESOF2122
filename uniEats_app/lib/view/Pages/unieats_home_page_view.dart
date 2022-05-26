@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:logger/logger.dart';
-import 'package:uni/controller/restaurant_fetcher/restaurant_fetcher_html.dart';
 import 'package:uni/model/app_state.dart';
 import 'package:uni/model/entities/restaurant.dart';
 import 'package:uni/view/Pages/unieats_gen_page_view.dart';
 import 'package:uni/view/Widgets/unieats_restaurant_card.dart';
-import 'package:uni/utils/constants.dart' as Constants;
 
 import 'package:intl/intl.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+
+import '../Widgets/unieats_restaurant_search.dart';
 
 class UniEatsHomePageView extends StatefulWidget {
   UniEatsHomePageView({
@@ -56,17 +54,30 @@ class UniEatsHomePageViewState extends UniEatsGeneralPageViewState {
 
     final List<Widget> data = <Widget>[];
 
-    data.add(Container(
-              padding: EdgeInsets.fromLTRB(20, 20, 20, 5),
-              child: Text(
-                'Ementa de hoje (' +
-                      DateFormat('dd/MM/yyyy').format(DateTime.now()) +
-                      ")",
-                style: Theme.of(context)
-                    .textTheme
-                    .headline6
-                    .apply(fontSizeFactor: 1.3),
-              ),
+    data.add(Row(
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  padding: EdgeInsets.fromLTRB(20, 20, 20, 5),
+                  child: Text(
+                    'Ementa de hoje (' +
+                        DateFormat('dd/MM/yyyy').format(DateTime.now()) +
+                        ")",
+                    style: Theme.of(context)
+                        .textTheme
+                        .headline6
+                        .apply(fontSizeFactor: 1.3),
+                  ),
+                ),
+                IconButton(
+                  padding: EdgeInsets.fromLTRB(5, 20, 25, 5),
+                  icon: const Icon(Icons.search),
+                  onPressed: () => showSearch(
+                      context: context,
+                      delegate: RestaurantSearch(context, restaurants)
+                  ),
+                ),
+              ],
             ));
     if (restaurants != null) {
         String day = DateFormat('EEEE').format(DateTime.now());
