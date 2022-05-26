@@ -40,7 +40,7 @@
 
 ### Release
 
-[Release of Iteration 2]
+[Release of Iteration 2](https://github.com/LEIC-ES-2021-22/3LEIC02T4/releases/tag/Iteration2)
 
 ### Board Screenshots 
 
