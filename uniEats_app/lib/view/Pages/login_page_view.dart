@@ -6,6 +6,7 @@ import 'package:uni/model/app_state.dart';
 import 'package:uni/redux/action_creators.dart';
 import 'package:uni/view/Widgets/terms_and_conditions.dart';
 import 'package:uni/utils/constants.dart' as Constants;
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../model/app_state.dart';
 
@@ -30,9 +31,9 @@ class _LoginPageViewState extends State<LoginPageView> {
   static final FocusNode passwordFocus = FocusNode();
 
   static final TextEditingController usernameController =
-      TextEditingController();
+  TextEditingController();
   static final TextEditingController passwordController =
-      TextEditingController();
+  TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   static bool _exitApp = false;
@@ -96,9 +97,12 @@ class _LoginPageViewState extends State<LoginPageView> {
     widgets.add(createLogInButton(queryData, context));
     widgets.add(
         Padding(padding: EdgeInsets.only(bottom: queryData.size.height / 35)));
-    widgets.add(createStatusWidget(context));
+    widgets.add(recoverPassword());
     widgets.add(
         Padding(padding: EdgeInsets.only(bottom: queryData.size.height / 35)));
+    widgets.add(createStatusWidget(context));
+    widgets.add(
+        Padding(padding: EdgeInsets.only(bottom: queryData.size.height / 75)));
     widgets.add(createSafeLoginButton(context));
 
     return widgets;
@@ -164,9 +168,9 @@ class _LoginPageViewState extends State<LoginPageView> {
       value: faculty[0].toUpperCase(),
       items: Constants.faculties
           .map((value) => DropdownMenuItem(
-                value: value.toUpperCase(),
-                child: Text(value.toUpperCase()),
-              ))
+        value: value.toUpperCase(),
+        child: Text(value.toUpperCase()),
+      ))
           .toList(),
       onChanged: (newDropdownValue) {
         setState(() {
@@ -221,7 +225,7 @@ class _LoginPageViewState extends State<LoginPageView> {
         textAlign: TextAlign.left,
         decoration: passwordFieldDecoration('palavra-passe'),
         validator: (String value) =>
-            value.isEmpty ? 'Preenche este campo' : null);
+        value.isEmpty ? 'Preenche este campo' : null);
   }
 
   /// Creates the widget for the user to keep signed in (save his data).
@@ -235,6 +239,21 @@ class _LoginPageViewState extends State<LoginPageView> {
         style: TextStyle(
             color: Colors.white, fontSize: 17.0, fontWeight: FontWeight.w300),
       ),
+    );
+  }
+
+  Widget recoverPassword() {
+    return InkWell(
+      child: Text(
+        'Recuperar Palavra-Passe',
+        textAlign: TextAlign.center,
+        style: TextStyle(
+            decoration: TextDecoration.underline,
+            color: Colors.white,
+            fontSize: 15.0,
+            fontWeight: FontWeight.w300),
+      ),
+      onTap: () => launch('https://sigarra.up.pt/feup/pt/gent_geral.list_services'),
     );
   }
 
