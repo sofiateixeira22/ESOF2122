@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:uni/model/entities/restaurant.dart';
 
+import 'package:uni/utils/constants.dart' as Constants;
+
+
 /// Manages the section of the app displayed when the
 /// user searches for a restaurant
 class RestaurantSearch extends SearchDelegate<String> {
@@ -42,6 +45,11 @@ class RestaurantSearch extends SearchDelegate<String> {
         return ListTile(
           title: Text(suggestions.elementAt(index).name,
           ),
+          onTap: () => Navigator.pushNamed(
+            context,
+            '/' + Constants.navRestaurant,
+            arguments: suggestions.elementAt(index),
+          ),
         );
       },
     );
@@ -59,18 +67,11 @@ class RestaurantSearch extends SearchDelegate<String> {
         return ListTile(
           title: Text(suggestions.elementAt(index).name,
           ),
-          onTap: () {
-            query = suggestions.elementAt(index).name;
-            /*int i;
-            for(i = 0; i < restaurants.length; i++) {
-              if(suggestions.elementAt(index).name == restaurants[i].name) {
-                break;
-              }
-            }
-            String day = DateFormat('EEEE').format(DateTime.now());
-            UniEatsRestaurantCard(
-                restaurants[i], day,restaurants[i].name, true);*/
-          },
+          onTap: () => Navigator.pushNamed(
+            context,
+            '/' + Constants.navRestaurant,
+            arguments: suggestions.elementAt(index),
+          ),
         );
       },
     );
