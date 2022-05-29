@@ -107,7 +107,7 @@ class ReviewShowerState extends State<ReviewShower>{
                             elevation: 5,
                             child: 
                             widget.restName == "${data.docs[index]['restaurantID']}" 
-                              ? UniEatsReviewCard(
+                              ? UniEatsReviewCard(StoreProvider.of<AppState>(context).state.content['profile'].email.substring(0,11),
                                "${data.docs[index]['studentID']}",
                                double.parse("${data.docs[index]['starRating']}"),
                                "${data.docs[index]['description']}"
