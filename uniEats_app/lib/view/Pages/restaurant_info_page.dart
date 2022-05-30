@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
+import 'package:uni/controller/map_utils.dart';
 import 'package:uni/model/entities/restaurant.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -11,14 +12,19 @@ class Arguments {
   Arguments(this.restaurant);
 }
 
-/// Manages the 'schedule' sections of the app
-class RestaurantInfoPageView extends StatelessWidget {
+class RestaurantInfoPageView extends StatefulWidget {
+  
+  final Restaurant restaurant;
   RestaurantInfoPageView({
     Key key,
     @required this.restaurant,
   });
 
-  final Restaurant restaurant;
+  @override
+  RestaurantInfoPageViewState createState() => RestaurantInfoPageViewState();
+}
+class RestaurantInfoPageViewState extends State<RestaurantInfoPageView> {
+
   final Stream<QuerySnapshot> restDB =
       FirebaseFirestore.instance.collection('restaurants').snapshots();
 
@@ -28,6 +34,7 @@ class RestaurantInfoPageView extends StatelessWidget {
   var scheduleList;
   String linkImage;
   String address;
+  var coords;
 
   @override
   Widget build(BuildContext context) {
@@ -49,20 +56,21 @@ class RestaurantInfoPageView extends StatelessWidget {
 
           for (int i = 0; i < data.size; i++) {
             if (data.docs[i]['name'] == 'Cantina - Almoço' &&
-                restaurant.name == 'Cantina - Jantar') {
+                widget.restaurant.name == 'Cantina - Jantar') {
 
               priceRange = data.docs[i]['priceRange'];
               starRating = double.parse(data.docs[i]['starRating']);
               numPeople = data.docs[i]['capacity'];
               linkImage = data.docs[i]['linkImage'];
               address = data.docs[i]['address'];
+              coords = data.docs[i]['coords'];
               continue;
             } else if (data.docs[i]['name'] == 'Cantina - Jantar' &&
                 priceRange != null) {
 
               scheduleList = data.docs[i]['schedule'];
               break;
-            } else if (data.docs[i]['name'] == restaurant.name) {
+            } else if (data.docs[i]['name'] == widget.restaurant.name) {
 
               priceRange = data.docs[i]['priceRange'];
               starRating = double.parse(data.docs[i]['starRating']);
@@ -70,6 +78,7 @@ class RestaurantInfoPageView extends StatelessWidget {
               scheduleList = data.docs[i]['schedule'];
               linkImage = data.docs[i]['linkImage'];
               address = data.docs[i]['address'];
+              coords = data.docs[i]['coords'];
               break;
             }
           }
@@ -93,7 +102,7 @@ class RestaurantInfoPageView extends StatelessWidget {
                       ),
                 Container(
                   padding: EdgeInsets.fromLTRB(1, 0, 1, 0),
-                  height: queryData.size.height / 2,
+                  height: queryData.size.height /2,
                   width: double.maxFinite,
                   child: Card(
                     elevation: 5,
@@ -362,6 +371,8 @@ class RestaurantInfoPageView extends StatelessWidget {
   List<Widget> getLocation(BuildContext context) {
     List<Widget> location_list = [];
 
+    final MediaQueryData queryData = MediaQuery.of(context);
+
     location_list.add(
       Padding(
         padding: EdgeInsets.only(left: 10, right: 10),
@@ -379,12 +390,35 @@ class RestaurantInfoPageView extends StatelessWidget {
       ),
     );
 
-    location_list.add(Text(
-      'Google Map :)',
-      style: TextStyle(
-        fontSize: 15.0,
+    location_list.add(
+      Container(
+        height: 50.0,
+        width: queryData.size.width *0.70,
+        decoration: BoxDecoration(
+          border: Border.all(color: Color.fromARGB(255, 141, 15, 23)),
+           borderRadius: BorderRadius.all(Radius.circular(10)),
+        ),
+        child: TextButton(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+            'Open Location in Google Maps',
+            style: TextStyle(
+              fontSize: 15.0,
+              ),
+            ),
+            Icon(
+              Icons.pin_drop,
+              color: Color.fromARGB(255, 141, 15, 23),
+            )
+          ],),
+          onPressed: () {
+            MapUtils.openMap(coords.latitude, coords.longitude);
+          },
+        )
       ),
-    ));
+      );
 
     return location_list;
   }
