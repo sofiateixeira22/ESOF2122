@@ -403,7 +403,7 @@ class RestaurantInfoPageViewState extends State<RestaurantInfoPageView> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-            'Open Location in Google Maps',
+            'Abrir Localização no Google Maps',
             style: TextStyle(
               fontSize: 15.0,
               ),
