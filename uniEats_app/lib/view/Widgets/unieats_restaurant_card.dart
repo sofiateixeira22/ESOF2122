@@ -1,8 +1,10 @@
 // ignore_for_file: lines_longer_than_80_chars
 
+import 'dart:convert';
 import 'dart:ffi';
 //import 'dart:html';
 
+import 'package:http/http.dart';
 import 'package:logger/logger.dart';
 import 'package:tuple/tuple.dart';
 import 'package:uni/controller/restaurant_fetcher/restaurant_fetcher_html.dart';
@@ -165,28 +167,30 @@ class FavoriteWidget extends StatefulWidget {
 class _FavoriteWidgetState extends State<FavoriteWidget> {
   bool _isFavorited = false;
 
+  final CollectionReference _collectionFav = FirebaseFirestore.instance.collection('favorites');
 
-  List<String> getFavorites(context){
-    final Stream<QuerySnapshot> favoritesStream = FirebaseFirestore.instance.collection("favorites").snapshots();
-    final studentName = 
-    StreamBuilder<QuerySnapshot>(
-      stream: favoritesStream,
-      builder:  (
-                  BuildContext context,
-                  AsyncSnapshot<QuerySnapshot> snapshot,
-                ){
-                  if (snapshot.hasError){return Text("Something went wrong");}
-                  if(snapshot.connectionState == ConnectionState.waiting){
-                    return Text("Loading");
-                  }
-                  final data = snapshot.requireData;
-                  
-                }
-      );
+  Future<List> getFavorites(context) async {
+    QuerySnapshot querySnapshot = await _collectionFav.get();
+    final favorites_all = querySnapshot.docs.map((doc) => doc.data()).toList();
+    var userID = StoreProvider.of<AppState>(context).state.content['profile'].email.substring(0,11);
+    var user_favorites = [];
+    print("[GET_FAV]");
+    for(var i = 0; i < favorites_all.length; i++){
+      var studentID = (jsonDecode(jsonEncode(favorites_all[i]))['studentID']);
+      if(studentID == userID){
+        print((jsonDecode(jsonEncode(favorites_all[i]))['restaurtsName']));
+        return((jsonDecode(jsonEncode(favorites_all[i]))['restaurtsName']));
+      }
+        
+    }
+
+    return user_favorites;
   
   }
+
   @override
   Widget build(BuildContext context) {
+    getFavorites(context);
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
