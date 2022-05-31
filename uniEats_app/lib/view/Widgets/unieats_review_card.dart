@@ -9,16 +9,19 @@ import 'generic_card.dart';
 import 'package:uni/utils/constants.dart' as Constants;
 
 class UniEatsReviewCard extends Card {
+  String userID;
   String studentID;
-  String starRating;
+  double starRating;
   String content;
 
   UniEatsReviewCard(
-     String studentID,
-  String starRating,
-  String content, {
+    String userID,
+    String studentID,
+    double starRating,
+    String content, {
     Key key,
-  })  : studentID = studentID,
+  })  : userID = userID,
+        studentID = studentID,
         starRating = starRating,
         content = content,
         super(key: key);
@@ -32,17 +35,29 @@ class UniEatsReviewCard extends Card {
       padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-          Text(studentID),
-          Row(children: getStarRatingView(context)),
-        ],),
-        Padding(padding: EdgeInsets.fromLTRB(5, 10, 5, 5)),
-        Text(content),
-      ],
-    ),);
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(studentID, style: TextStyle(fontSize: 16.0)),
+              Row(children: getStarRatingView(context)),
+              userID == studentID
+                  ? IconButton(
+                      icon: Icon(Icons.edit,
+                          color: Color.fromARGB(255, 0x75, 0x17, 0x1e),
+                          size: 18.0),
+                      onPressed: () {
+                        print('Edit/Delete Review!');
+                        //TODO - EDIT REVIEW USER STORY - include delete from db too
+                      })
+                  : Container(),
+            ],
+          ),
+          Padding(padding: EdgeInsets.fromLTRB(5, 12, 5, 5)),
+          Text(content),
+        ],
+      ),
+    );
   }
 
   List<Widget> getStarRatingView(BuildContext context) {
@@ -54,9 +69,7 @@ class UniEatsReviewCard extends Card {
       style: Theme.of(context).textTheme.bodyLarge.apply(),
     ));
 
-    double starValue = double.parse(starRating);
-
-    int num_stars = starValue.floor();
+    int num_stars = starRating.floor();
 
     for (int num = 0; num < num_stars; num++) {
       star_rating.add(Icon(
@@ -66,7 +79,7 @@ class UniEatsReviewCard extends Card {
       ));
     }
 
-    double half_star = starValue - num_stars;
+    double half_star = starRating - num_stars;
 
     if (half_star != 0.0) {
       star_rating.add(Icon(
@@ -76,7 +89,7 @@ class UniEatsReviewCard extends Card {
       ));
     }
 
-    int stars_left = 5 - starValue.ceil();
+    int stars_left = 5 - starRating.ceil();
     for (int i = 0; i < stars_left; i++) {
       star_rating.add(Icon(
         Icons.star_border,
@@ -87,6 +100,4 @@ class UniEatsReviewCard extends Card {
 
     return star_rating;
   }
-
-
 }

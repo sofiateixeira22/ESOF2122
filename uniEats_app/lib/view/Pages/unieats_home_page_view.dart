@@ -60,6 +60,7 @@ class UniEatsHomePageViewState extends UniEatsGeneralPageViewState {
     final Random rnd = Random();
 
     data.add( Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           IconButton(
             padding: EdgeInsets.fromLTRB(25, 20, 0, 5),
@@ -75,7 +76,7 @@ class UniEatsHomePageViewState extends UniEatsGeneralPageViewState {
             child: Text(
               'Ementa de hoje (' +
                   DateFormat('dd/MM/yyyy').format(DateTime.now()) +
-                  ")",
+                  ')',
               style: Theme.of(context)
                   .textTheme
                   .headline6

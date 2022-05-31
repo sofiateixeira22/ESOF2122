@@ -43,37 +43,30 @@ class RestaurantReviewsPageView extends StatelessWidget {
     final Restaurant restaurant =
         ModalRoute.of(context).settings.arguments as Restaurant;
    
-    var restaurantInfo = restaurant.toMap();
+    var restName = restaurant.name;
 
-    return Container(
+    return SingleChildScrollView(
+                child: Container(
       padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
       child: Column(
         children: [
+          AddReview().build(context),
         SizedBox(
           height: queryData.size.height * (3/5),
-          child: ReviewShower(),
+          child: ReviewShower(restName),
         ),
-        AddReview().build(context),
+        
       ],)
-    );
-
-    // return Column(
-    //       children: <Widget>[
-    //         Expanded(
-    //           child: ReviewShower(),
-    //         ),
-    //         Expanded(
-    //           child: AddReview().build(context),          
-    //         ),
-
-    //       ],
-    //     );
+    ),);
 
   }
 }
 
 class ReviewShower extends StatefulWidget{
-  const ReviewShower({key});
+  final String restName;
+
+  const ReviewShower(String restName, {key}) : restName = restName;
+
 
   @override
   State<StatefulWidget> createState() {
@@ -112,11 +105,15 @@ class ReviewShowerState extends State<ReviewShower>{
                         itemBuilder: (context, index){
                           return Card( 
                             elevation: 5,
-                            child: UniEatsReviewCard(
+                            child: 
+                            widget.restName == "${data.docs[index]['restaurantID']}" 
+                              ? UniEatsReviewCard(StoreProvider.of<AppState>(context).state.content['profile'].email.substring(0,11),
                                "${data.docs[index]['studentID']}",
-                               "${data.docs[index]['starRating']}",
+                               double.parse("${data.docs[index]['starRating']}"),
                                "${data.docs[index]['description']}"
-                               ).buildCardContent(context));
+                               ).buildCardContent(context)
+                              : Container()
+                              );
                         }
                       );
   }), ), );
@@ -166,7 +163,7 @@ class AddReview extends StatelessWidget{
         ModalRoute.of(context).settings.arguments as Restaurant;
     final restaurantName = restaurant.toMap()['name'];
     return Container(
-      padding: EdgeInsets.only(top: 5),
+      padding: EdgeInsets.only(bottom: 5),
             child: Center(
               child: ElevatedButton(
                 onPressed: () => _showFeedback(context, restaurantName),
