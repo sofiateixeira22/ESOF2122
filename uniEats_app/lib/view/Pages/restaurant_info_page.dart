@@ -255,7 +255,7 @@ class RestaurantInfoPageViewState extends State<RestaurantInfoPageView> {
       var now = DateTime.now();
       var weekDay = now.weekday - 1;
 
-      var hours = now.hour == 23 ? 0 : now.hour + 1;
+      var hours = now.hour;
       var minutes = now.minute;
 
       String scheduleToday = scheduleList[weekDay];
