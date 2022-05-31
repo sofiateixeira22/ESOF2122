@@ -405,7 +405,7 @@ class RestaurantInfoPageViewState extends State<RestaurantInfoPageView> {
               Text(
             'Abrir Localização no Google Maps',
             style: TextStyle(
-              fontSize: 15.0,
+              fontSize: 13.0,
               ),
             ),
             Icon(
