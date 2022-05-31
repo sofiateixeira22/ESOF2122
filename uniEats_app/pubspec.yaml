@@ -51,6 +51,8 @@ dependencies:
   cloud_firestore: ^3.1.16
   quick_feedback: ^0.1.1
   material_design_icons_flutter: ^5.0.6595
+  geolocator: ^8.2.1
+  vector_math: ^2.1.1
 
 
 dev_dependencies:
