@@ -11,7 +11,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
-
+import 'package:uni/utils/constants.dart' as Constants;
 import '../Widgets/request_dependent_widget_builder.dart';
 
 class FavouritesPageView extends StatefulWidget {
@@ -118,21 +118,30 @@ class FavouritesPageViewState extends UniEatsNoDrawerPageView {
 
     if (restNames != null) {
       print("[MiniCard Object]");
-      print(restNames.length);
+      print(all_rest.length);
       for (int i = 0; i < all_rest.length; i++) {
         for(int j = 0; j< restNames.length; j++){
           if(restNames[j]== all_rest[i].name){
-            print("Found");
-            favorites.add(Container(
-                padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                height: 110,
-                width: double.maxFinite,
-                child: Card(
-                  elevation: 5,
-                  child: (Center(
-                    child: Text(restNames[j]),
-                  )),
-                )));
+            favorites.add(GestureDetector(
+              child: Container(
+                  padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                  height: 110,
+                  width: double.maxFinite,
+                  child: Card(
+                    elevation: 5,
+                    child: (Center(
+                      child: Text(restNames[j]),
+                    )),
+                  
+                  ),
+                  
+                  ),
+                onTap: ()=> Navigator.pushNamed(
+                context,
+                  '/' + Constants.navRestaurant,
+                  arguments: all_rest[i]
+                )
+            ));
           }
         }
       }
