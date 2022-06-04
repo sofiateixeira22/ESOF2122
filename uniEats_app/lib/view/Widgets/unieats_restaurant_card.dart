@@ -174,11 +174,11 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
     final favorites_all = querySnapshot.docs.map((doc) => doc.data()).toList();
     var userID = StoreProvider.of<AppState>(context).state.content['profile'].email.substring(0,11);
     var user_favorites = [];
-    print("[GET_FAV]");
+    //print("[GET_FAV]");
     for(var i = 0; i < favorites_all.length; i++){
       var studentID = (jsonDecode(jsonEncode(favorites_all[i]))['studentID']);
       if(studentID == userID){
-        print((jsonDecode(jsonEncode(favorites_all[i]))['restaurtsName']));
+        //print((jsonDecode(jsonEncode(favorites_all[i]))['restaurtsName']));
         return((jsonDecode(jsonEncode(favorites_all[i]))['restaurtsName']));
       }
         
