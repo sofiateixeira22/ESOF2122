@@ -4,7 +4,9 @@ import 'dart:convert';
 import 'dart:ffi';
 //import 'dart:html';
 
+
 import 'package:http/http.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:logger/logger.dart';
 import 'package:tuple/tuple.dart';
 import 'package:uni/controller/restaurant_fetcher/restaurant_fetcher_html.dart';
@@ -29,6 +31,9 @@ class UniEatsRestaurantCard extends GenericCard {
   String day;
   bool isHomepage;
   String title;
+
+  final Stream<QuerySnapshot> restDB =
+      FirebaseFirestore.instance.collection('restaurants').snapshots();
 
   UniEatsRestaurantCard(
     Restaurant restaurant,
@@ -115,25 +120,61 @@ class UniEatsRestaurantCard extends GenericCard {
   List<Widget> getMealRows(context, List<Meal> meals) {
     final List<Widget> rows = <Widget>[];
     bool click = false;
-    //add favorite button, times and location(?)
+
+    var scheduleList;
+    int priceRange;
+    var coords;
+
     if (isHomepage) {
-      rows.add(Row(
+    rows.add(StreamBuilder(
+        stream: restDB,
+        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return Text('Something went wrong');
+          }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Text('Loading');
+          }
+
+          final data = snapshot.requireData;
+
+          for (int i = 0; i < data.size; i++) {
+            if (data.docs[i]['name'] == 'Cantina - Almoço' &&
+                restaurant.name == 'Cantina - Jantar') {
+              priceRange = data.docs[i]['priceRange'];
+              coords = data.docs[i]['coords'];
+              continue;
+            } else if (data.docs[i]['name'] == 'Cantina - Jantar' &&
+                priceRange != null) {
+
+              scheduleList = data.docs[i]['schedule'];
+              break;
+            } else if (data.docs[i]['name'] == restaurant.name) {
+
+              priceRange = data.docs[i]['priceRange'];
+              scheduleList = data.docs[i]['schedule'];
+              coords = data.docs[i]['coords'];
+              break;
+            }
+          }
+          return Row(
         children: [
         Row(
           children: [
             Icon(Icons.pin_drop_outlined),
-            Text('50m'), //for location to current place
+            Text((coords.latitude).toString() + ' - ' + (coords.longitude).toString(), style: TextStyle(fontSize: 9.0)), //for location to current place
           ],
         ),
         Spacer(),
         Row(children: [
           Icon(Icons.timer_outlined),
-          Text('t_open') //for timeopen
+          Text(scheduleList[DateTime.now().weekday - 1]) //for timeopen
         ],),
         Spacer(),
         FavoriteWidget(),
 
-      ]));
+      ]);
+    }));
     }
 
     final now = DateTime.now();

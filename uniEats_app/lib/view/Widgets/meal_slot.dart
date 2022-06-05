@@ -50,7 +50,7 @@ class MealSlot extends StatelessWidget {
 
     final typeTextField = createTextField(
         this.type,
-        textStyle.apply(fontSizeDelta: -2, color: color),
+        textStyle.apply(fontSizeDelta: -2, color: color, fontSizeFactor: 0.90),
         Alignment.centerLeft,
         constraints.maxWidth/3 -5,
         EdgeInsets.only(right: 5));
