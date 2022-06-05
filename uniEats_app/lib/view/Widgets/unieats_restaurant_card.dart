@@ -171,7 +171,7 @@ class UniEatsRestaurantCard extends GenericCard {
           Text(scheduleList[DateTime.now().weekday - 1]) //for timeopen
         ],),
         Spacer(),
-        FavoriteWidget(),
+        FavoriteWidget( restaurant: this.restaurant,),
 
       ]);
     }));
@@ -200,38 +200,56 @@ class UniEatsRestaurantCard extends GenericCard {
 
 
 class FavoriteWidget extends StatefulWidget {
+  var restaurant;
 
+  FavoriteWidget({
+    Key key,
+    @required this.restaurant,
+  });
+  
   @override
   _FavoriteWidgetState createState() => _FavoriteWidgetState();
 }
 
 class _FavoriteWidgetState extends State<FavoriteWidget> {
   bool _isFavorited = false;
-
+  var restNames;
+  bool loading = false;
+  bool loaded_favs = true;
   final CollectionReference _collectionFav = FirebaseFirestore.instance.collection('favorites');
 
-  Future<List> getFavorites(context) async {
+  getFavorites(context) async {
+    setState(() {
+      loading = true;
+    });
     QuerySnapshot querySnapshot = await _collectionFav.get();
     final favorites_all = querySnapshot.docs.map((doc) => doc.data()).toList();
     var userID = StoreProvider.of<AppState>(context).state.content['profile'].email.substring(0,11);
     var user_favorites = [];
-    //print("[GET_FAV]");
     for(var i = 0; i < favorites_all.length; i++){
       var studentID = (jsonDecode(jsonEncode(favorites_all[i]))['studentID']);
       if(studentID == userID){
-        //print((jsonDecode(jsonEncode(favorites_all[i]))['restaurtsName']));
-        return((jsonDecode(jsonEncode(favorites_all[i]))['restaurtsName']));
+        restNames = ((jsonDecode(jsonEncode(favorites_all[i]))['restaurtsName']));
       }
         
     }
+    setState(() {
+      loading = false;
+    });
 
-    return user_favorites;
-  
+  }
+
+  isFavorite(){
+    var name = widget.restaurant.name;
+    _isFavorited =  restNames.contains(name);
+    loaded_favs = false;
   }
 
   @override
   Widget build(BuildContext context) {
     getFavorites(context);
+    if(loaded_favs){ isFavorite();}
+
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -247,6 +265,7 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
             onPressed: (){
             setState(()
             {
+
               _isFavorited = !_isFavorited;
             });
           }),
