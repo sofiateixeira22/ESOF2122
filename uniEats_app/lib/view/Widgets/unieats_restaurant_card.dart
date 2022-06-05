@@ -1,13 +1,18 @@
 // ignore_for_file: lines_longer_than_80_chars
 
+import 'dart:convert';
 import 'dart:ffi';
 //import 'dart:html';
 
+
+import 'package:http/http.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:logger/logger.dart';
 import 'package:tuple/tuple.dart';
 import 'package:uni/controller/restaurant_fetcher/restaurant_fetcher_html.dart';
 import 'package:uni/model/app_state.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:uni/model/entities/meal.dart';
@@ -203,8 +208,30 @@ class FavoriteWidget extends StatefulWidget {
 class _FavoriteWidgetState extends State<FavoriteWidget> {
   bool _isFavorited = false;
 
+  final CollectionReference _collectionFav = FirebaseFirestore.instance.collection('favorites');
+
+  Future<List> getFavorites(context) async {
+    QuerySnapshot querySnapshot = await _collectionFav.get();
+    final favorites_all = querySnapshot.docs.map((doc) => doc.data()).toList();
+    var userID = StoreProvider.of<AppState>(context).state.content['profile'].email.substring(0,11);
+    var user_favorites = [];
+    //print("[GET_FAV]");
+    for(var i = 0; i < favorites_all.length; i++){
+      var studentID = (jsonDecode(jsonEncode(favorites_all[i]))['studentID']);
+      if(studentID == userID){
+        //print((jsonDecode(jsonEncode(favorites_all[i]))['restaurtsName']));
+        return((jsonDecode(jsonEncode(favorites_all[i]))['restaurtsName']));
+      }
+        
+    }
+
+    return user_favorites;
+  
+  }
+
   @override
   Widget build(BuildContext context) {
+    getFavorites(context);
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
