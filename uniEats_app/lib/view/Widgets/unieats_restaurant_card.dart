@@ -201,7 +201,7 @@ class UniEatsRestaurantCard extends GenericCard {
 
 class FavoriteWidget extends StatefulWidget {
   var restaurant;
-
+  final CollectionReference _collectionFav = FirebaseFirestore.instance.collection('favorites');
   FavoriteWidget({
     Key key,
     @required this.restaurant,
@@ -213,26 +213,31 @@ class FavoriteWidget extends StatefulWidget {
 
 class _FavoriteWidgetState extends State<FavoriteWidget> {
   bool _isFavorited = false;
-  var restNames;
-  bool loading = false;
+  var restNames = [];
+  var user_favs;
+  var userID;
+  var data;
+  bool loading;
   bool loaded_favs = true;
-  final CollectionReference _collectionFav = FirebaseFirestore.instance.collection('favorites');
+  
 
   getFavorites(context) async {
     setState(() {
       loading = true;
     });
-    QuerySnapshot querySnapshot = await _collectionFav.get();
-    final favorites_all = querySnapshot.docs.map((doc) => doc.data()).toList();
-    var userID = StoreProvider.of<AppState>(context).state.content['profile'].email.substring(0,11);
-    var user_favorites = [];
-    for(var i = 0; i < favorites_all.length; i++){
-      var studentID = (jsonDecode(jsonEncode(favorites_all[i]))['studentID']);
+    data = await widget._collectionFav.get();
+    final favoritesAll = data.docs.map((doc) => doc.data()).toList();
+    userID = StoreProvider.of<AppState>(context).state.content['profile'].email.substring(0,11);
+
+    for(var i = 0; i < favoritesAll.length; i++){
+      var studentID = (jsonDecode(jsonEncode(favoritesAll[i]))['studentID']);
       if(studentID == userID){
-        restNames = ((jsonDecode(jsonEncode(favorites_all[i]))['restaurtsName']));
+        user_favs = data.docs[i];
+        restNames = ((jsonDecode(jsonEncode(favoritesAll[i]))['restaurtsName']));
       }
         
     }
+
     setState(() {
       loading = false;
     });
@@ -240,16 +245,41 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
   }
 
   isFavorite(){
+    
     var name = widget.restaurant.name;
     _isFavorited =  restNames.contains(name);
     loaded_favs = false;
   }
 
+  removeFavorite(name){
+    print("Remove");
+    restNames.remove(name);
+    print(user_favs.id);
+    widget._collectionFav.doc(user_favs.id).delete();
+    
+    widget._collectionFav.add({
+      'studentID': userID,
+      'restaurtsName' : restNames
+    });
+    //widget._collectionFav.doc(user_favs.id).delete();
+  }
+
+  addFavorite(name){
+    print("Add");
+    restNames.add(name);
+    widget._collectionFav.doc(user_favs.id).delete();
+    
+    widget._collectionFav.add({
+      'studentID': userID,
+      'restaurtsName' : restNames
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    
     getFavorites(context);
-    if(loaded_favs){ isFavorite();}
-
+    isFavorite();
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -263,11 +293,17 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
                 : const Icon(Icons.star_border)),
             color: Color.fromARGB(255, 0x75, 0x17, 0x1e),
             onPressed: (){
+            if(_isFavorited){
+              removeFavorite(widget.restaurant.name);
+            }else{
+              addFavorite(widget.restaurant.name);
+            }
             setState(()
             {
 
               _isFavorited = !_isFavorited;
             });
+            
           }),
           ),
       ],
