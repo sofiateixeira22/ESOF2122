@@ -27,8 +27,8 @@ class Arguments {
   Arguments(this.restaurant);
 }
 
-/// Manages the 'schedule' sections of the app
-class RestaurantReviewsPageView extends StatelessWidget {
+
+class RestaurantReviewsPageView extends StatefulWidget {
   RestaurantReviewsPageView(
       {Key key,
       @required this.restaurant,
@@ -36,6 +36,16 @@ class RestaurantReviewsPageView extends StatelessWidget {
 
   final Restaurant restaurant;
   
+   @override
+  State<StatefulWidget> createState() => RestaurantReviewsPageViewState();
+}
+  class RestaurantReviewsPageViewState extends State<RestaurantReviewsPageView> {
+  
+  RestaurantReviewsPageViewState({
+    Key key,
+  });
+
+
   @override
   Widget build(BuildContext context) {
     final MediaQueryData queryData = MediaQuery.of(context);
@@ -47,12 +57,11 @@ class RestaurantReviewsPageView extends StatelessWidget {
 
     return SingleChildScrollView(
                 child: Container(
-      padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+      padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
       child: Column(
         children: [
-          AddReview().build(context),
         SizedBox(
-          height: queryData.size.height * (3/5),
+          height: queryData.size.height * (4/5),
           child: ReviewShower(restName),
         ),
         
@@ -64,9 +73,9 @@ class RestaurantReviewsPageView extends StatelessWidget {
 
 class ReviewShower extends StatefulWidget{
   final String restName;
+  final reviewsDB = FirebaseFirestore.instance.collection('reviews');
 
-  const ReviewShower(String restName, {key}) : restName = restName;
-
+  ReviewShower(String restName, {key}) : restName = restName;
 
   @override
   State<StatefulWidget> createState() {
@@ -76,66 +85,171 @@ class ReviewShower extends StatefulWidget{
 }
 
 class ReviewShowerState extends State<ReviewShower>{
+  bool loading = false;
+  var data;
 
-  final Stream<QuerySnapshot> reviews = FirebaseFirestore.instance.collection("reviews").snapshots();
-   final _reviewKey = GlobalKey<ReviewShowerState>();
+  @override
+  void initState() {
+    super.initState();
+
+    fetchData();
+  }
+
+  fetchData() async {
+    setState(() {
+      loading = true;
+    });
+
+    data = await widget.reviewsDB.get();
+  
+
+  setState(() {
+      loading = false;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Container(
-          key: _reviewKey,
-          child: StreamBuilder<QuerySnapshot>(
-              stream: reviews,
-              builder: (
-                  BuildContext context,
-                  AsyncSnapshot<QuerySnapshot> snapshot,
-                  ){
-                if (snapshot.hasError){return Text("Something went wrong");}
-                if(snapshot.connectionState == ConnectionState.waiting){
-                  return Text("Loading");
-                }
+    bool canAdd = true;
+    String userID = StoreProvider.of<AppState>(context).state.content['profile'].email.substring(0,11);
 
-                final data = snapshot.requireData;
+    if(loading){
+      return Center(child: Text('Loading...'));
+    } else {
+      for (int i = 0; i < data.size; i++) {
+            if(widget.restName == data.docs[i]['restaurantID']){
+              if(userID == data.docs[i]['studentID']){
+                canAdd = false;
+                break;
+              }
+            }
+          }
 
-                return ListView.builder(
-                        itemCount: data.size,
-                        itemBuilder: (context, index){
-                          return Card( 
-                            elevation: 5,
-                            child: 
-                            widget.restName == "${data.docs[index]['restaurantID']}" 
-                              ? UniEatsReviewCard(StoreProvider.of<AppState>(context).state.content['profile'].email.substring(0,11),
-                               "${data.docs[index]['studentID']}",
-                               double.parse("${data.docs[index]['starRating']}"),
-                               "${data.docs[index]['description']}"
-                               ).buildCardContent(context)
-                              : Container()
-                              );
-                        }
-                      );
-  }), ), );
+    return Column(children: [
+                   canAdd 
+                   ? AddReview().build(context)
+                   : Container(height: 0),
+                   SingleChildScrollView(
+      child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: getReviews(userID),
+                              ),
+    ), ], );
+    }
 
-      
+
+  }
+
+  List<Widget> getReviews(String userID) {
+    List<Widget> reviews = [];
+    
+    for (int i = 0; i < data.size; i++) {
+      if(widget.restName == data.docs[i]['restaurantID']){
+        if(userID == data.docs[i]['studentID']){
+          reviews.add(
+            Row(
+             children: [
+               Expanded(
+                 child: 
+              Card(
+                elevation: 5,
+                child: UniEatsReviewCard(widget.restName,
+                                    data.docs[i]['studentID'],
+                                    double.parse("${data.docs[i]['starRating']}"),
+                                    data.docs[i]['description']
+                                    ).buildCardContent(context),),),
+                EditReview(data.docs[i]).build(context),
+            ],));
+        } else {
+          reviews.add(Card(
+                elevation: 5,
+                child: UniEatsReviewCard(widget.restName,
+                                    data.docs[i]['studentID'],
+                                    double.parse(data.docs[i]['starRating'].toString()),
+                                    data.docs[i]['description']
+                                    ).buildCardContent(context),),);
+        }
+      }
+    } 
+
+    return reviews;
+  }
+}
+
+class EditReview extends StatelessWidget{
+  var review;
+
+  EditReview(review): review = review;
+
+  void _showFeedback(context, review) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        CollectionReference reviews = FirebaseFirestore.instance.collection("reviews");
+  
+        return QuickFeedback(
+          title: 'Edita a tua Review', // Title of dialog
+          showTextBox: true, // default false
+          textBoxHint:
+              review['description'] + ' (' + review['starRating'].toString() + ')', // Feedback text field hint text default: Tell us more
+          submitText: 'Concluir', // submit button text default: SUBMIT
+          onSubmitCallback: (feedback) {
+            
+            var starRating = (feedback.values.first);
+            var userID = StoreProvider.of<AppState>(context).state.content['profile'].email.substring(0,11);
+            var description = (jsonDecode(jsonEncode(feedback))['feedback']);
+            var restID = review['restaurantID'];
+ 
+            //para editar apagar e adicionar 
+            reviews.doc(review.id).delete();
+
+            reviews
+              .add({'starRating': starRating, 'description': description, 'restaurantID':restID, 'studentID':  userID})
+              .then((value) => print("Review Added"))
+              .catchError((error)=> print("Failed to add review"));
+            Navigator.of(context).pop();
+          },
+          askLaterText: 'Apagar Review', 
+          onAskLaterCallback: () {
+            print('Review Apagada ('+ review.id +') ' + review['description']);
+            reviews.doc(review.id).delete().then((value) => print("Review Deleted")).catchError((error)=> print("Failed to remove review"));
+            Navigator.of(context).pop();
+          },
+        );
+      },
+    );
+  }
+  @override
+  Widget build(BuildContext context) {
+   
+    return Container(
+      padding: EdgeInsets.only(bottom: 5),
+            child: Center(
+              child: Card(
+                elevation: 5,
+              child: IconButton(
+                                    icon: Icon(Icons.edit,
+                                        color: Color.fromARGB(255, 0x75, 0x17, 0x1e),
+                                        size: 16.0),
+                                    onPressed: () => _showFeedback(context, review),
+              ),),));
   }
 
 }
 class AddReview extends StatelessWidget{
-  //CollectionReference reviews = FirebaseFirestore.instance.collection("reviews");
-  
+
   void _showFeedback(context, restaurantName) {
     showDialog(
       context: context,
       builder: (context) {
   
         return QuickFeedback(
-          title: 'Leave a Review', // Title of dialog
+          title: 'Deixa uma Review', // Title of dialog
           showTextBox: true, // default false
           textBoxHint:
-              'Share your review', // Feedback text field hint text default: Tell us more
-          submitText: 'SUBMIT', // submit button text default: SUBMIT
+              'Partilha a tua review', // Feedback text field hint text default: Tell us more
+          submitText: 'Concluir', // submit button text default: SUBMIT
           onSubmitCallback: (feedback) {
             CollectionReference reviews = FirebaseFirestore.instance.collection("reviews");
             var starRating = (feedback.values.first);
@@ -172,7 +286,7 @@ class AddReview extends StatelessWidget{
                   textStyle: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.bold)),
-                child: Text('Add Review',style: new TextStyle(
+                child: Text('Adicionar Review',style: new TextStyle(
                             fontSize: 15, color: Color.fromARGB(255, 0xfa, 0xfa, 0xfa)),),
               ),
             ));

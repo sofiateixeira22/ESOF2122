@@ -9,26 +9,22 @@ import 'generic_card.dart';
 import 'package:uni/utils/constants.dart' as Constants;
 
 class UniEatsReviewCard extends Card {
-  String userID;
+  String restaurant;
   String studentID;
   double starRating;
   String content;
 
   UniEatsReviewCard(
-    String userID,
+    String restaurant,
     String studentID,
     double starRating,
     String content, {
     Key key,
-  })  : userID = userID,
+  })  : restaurant = restaurant,
         studentID = studentID,
         starRating = starRating,
         content = content,
         super(key: key);
-
-  // UniEatsReviewCard.fromEditingInformation(
-  //     Key key, bool editingMode, Function onDelete)
-  //     : super.fromEditingInformation(key, editingMode, onDelete);
 
   Widget buildCardContent(BuildContext context) {
     return Container(
@@ -41,16 +37,6 @@ class UniEatsReviewCard extends Card {
             children: [
               Text(studentID, style: TextStyle(fontSize: 16.0)),
               Row(children: getStarRatingView(context)),
-              userID == studentID
-                  ? IconButton(
-                      icon: Icon(Icons.edit,
-                          color: Color.fromARGB(255, 0x75, 0x17, 0x1e),
-                          size: 18.0),
-                      onPressed: () {
-                        print('Edit/Delete Review!');
-                        //TODO - EDIT REVIEW USER STORY - include delete from db too
-                      })
-                  : Container(),
             ],
           ),
           Padding(padding: EdgeInsets.fromLTRB(5, 12, 5, 5)),
@@ -101,3 +87,4 @@ class UniEatsReviewCard extends Card {
     return star_rating;
   }
 }
+
