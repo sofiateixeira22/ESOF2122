@@ -256,7 +256,7 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
     restNames.remove(name);
     print(user_favs.id);
     widget._collectionFav.doc(user_favs.id).delete();
-    
+
     widget._collectionFav.add({
       'studentID': userID,
       'restaurtsName' : restNames
