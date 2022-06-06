@@ -213,7 +213,8 @@ class EditReview extends StatelessWidget{
           askLaterText: 'Apagar Review', 
           onAskLaterCallback: () {
             print('Review Apagada ('+ review.id +') ' + review['description']);
-            reviews.doc(review.id).delete();
+            reviews.doc(review.id).delete().then((value) => print("Review Deleted")).catchError((error)=> print("Failed to remove review"));
+            Navigator.of(context).pop();
           },
         );
       },
