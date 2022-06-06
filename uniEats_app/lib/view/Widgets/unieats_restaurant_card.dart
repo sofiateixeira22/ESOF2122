@@ -252,9 +252,7 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
   }
 
   removeFavorite(name){
-    print("Remove");
     restNames.remove(name);
-    print(user_favs.id);
     widget._collectionFav.doc(user_favs.id).delete();
 
     widget._collectionFav.add({
@@ -265,7 +263,6 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
   }
 
   addFavorite(name){
-    print("Add");
     restNames.add(name);
     widget._collectionFav.doc(user_favs.id).delete();
     
