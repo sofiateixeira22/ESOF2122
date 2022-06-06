@@ -62,6 +62,8 @@ class UniEatsFaqPageViewState extends UniEatsGeneralPageViewState {
       ),
     );
 
+    //TODO: Add FAQs to DB -> automatization
+
     //Q1
     //TODO: Change color of background to outline
     FaqText.add(

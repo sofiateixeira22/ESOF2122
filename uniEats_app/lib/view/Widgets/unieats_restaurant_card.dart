@@ -90,9 +90,6 @@ class UniEatsRestaurantCardState extends State<UniEatsRestaurantCard> {
       var data = await widget.restDB.get();
       int priceRange;
 
-      int index = -1;
-
-
       for (int i = 0; i < data.size; i++) {
 
         if (data.docs[i]['name'] == 'Cantina - Almoço' &&
@@ -103,13 +100,11 @@ class UniEatsRestaurantCardState extends State<UniEatsRestaurantCard> {
         } else if (data.docs[i]['name'] == 'Cantina - Jantar' &&
             priceRange != null) {
           widget.scheduleList = data.docs[i]['schedule'];
-          index = i;
           break;
         } else if (data.docs[i]['name'] == widget.restaurant.name) {
           priceRange = data.docs[i]['priceRange'];
           widget.scheduleList = data.docs[i]['schedule'];
           widget.coords = data.docs[i]['coords'];
-          index = i;
           break;
         }
       }

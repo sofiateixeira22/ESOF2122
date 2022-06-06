@@ -1,10 +1,7 @@
 import 'dart:async';
-import 'dart:math';
 
 import 'package:geolocator/geolocator.dart';
-import 'package:logger/logger.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:vector_math/vector_math.dart';
 
 class MapUtils {
   bool servicestatus = false;
@@ -71,28 +68,5 @@ class MapUtils {
     );
 
     return position;
-  }
-
-  double getKmToCurLocation(double latitude, double longitude) {
-    double lat1 = radians(double.parse(this.lat));
-    double lon1 = radians(double.parse(this.long));
-
-    double lat2 = radians(latitude);
-    double lon2 = radians(longitude);
-
-    // Haversine formula
-    double dlon = lon2 - lon1;
-    double dlat = lat2 - lat1;
-    double a =
-        pow(sin(dlat / 2), 2) + cos(lat1) * cos(lat2) * pow(sin(dlon / 2), 2);
-
-    double c = 2 * asin(sqrt(a));
-
-    double r = 6371;
-
-    // calculate the result
-    double res = c * r;
-
-    return res;
   }
 }
