@@ -111,7 +111,14 @@ class FavouritesPageViewState extends UniEatsNoDrawerPageView {
                   child: Card(
                     elevation: 5,
                     child: (Center(
-                      child: Text(restNames[j]),
+                      child: Text(restNames[j], 
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headline1
+                                    .apply(
+                                        fontSizeFactor: 1.05,
+                                        fontSizeDelta: -53,
+                                        fontWeightDelta: -3))
                     )),
                   
                   ),
