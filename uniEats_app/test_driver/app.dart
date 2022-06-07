@@ -1,4 +1,4 @@
-import 'package:flutter_demo/main.dart';
+import 'package:uni/main.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_driver/driver_extension.dart';
 
@@ -8,5 +8,6 @@ void main() {
 
   // Call the `main()` function of your app or call `runApp` with any widget you
   // are interested in testing.
+
   runApp(MyApp());
 }

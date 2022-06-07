@@ -6,3 +6,4 @@ Feature: UniEats_Pages
     When I tap the "increment" button
     And I tap the "increment" button
     Then I expect the "counter" to be "2"
+
