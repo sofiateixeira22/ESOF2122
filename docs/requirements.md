@@ -35,6 +35,10 @@ Academic Login - Saves previous searches (history) and a list of favorite places
 | *Normal flow* | 1. The user accesses the uniEats app search bar <br> 2. The system shows restauurants <br> 3. The user types access the restauurant <br> 4. The system shows the info of the Restaurant (rate, normal prices ...) <br> 5. If wanted, the user may choose to see menu <br> 6. If wanted, the user may choose to see Reviews <br> 7.  If wanted, the user may access the path to restaurant (google Maps) |
 | *Alternative flows and exceptions* | 1. [page  does not exist] In a case where does not exist restaurant page , the user receives an error message. <br> 2. [page fault] information that has been corrupted or missing is replaced by a general message|
 
+
+> ### 📱 What happened in the end? 
+> We ended up not having the 'Restaurant Owner' and 'Admin' Actors, because as we were developing the project we realized that our product would not increase in value by adding this actors at an early stage of development. Although as the load of restaurants and users grew we could possibly reconsider this decision, allowing more information to be acessed and a better control of the communications between users.
+
 ### Domain model
 
 The Conceptual Domain Model contains the identification and description of the entities of the domain and the relationships between them in an UML class diagram.
@@ -60,3 +64,8 @@ For each class, the attributes, associations and constraints are included in the
 - **Review** - It represents a comment made by an Academic User about a certain restaurant, allowing other users more information about, for instance, community favourite dishes and best our of the day to visit that place to eat. The star rating defined by the reviewer will influence the general PlaceToEat starRating, so that it is always updated.
 
 - **FAQ** - This class saves frequently asked questions, allowing users a fast response to some doubts they might have.
+
+> ### 📱 What happened in the end? 
+> As previously state, we did not add a "Restaurant User", because at this stage of development, we believe it would not increase the value of our app, and also as it envolved communication with other entities to access real information
+> Regarding the rest of the classes, we have a representation of each of them in our product, either as an actual class or as fields in our classes. 
+> With that being said, we believed we followed correctly our domain model in our app.

@@ -5,6 +5,10 @@
 **UniEats** is a find-my-meal app that aims to list places to eat close to UP, and their menus, ordering them by relative distance to help the academic community know all their options. This app would also include a shortcut to Google Maps to show the way there.
 Unlike sigarra, our product would provide an easy way to find menus of different places, much more complete and in a faster way. 
 
+> ### 📱 What happened in the end? 
+> 
+> We believe we were able to deliver on our product vision because the current state of our app allows users to view menus of the restaurants closer to FEUP and the path to reach that restaurant (in Google Maps) in a very fast and pleasant way.
+
 ## Main Features
 
 - Restaurant Login - We provide account creation and login for restaurants without online menus, in order for them to add their options to our app.
@@ -18,6 +22,19 @@ Unlike sigarra, our product would provide an easy way to find menus of different
 - Add Review - Authenticated users can add reviews to restaurants and canteens they already tried, in order to provide even more information to other users in time of decision.
 - "Random Selection" Button - Choose maximum distance/price and get a recomendation
 
+> ### 📱 What happened in the end? 
+> 
+> Some of this features were not implemented or only partially implemented. This happend due to either the feature not being necessary anymore or lack of better time management.
+>
+> These features are not implemented:
+> - Restaurant Login - No longer necessary, we are using a fetcher to information from Sigarra.
+> - Add Menus - Since we are using the fetcher, there was no longer a need to add a menu to a canteen/restaurant.
+> - Search Filters - Due to some difficulties and lack of time in the last few weeks for the development of the project, we were unable to implement this functionality.
+> - Sorting search results.
+>
+> This feature was partially implented:
+> - "Random Selection" Button - We implemented a Random Selection Button that returns a random restaurant within the list of restaurants. This button does not have a filter for maximum distance or price.
+
 ## Assumptions and dependencies
 
 - Google Maps API
@@ -25,3 +42,9 @@ Unlike sigarra, our product would provide an easy way to find menus of different
 - Access to menus, prices, schedules, capacity of various restaurants (not related to UP - ex. Campus S.João Restaurants, Circunvalação Restaurants).
 - Restaurant account (username, password) and backend support for adding menus, reviews, etc.
 - Backend support for user meal history and favorites
+
+> ### 📱 What happened in the end? 
+> 
+> Some of this dependencies were not needed and some were replaced by alternatives: <br>
+> - Google Maps API - after some trouble regarding the required payment methods for this API. Because of that, we ended up implementing a way to open the Google Maps app directly from our app, which we think is a worthy replacement. 
+> For Backend support - Info for Restaurants, Reviews, Favorites, FAQs - we ended up using our own Firestore Database, as it is a free alternative that allows us to complete our basic funcionalities that needed storage in a way that can be used by users. 

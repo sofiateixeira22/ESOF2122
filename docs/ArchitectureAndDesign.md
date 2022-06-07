@@ -21,6 +21,17 @@ The following diagram explains this package structure.
 - The **SIGARRA Website** will be running in the SIGARRA Server and will be accessed by the **Backend API**
 - The **Google Maps API** will be running in some Google Server and will be used directly be the uniEats app
 
+> ### 📱 What happened in the end? 
+> 
+> Instead of using a backend API we ended up using a database Firebase developed by Google.
+>
+> Our database stores:
+> - List of restaurants - contains all the restaurants/canteens the app is using.
+> - Favorites - contains the list of favorite restaurants added by a user.
+> - Reviews - contains the list of reviews for a restaurant.
+> - Faqs - contains all the frequently asked questions and their answers for the app.
+<br>
+
 ![DeploymentView](/images/DeploymentDiagram.png)
 
 ### Vertical prototype
