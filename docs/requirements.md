@@ -36,8 +36,7 @@ Academic Login - Saves previous searches (history) and a list of favorite places
 | *Alternative flows and exceptions* | 1. [page  does not exist] In a case where does not exist restaurant page , the user receives an error message. <br> 2. [page fault] information that has been corrupted or missing is replaced by a general message|
 
 
-> ### 📱 What happened in the end? 
-> We ended up not having the 'Restaurant Owner' and 'Admin' Actors, because as we were developing the project we realized that our product would not increase in value by adding this actors at an early stage of development. Although as the load of restaurants and users grew we could possibly reconsider this decision, allowing more information to be acessed and a better control of the communications between users.
+'Restaurant Owner' and 'Admin' Actors were not implemented, because as we were developing the project we realized that our product would not increase in value by adding this actors at an early stage of development. Although as the load of restaurants and users grew we could possibly reconsider this decision, allowing more information to be acessed and a better control of the communications between users.
 
 ### Domain model
 
@@ -46,26 +45,18 @@ For each class, the attributes, associations and constraints are included in the
 
  ![Domain Model](/images/DomainModel.png)
 
-#### Brief Description of each class
-
-- **User** - SuperClass of the users with a registered account in *UniEats*, its only attribute saves the full name of the account holder. This class subclasses are: 
-    - **AcademicUser** - For accounts with a valid *Sigarra* login, i. e. students and faculty. They can login in to the app with their unique academic code (ex.: up201901010) and their *Sigarra* password. This type of user can keep a favourite places to eat list, a history of previously viewed places. They can also write reviews in Restaurant Pages to describe their experience.
-
-    - **RestaurantUser** - This accounts can be created in our app so that a Restaurant Owner can add their Restaurant as an available on in our app, allowing people from the academic community acess to their menus. Their login is made with a username and a password, defined at time of register. 
+#### Brief Description of each class implemented in the product
+ 
+- **AcademicUser** - users with a registered account in *UniEats* - For accounts with a valid *Sigarra* login, i. e. students and faculty. They can login in to the app with their unique academic code (ex.: up201901010) and their *Sigarra* password. This type of user can keep a favourite places to eat list, a history of previously viewed places. They can also write reviews in Restaurant Pages to describe their experience.
 
 - **PlacetoEat** - This class saves relevant information of a Canteen or Restaurant present in our app so that possible customers can view it. The goal of the information saved by this class is to help people decide that a certain place is where they want to eat today.  
 
 - **Menu** - This class saves the set of meals available in a certain day for the restaurant selected.
 
-- **Meal** - This class saves the specific meal available at a certain date in a restaurant. With a short description, a mealType ("Carne", "Dieta", "Peixe" or "Vegetariano"), and a price well defined, it provides a more simple way of deciding what to eat and where each day.
+- **Meal** - This class saves the specific meal available at a certain date in a restaurant. With a short description, a mealType ("Carne", "Dieta", "Peixe" or "Vegetariano"), it provides a more simple way of deciding what to eat and where each day.
 
 - **Address** - This class keeps all the important information about the location of a "PlaceToEat", so that people can find it more easily.
 
 - **Review** - It represents a comment made by an Academic User about a certain restaurant, allowing other users more information about, for instance, community favourite dishes and best our of the day to visit that place to eat. The star rating defined by the reviewer will influence the general PlaceToEat starRating, so that it is always updated.
 
 - **FAQ** - This class saves frequently asked questions, allowing users a fast response to some doubts they might have.
-
-> ### 📱 What happened in the end? 
-> As previously state, we did not add a "Restaurant User", because at this stage of development, we believe it would not increase the value of our app, and also as it envolved communication with other entities to access real information
-> Regarding the rest of the classes, we have a representation of each of them in our product, either as an actual class or as fields in our classes. 
-> With that being said, we believed we followed correctly our domain model in our app.
