@@ -48,11 +48,11 @@ class UniEatsProfilePageViewState extends UniEatsNoDrawerPageView {
     list.add(Padding(padding: const EdgeInsets.all(5.0)));
     list.add(profileInfo(context));
     list.add(Padding(padding: const EdgeInsets.all(5.0)));
-    list.add(UniEatsStatsCard());
+   // list.add(UniEatsStatsCard());
     list.add(Padding(padding: const EdgeInsets.all(5.0)));
-    list.add(UniEatsFavoritesCard());
+   // list.add(UniEatsFavoritesCard());
     list.add(Padding(padding: const EdgeInsets.all(5.0)));
-    list.add(UniEatsHistoryCard());
+    //list.add(UniEatsHistoryCard());
     return list;
   }
 
