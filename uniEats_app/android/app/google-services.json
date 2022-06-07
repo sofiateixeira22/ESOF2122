@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "610330348293",
+    "project_id": "unieats-94e3b",
+    "storage_bucket": "unieats-94e3b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610330348293:android:e4d89c0fdbd1712742c56c",
+        "android_client_info": {
+          "package_name": "pt.up.fe.ni.uni"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "610330348293-301penhdeos2aer63efl0fsjpqgi354p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKr53J4eLT2n8hnRlkmX2gCm77_Gt5zTs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "610330348293-301penhdeos2aer63efl0fsjpqgi354p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
