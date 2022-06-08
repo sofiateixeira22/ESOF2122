@@ -74,10 +74,12 @@ class _RestaurantPageState extends UniEatsNoDrawerPageView
         count++;
       }
     }
-    Logger().e("Count: " + count.toString());
+    Logger().i("Count: " + count.toString());
     menuTabController = TabController(vsync: this, length: count);
 
-    final offset = (weekDay > 7) ? 0 : (weekDay - 1) % daysOfTheWeek.length;
+    final offset = (weekDay > 7) ? 0 
+                  : ((weekDay - 1) % daysOfTheWeek.length) - (weekDay - 1);
+
     menuTabController.animateTo((menuTabController.index + offset));
     return RestaurantPageView(
       tabController: tabController,

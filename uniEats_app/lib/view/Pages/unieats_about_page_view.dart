@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:uni/view/Pages/unieats_gen_page_view.dart';
-import 'package:uni/view/Widgets/terms_and_conditions.dart';
 
 class UniEatsAboutPageView extends StatefulWidget {
   @override

@@ -4,22 +4,20 @@ The uniEats project will be organized in three main packages, the User Interface
 
 ### Logical architecture
 
-- The **uniEats UI** package will deal with the display and user interface
-- The **uniEats Logic** package will deal with the users' requests, such as searching for a restaurant, reviewing a restaurant. This package will communicate with the Backend and Google Maps via the packages **Google Maps API** and **Backend API**, respectively
-- The **Storage** package will serve to store local information on the users' phone, such as search history
-- The **Google Maps API** will serve as an interface to communicate with Google Maps
-- The **Backend API** will serve as an interface to communicate with the Backend Server
+- The **uniEats UI** package will deal with the display and user interface;
+- The **uniEats Logic** package will deal with the users' requests, such as searching for a restaurant, reviewing a restaurant. This package will communicate with the Backend via  the package **Backend API**, and with the Google Maps App;
+- The **Storage** package will serve to store local information on the users' phone, such as restaurant meals obtained via fetcher;
+- The **Backend API** will serve as an interface to communicate with the Backend Firebase Server
 
-The following diagram explains this package structure.
+The following diagram explains the initially predicted package structure.
 
 ![DeploymentView](/images/PackagesDiagram.png)
 
 ### Physical architecture
 
-- The **uniEats app** artifact will be the app running on users' phones.
-- The **Backend API** will be running on the Backend server and receiving http requests from the **uniEats app**
-- The **SIGARRA Website** will be running in the SIGARRA Server and will be accessed by the **Backend API**
-- The **Google Maps API** will be running in some Google Server and will be used directly be the uniEats app
+- The **uniEats app** artifact will be the app running on users' phones;
+- The **Backend API** will be running on the Backend Firebase server and receiving http requests from the **uniEats app**;
+- The **SIGARRA Website** will be running in the SIGARRA Server and will be accessed by the **Backend API**.
 
 ![DeploymentView](/images/DeploymentDiagram.png)
 

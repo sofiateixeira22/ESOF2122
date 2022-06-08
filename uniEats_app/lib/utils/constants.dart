@@ -19,4 +19,4 @@ const navRestaurant = 'Restaurante';
 const navFavourites = 'Favoritos';
 const navHistory = 'Histórico';
 const navUniEatsAbout = 'UniEats - Sobre Nós';
-const navUniEatsFaq = 'FAQs - Preguntas Frequentes';
+const navUniEatsFaq = 'Contactos e FAQs';

@@ -33,6 +33,7 @@ import 'package:uni/view/Pages/unieats_home_page_view.dart';
 import 'package:uni/view/Pages/favourites_page_view.dart';
 import 'package:uni/view/Pages/history_page_view.dart';
 import 'package:uni/view/Pages/unieats_about_page_view.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:uni/view/Pages/unieats_faq_page_view.dart';
 
 /// Stores the state of the app
@@ -46,6 +47,8 @@ SentryEvent beforeSend(SentryEvent event) {
 }
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   OnStartUp.onStart(state);
   await SentryFlutter.init(
     (options) {
