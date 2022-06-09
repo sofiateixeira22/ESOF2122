@@ -14,9 +14,11 @@ import 'package:uni/utils/constants.dart' as Constants;
 
 class UniEatsHomePageView extends StatefulWidget {
   UniEatsHomePageView({
-    Key key,
+    //Key key, last code
+    key: const Key('uniEats_page'),
     @required this.restaurants,
   });
+
   final List<Restaurant> restaurants;
 
   @override

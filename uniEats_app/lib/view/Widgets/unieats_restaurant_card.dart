@@ -73,11 +73,14 @@ class UniEatsRestaurantCardState extends State<UniEatsRestaurantCard> {
   final double borderRadius = 10.0;
   final double padding = 12.0;
 
+
   @override
   initState() {
     super.initState();
 
     fetchData();
+    key: const Key('uniEats_restaurant_card');
+
   }
 
   fetchData() async {

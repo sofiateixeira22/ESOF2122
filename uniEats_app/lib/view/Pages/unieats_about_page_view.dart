@@ -16,7 +16,8 @@ class UniEatsAboutPageViewState extends UniEatsGeneralPageViewState {
   Widget getBody(BuildContext context) {
     final MediaQueryData queryData = MediaQuery.of(context);
     return ListView(
-      children: <Widget>[
+        key: const Key('uniEats_SobreNos_page'),
+        children: <Widget>[
         Container(
             padding: EdgeInsets.fromLTRB(10, 20, 10, 0),
             child: SvgPicture.asset(
