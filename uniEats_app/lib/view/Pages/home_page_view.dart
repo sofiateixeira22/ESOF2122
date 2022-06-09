@@ -12,6 +12,7 @@ class HomePageView extends StatefulWidget {
 class HomePageViewState extends GeneralPageViewState {
   @override
   Widget getBody(BuildContext context) {
+    key: const Key('uni_page');
     return MainCardsList();
   }
 }

@@ -96,6 +96,7 @@ class MyAppState extends State<MyApp> {
           onGenerateRoute: (RouteSettings settings) {
             switch (settings.name) {
               case '/' + Constants.navPersonalArea:
+                key: const Key('uni_Button1');
                 return PageTransition.makePageTransition(
                     page: HomePageView(), settings: settings);
               case '/' + Constants.navSchedule:
@@ -118,15 +119,19 @@ class MyAppState extends State<MyApp> {
               case '/' + Constants.navLogOut:
                 return LogoutRoute.buildLogoutRoute();
               case '/' + Constants.navUniEats:
+                key: const Key('uniEats_Button1');
                 return PageTransition.makePageTransition(
                     page: UniEatsHomePageView(), settings:settings);
               case '/' + Constants.navFavourites:
+                key: const Key('uniEats_favoritos_page');
                 return PageTransition.makePageTransition(
                     page: FavouritesPageView(), settings:settings);
               case '/' + Constants.navHistory:
+                key: const Key('uniEats_historico_Button1');
                 return PageTransition.makePageTransition(
                     page: HistoryPageView(), settings:settings);
               case '/' + Constants.navUniEatsAbout:
+                key: const Key('uniEats_SobreNos_Button1');
                 return PageTransition.makePageTransition(
                     page: UniEatsAboutPageView(), settings:settings);
               case '/' + Constants.navRestaurant:
